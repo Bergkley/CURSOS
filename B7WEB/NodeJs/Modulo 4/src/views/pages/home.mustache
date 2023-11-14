@@ -1,0 +1,77 @@
+{{>partials/header}}
+
+{{>partials/header}}
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+<script>$('{{Telefone}}').mask('(00) 0000-0000');</script>
+
+<fieldset>
+    <legend>Adicionar Novo Usuário</legend>
+    <form action="/novoUsuario" method="POST">
+        <input type="text" name="name" placeholder="Digite seu nome"><br><br>
+        <input type="text" name="lastName" placeholder="Digite seu sobrenome"><br><br>
+        <input type="email" name="email" placeholder="Digite seu e-mail"><br><br>
+        <input type="number" name="age" placeholder="Digite sua idade atual"><br><br>
+        <input type="telephone" name="telefone" placeholder="(00) 0000-0000"><br><br>
+        <input type="text" name="cidade" placeholder="Cidade"><br><br>
+        
+        <input type="text" name="interest" placeholder="Digite seus interesses, separado!"><br><br>
+        <button type="submit">Inserir</button>
+    </form>
+</fieldset>
+
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+<script>$('{{Telefone}}').mask('(00) 0000-0000');</script>
+
+
+
+
+<hr/>
+
+<h2>Usuario</h2>
+<h2>
+<ul>
+    {{#users}}
+        <li>{{horario}}-{{{name.firstName}}} -{{name.lastName}}- {{age}} -
+        <form action="/usuario/{{_id}}/atualizar" method="POST">
+        <input type="text" name="namefull" placeholder="Novo nome"> <button type="submit">Inserir</button><br><br> 
+    </form> </li>
+    {{/users}}
+</ul>
+<h2>
+<hr/>
+<ul>
+
+<h2>Alterar idade</h2>
+    {{#users}}
+        <li>{{horario}}- ✫{{{name.firstName}}}✫ -{{name.lastName}}- {{age}} - <a href="/usuario/{{_id}}/addidade"><button>+1 ano de vida<button> <a href="/usuario/{{_id}}/diminuiridade"><button>-1 ano de vida<button><a href="/usuario/{{_id}}/deletar"> <button>X<button></a>
+        <form action="/usuario/{{_id}}/atualizarage" method="POST">
+        <input type="number" name="age" placeholder="editar"> <button type="submit">Inserir idade</button><br><br> 
+    </form> </li>
+    {{/users}}
+</ul>
+
+<hr/>
+        <h2>CADASTROS : {{result}}</h2>
+<hr/>
+<ul>
+    {{#frasesDoDia}}
+        <li>{{.}}</li>
+    {{/frasesDoDia}}
+    {{^frasesDoDia}}
+        Não há frases motivacionais hoje.
+    {{/frasesDoDia}}
+</ul>
+
+{{>partials/footer}}
+
+<hr/>
+<H2> HISTORICO:</H2>
+        {{#users}}
+        
+            <li>
+                {{Historico}}
+            </li>
+        {{/users}}
+<hr/>
