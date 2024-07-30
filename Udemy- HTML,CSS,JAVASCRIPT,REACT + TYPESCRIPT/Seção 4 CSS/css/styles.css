@@ -27,3 +27,7 @@ h2{
 #algum-titulo{
     border-bottom: 2px solid green;
 }
+/* <!-- 11- nome de cor --> */
+.color-name{
+    color: crimson;
+}
