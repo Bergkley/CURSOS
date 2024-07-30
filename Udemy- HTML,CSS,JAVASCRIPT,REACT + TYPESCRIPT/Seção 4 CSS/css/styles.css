@@ -16,3 +16,14 @@ h3{
     color: yellow;
     padding: 10px;
 }
+
+/* <!-- 10- Multiplas regras,ordem do css --> */
+h2{
+    border-bottom: 2px solid red;
+}
+.titulo{
+    border-bottom: 2px solid blue;
+}
+#algum-titulo{
+    border-bottom: 2px solid green;
+}
