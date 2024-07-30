@@ -31,3 +31,7 @@ h2{
 .color-name{
     color: crimson;
 }
+/* <!-- 12- hexadecimal --> */
+.hex{
+    color: #00ff00;
+}
