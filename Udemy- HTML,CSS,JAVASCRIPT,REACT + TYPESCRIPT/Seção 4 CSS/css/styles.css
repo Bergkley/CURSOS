@@ -5,3 +5,9 @@ body{
 h3{
     color: aqua;
 }
+/* <!-- 8- Classes --> */
+.paragraph{
+    background-color: black;
+    padding:5px ;
+    color: aqua;
+}
