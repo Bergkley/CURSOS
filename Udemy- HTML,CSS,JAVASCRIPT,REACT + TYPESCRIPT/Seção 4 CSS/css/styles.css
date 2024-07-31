@@ -210,3 +210,18 @@ h2{
     width: 200px;
     height: 100px;
 }
+/* <!-- 32: desafio --> */
+.desafio-03{
+    margin: 20px;
+    padding: 15px 20px;
+    border: 3px solid rgb(120, 28, 182);
+    border-radius: 25px ;
+    outline: 3px solid #000;
+    background-color: #000;
+    
+}
+.text-desafio{
+    background-color: #00ff00;
+    color: #000;
+    border: none;
+}
