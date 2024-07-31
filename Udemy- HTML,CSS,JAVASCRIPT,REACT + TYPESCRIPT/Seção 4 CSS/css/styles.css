@@ -80,3 +80,9 @@ h2{
     background-color: rgba(90,120,20,0.2);
     color: #000;
 }
+/* <!-- 20: background image --> */
+.bg-image{
+    background-image: url(../img/node\ +\ typescript.png);
+    padding: 10px;
+    color: #fff;
+}
