@@ -66,3 +66,12 @@ h2{
     background-color: #000;
     color: yellow;
 }
+/* <!-- 18: opacidade no bg --> */
+.bg-opacity{
+    background-color: green;
+    opacity: 0.2;
+}
+.bg-opacity-2{
+    background-color: #999;
+    opacity: 0.8;
+}
