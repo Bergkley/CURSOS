@@ -75,3 +75,8 @@ h2{
     background-color: #999;
     opacity: 0.8;
 }
+
+.rgba-opacity{
+    background-color: rgba(90,120,20,0.2);
+    color: #000;
+}
