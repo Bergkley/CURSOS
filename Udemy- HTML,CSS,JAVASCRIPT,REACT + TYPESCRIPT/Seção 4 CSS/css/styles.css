@@ -35,3 +35,10 @@ h2{
 .hex{
     color: #00ff00;
 }
+/* <!-- 13- hexadecimal simplificado --> */
+.simple-hex{
+    color: #333;
+}
+.simple-hex-2{
+    color: #a5f;
+}
