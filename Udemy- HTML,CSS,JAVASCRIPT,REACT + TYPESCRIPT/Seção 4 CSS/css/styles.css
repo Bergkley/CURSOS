@@ -86,3 +86,15 @@ h2{
     padding: 10px;
     color: #fff;
 }
+/* <!-- 21: centralizar background image --> */
+.bg-image-center,
+.centerd-bg{
+    height: 400px;
+    width: 400px;
+    background-image: url(../img/node\ +\ typescript.png);
+
+}
+.centerd-bg{
+    background-position: center;
+    background-size: cover;
+}
