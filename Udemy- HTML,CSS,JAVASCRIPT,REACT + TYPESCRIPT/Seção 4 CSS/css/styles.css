@@ -172,3 +172,17 @@ h2{
     background-color: #222;
     padding: 20px;
 }
+/* <!-- 29: border arredondada --> */
+.border-rounded{
+    border: 4px solid blue;
+    background-color: #000;
+    color: blue;
+    padding: 15px;
+    border-radius: 15px;
+}
+.border-rounded-2{
+    background-color: #000;
+    color: blue;
+    padding: 15px;
+    border-radius: 25px;
+}
