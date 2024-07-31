@@ -98,3 +98,14 @@ h2{
     background-position: center;
     background-size: cover;
 }
+
+/* <!-- 22: largura e altura --> */
+.height-width{
+    width: 100px;
+    height: 200px;
+    background-color: red;
+}
+.height-width-2{
+    height: 300px;
+    background-color: blue;
+}
