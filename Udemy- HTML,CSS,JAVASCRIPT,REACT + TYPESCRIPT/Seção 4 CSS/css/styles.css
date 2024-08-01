@@ -225,3 +225,12 @@ h2{
     color: #000;
     border: none;
 }
+/* <!-- 33: text-aligned */
+.text-aligned{
+    text-align: right;
+}
+.container-center{
+    text-align: center;
+    width: 300px;
+    border: 1px solid red;
+}
