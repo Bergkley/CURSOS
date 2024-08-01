@@ -312,6 +312,8 @@ h2{
     display: block;
     margin: 10px;
 }
+
+/* <!-- 42: display none --> */
 .invisble{
     display: none;
 }
