@@ -299,3 +299,16 @@ h2{
 .big{
     font-size: 78px;
 }
+/* <!-- 41: display --> */
+.inline-box{
+    width: 50px;
+    height: 50px;
+    background-color: #4f8;
+    margin: 10px;
+    display: inline-block;
+}
+.block {
+    background-color: #333;
+    display: block;
+    margin: 10px;
+}
