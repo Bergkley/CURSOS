@@ -317,3 +317,11 @@ h2{
 .invisble{
     display: none;
 }
+/* <!-- 43: static --> */
+.static{
+    position: static;
+    background-color: #391;
+    color:#fff;
+    width: 100px;
+    height: 100px;
+}
