@@ -234,3 +234,14 @@ h2{
     width: 300px;
     border: 1px solid red;
 }
+/* <!-- 34: text decoration --> */
+.underline{
+    text-decoration: underline;
+}
+.line-trough{
+    text-decoration: line-through;
+}
+.remove-underline{
+    text-decoration: none;
+    color: red;
+}
