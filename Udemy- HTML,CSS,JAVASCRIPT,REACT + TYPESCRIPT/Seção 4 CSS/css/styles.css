@@ -328,10 +328,21 @@ h2{
 /* <!-- 44: position relative --> */
 .position-relative{
     position: relative;
-    background-color: #391;
+    background-color: #224;
     color:#fff;
     width: 100px;
     height: 100px;
     top: 100px;
     left: 400px;
+}
+/* 45: position absolute */
+.position-absolute{
+    position: absolute;
+    background-color: #964;
+    color:#fff;
+    width: 100px;
+    height: 100px;
+    top: 2px;
+    right: 2px;
+    
 }
