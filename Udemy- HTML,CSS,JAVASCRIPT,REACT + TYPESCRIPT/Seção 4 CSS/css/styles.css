@@ -252,3 +252,7 @@ h2{
 #lower-case{
     text-transform: lowercase;
 }
+/* <!-- 36: letter spacing --> */
+.spacing{
+    letter-spacing: 10px;
+}
