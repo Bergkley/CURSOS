@@ -245,3 +245,10 @@ h2{
     text-decoration: none;
     color: red;
 }
+/* <!-- 35: text transform --> */
+.upper{
+    text-transform: uppercase;
+}
+#lower-case{
+    text-transform: lowercase;
+}
