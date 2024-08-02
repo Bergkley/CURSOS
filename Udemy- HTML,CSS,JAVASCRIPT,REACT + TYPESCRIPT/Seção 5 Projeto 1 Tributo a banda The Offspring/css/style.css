@@ -43,3 +43,6 @@ html{
     font-weight: bold;
     font-size: 30px;
 }
+.quotes-container p{
+    font-style: italic;
+}
