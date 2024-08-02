@@ -53,3 +53,6 @@ html{
     border-top: 1px dashed #DDD;
     border-bottom: 1px dashed #DDD;
 }
+.curiosities-container li{
+    height: 30px;
+}
