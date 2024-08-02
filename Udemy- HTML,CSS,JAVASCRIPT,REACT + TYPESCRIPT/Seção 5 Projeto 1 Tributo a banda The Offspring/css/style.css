@@ -8,6 +8,7 @@ html{
     position: relative;
     margin: 50px auto;
     padding: 20px 50px;
+    background-color: #fff;
 }
 .bold{
     font-weight: bold;
@@ -25,4 +26,11 @@ html{
 .featured-image{
     text-align: center;
     margin-top: 30px;
+}
+/* Biografia */
+.biography-container{
+    padding: 25px 0;
+    margin: 25px 0;
+    border-top: 1px dashed #DDD;
+    border-bottom: 1px dashed #DDD;
 }
