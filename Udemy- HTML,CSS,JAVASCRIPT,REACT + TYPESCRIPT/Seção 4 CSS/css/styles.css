@@ -381,3 +381,15 @@ h2{
     top: 50px;
     right:  50px;
 }
+/* <!-- 48: position sticky */
+
+.sticky{
+    width: 100px;
+    height: 100px;
+    background-color: #851;
+    border: 1px solid blue;
+    margin-top: 120px ;
+    position: sticky;
+    top: 10px;
+ 
+}
