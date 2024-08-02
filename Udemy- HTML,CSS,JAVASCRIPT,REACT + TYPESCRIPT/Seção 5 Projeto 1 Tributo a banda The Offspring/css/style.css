@@ -34,3 +34,8 @@ html{
     border-top: 1px dashed #DDD;
     border-bottom: 1px dashed #DDD;
 }
+/* Quotes */
+.quotes-container{
+    background-color: #DDD;
+    padding: 30px;
+}
