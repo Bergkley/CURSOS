@@ -12,3 +12,7 @@ html{
 .bold{
     font-weight: bold;
 }
+/* Header */
+.header{
+    text-align: center;
+}
