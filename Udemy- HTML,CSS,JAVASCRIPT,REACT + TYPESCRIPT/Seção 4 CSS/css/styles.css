@@ -369,3 +369,15 @@ h2{
     bottom: 10px;
     right: 10px;
 }
+/* <!-- 47: position fixed --> */
+
+.fixed{
+    width: 100px;
+    height: 100px;
+    background-color: #851;
+    border: 1px solid blue;
+    margin-top: 120px ;
+    position: fixed;
+    top: 50px;
+    right:  50px;
+}
