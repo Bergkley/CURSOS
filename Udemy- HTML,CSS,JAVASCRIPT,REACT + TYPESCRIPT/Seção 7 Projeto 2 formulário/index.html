@@ -25,18 +25,24 @@
             Descreva as caracteristicas do seu veículo e marque os opcionais que
             ele possui
           </p>
-          <div class="box-input">
-            <label for="title"
-              >Título do anúncio <span class="required-field">*</span></label
-            >
-            <input
-              type="text"
-              name="title"
-              id="title"
-              class="block"
-              placeholder="Um título para anunciar seu carro"
-            />
-          </div>
+         <form>
+            <div class="box-input">
+                <label for="title"
+                  >Título do anúncio <span class="required-field">*</span></label
+                >
+                <input
+                  type="text"
+                  name="title"
+                  id="title"
+                  class="block"
+                  placeholder="Um título para anunciar seu carro"
+                  minlength="1"
+                  maxlength="30"
+                  required
+                />
+              </div>
+              <input type="submit" value="Enivar">
+         </form>
         </div>
       </div>
     </div>
