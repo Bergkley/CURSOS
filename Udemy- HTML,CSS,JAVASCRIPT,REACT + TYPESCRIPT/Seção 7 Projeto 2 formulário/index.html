@@ -1,23 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Venda seu carro</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
     <div class="container">
-        <!-- 1- Header -->
-        <div class="header">
-            <h3>Cadastre seu veículo para vender mais rápido</h3>
+      <!-- 1- Header -->
+      <div class="header">
+        <h3>Cadastre seu veículo para vender mais rápido</h3>
+      </div>
+      <div class="form-container">
+        <!-- 2- Form Header -->
+        <div class="form-header">
+          <p>Formulário</p>
         </div>
-        <div class="form-container">
-            <!-- 2- Form Header -->
-            <div class="form-header">
 
-            </div>
+        <!-- 3- Form Body -->
+        <div class="form-body">
+          <h1 class="form-title">Venda fácil seu carro!</h1>
+          <p>
+            Descreva as caracteristicas do seu veículo e marque os opcionais que
+            ele possui
+          </p>
+          <div class="box-input">
+            <label for="title"
+              >Título do anúncio <span class="required-field">*</span></label
+            >
+            <input
+              type="text"
+              name="title"
+              id="title"
+              class="block"
+              placeholder="Um título para anunciar seu carro"
+            />
+          </div>
         </div>
+      </div>
     </div>
-</body>
+  </body>
 </html>
