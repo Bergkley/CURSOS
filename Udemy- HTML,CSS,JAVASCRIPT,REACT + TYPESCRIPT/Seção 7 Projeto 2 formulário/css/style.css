@@ -46,7 +46,7 @@ textarea{
     position: relative;
     top: -62px;
 }
-/* form herader */
+/* form header */
 .form-header{
     border-bottom: 1px solid #dfdfdf;
     height: 45px;
@@ -60,4 +60,8 @@ textarea{
    text-transform: uppercase;
    height: 45px;
    line-height: 45px;
+}
+/* form body */
+.form-body{
+    padding: 30px;
 }
