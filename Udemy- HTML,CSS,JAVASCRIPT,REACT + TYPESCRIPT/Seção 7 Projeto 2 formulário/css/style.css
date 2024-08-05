@@ -65,3 +65,7 @@ textarea{
 .form-body{
     padding: 30px;
 }
+.form-body p {
+    margin-bottom: 20px;
+}
+
