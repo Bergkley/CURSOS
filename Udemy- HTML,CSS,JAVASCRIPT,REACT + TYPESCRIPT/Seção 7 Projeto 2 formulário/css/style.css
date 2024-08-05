@@ -34,3 +34,11 @@ input[type="file"]{
     color: #fff;
     margin-top: 0;
 }
+/* form container */
+.form-container{
+    background-color: #fdfdfd;
+    width: 60%;
+    margin: 0 auto;
+    position: relative;
+    top: -62px;
+}
