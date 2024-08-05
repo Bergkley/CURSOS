@@ -25,38 +25,51 @@
             Descreva as caracteristicas do seu veículo e marque os opcionais que
             ele possui
           </p>
-         <form>
+          <form>
             <div class="box-input">
-                <label for="title"
-                  >Título do anúncio <span class="required-field">*</span></label
-                >
-                <input
-                  type="text"
-                  name="title"
-                  id="title"
-                  class="block"
-                  placeholder="Um título para anunciar seu carro"
-                  minlength="1"
-                  maxlength="30"
-                  required
-                />
-              </div>
-              <div class="box-input">
-                <label for="price"
-                  >Preço <span class="required-field">*</span></label
-                >
-                <input
-                  type="number"
-                  name="price"
-                  id="price"
-                  class="block"
-                  placeholder="Defina o preço"
-                  required
-                />
-              </div>
-              
-              <input type="submit" value="Enivar">
-         </form>
+              <label for="title"
+                >Título do anúncio <span class="required-field">*</span></label
+              >
+              <input
+                type="text"
+                name="title"
+                id="title"
+                class="block"
+                placeholder="Um título para anunciar seu carro"
+                minlength="1"
+                maxlength="30"
+                required
+              />
+            </div>
+            <div class="box-input">
+              <!-- 4- Price-->
+              <label for="price"
+                >Preço <span class="required-field">*</span></label
+              >
+              <input
+                type="number"
+                name="price"
+                id="price"
+                class="block"
+                placeholder="Defina o preço"
+                required
+              />
+            </div>
+            <div class="box-input">
+              <!-- 5- Description-->
+              <label for="description"
+                >Descrição <span class="required-field">*</span></label
+              >
+              <textarea
+                name="description"
+                id="description"
+                class="block"
+                placeholder="Descreva o veículo"
+              ></textarea>
+            </div>
+
+            <input type="submit" value="Enivar" />
+          </form>
         </div>
       </div>
     </div>
