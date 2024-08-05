@@ -24,3 +24,13 @@ input[type="date"],
 input[type="file"]{
     width: 400px;
 }
+/* page header */
+.header{
+    height: 160px;
+    padding: 20px;
+    background-color: #673ab7;
+}
+.header h3{
+    color: #fff;
+    margin-top: 0;
+}
