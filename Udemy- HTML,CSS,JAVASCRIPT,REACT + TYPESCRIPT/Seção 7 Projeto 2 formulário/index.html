@@ -153,12 +153,7 @@
                   <label for="alarm">Alarme</label>
                 </li>
                 <li>
-                  <input
-                    type="checkbox"
-                    id="ac"
-                    name="optional[]"
-                    value="ac"
-                  />
+                  <input type="checkbox" id="ac" name="optional[]" value="ac" />
                   <label for="ac">Ar Condicionado</label>
                 </li>
                 <li>
@@ -173,47 +168,58 @@
               </ul>
             </div>
             <div class="optional-box">
-                <!-- 10- Tipo de câmbio -->
-                <ul class="optional-list">
-                  <li>
-                    <input
-                      type="checkbox"
-                      id="lane_assist"
-                      name="optional[]"
-                      value="lane_assist"
-                    />
-                    <label for="lane_assist">Assistente de Pista</label>
-                  </li>
-                  <li>
-                    <input
-                      type="checkbox"
-                      id="keyless"
-                      name="optional[]"
-                      value="keyless"
-                    />
-                    <label for="keyless">Partida Keyless</label>
-                  </li>
-                  <li>
-                    <input
-                      type="checkbox"
-                      id="smartphone"
-                      name="optional[]"
-                      value="smartphone"
-                    />
-                    <label for="smartphone">Integração com Celular</label>
-                  </li>
-                  <li>
-                    <input
-                      type="checkbox"
-                      id="leat_seat"
-                      name="optional[]"
-                      value="leat_seat"
-                    />
-                    <label for="leat_seat">Banco de Couro</label>
-                  </li>
-                </ul>
-              </div>
-            
+              <!-- 10- Tipo de câmbio -->
+              <ul class="optional-list">
+                <li>
+                  <input
+                    type="checkbox"
+                    id="lane_assist"
+                    name="optional[]"
+                    value="lane_assist"
+                  />
+                  <label for="lane_assist">Assistente de Pista</label>
+                </li>
+                <li>
+                  <input
+                    type="checkbox"
+                    id="keyless"
+                    name="optional[]"
+                    value="keyless"
+                  />
+                  <label for="keyless">Partida Keyless</label>
+                </li>
+                <li>
+                  <input
+                    type="checkbox"
+                    id="smartphone"
+                    name="optional[]"
+                    value="smartphone"
+                  />
+                  <label for="smartphone">Integração com Celular</label>
+                </li>
+                <li>
+                  <input
+                    type="checkbox"
+                    id="leat_seat"
+                    name="optional[]"
+                    value="leat_seat"
+                  />
+                  <label for="leat_seat">Banco de Couro</label>
+                </li>
+              </ul>
+            </div>
+            <!-- 11- Imagem do Carro -->
+            <div class="box-input">
+              <p>Fotos do carro: <span class="required-field">*</span></p>
+              <input
+                type="file"
+                multiple
+                accept="image/png, image/jpg"
+                id="images"
+                name="images"
+                required
+              />
+            </div>
 
             <input type="submit" value="Enivar" />
           </form>
