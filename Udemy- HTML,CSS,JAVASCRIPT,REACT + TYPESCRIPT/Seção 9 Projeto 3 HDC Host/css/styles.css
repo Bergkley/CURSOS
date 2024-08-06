@@ -92,3 +92,17 @@ p{
     text-align: center;
     padding: 20px;
 }
+/* Icones */
+.fas {
+    font-size: 60px;
+    margin-bottom: 15px;
+}
+.fa-shield-alt {
+    color: #2cc76a;
+}
+.fa-rocket {
+    color: #ef3f29;
+}
+.fa-comments {
+    color: #ef8f29;
+}
