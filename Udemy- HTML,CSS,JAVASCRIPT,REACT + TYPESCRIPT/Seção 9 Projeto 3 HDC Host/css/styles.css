@@ -83,5 +83,12 @@ p{
 }
 .services-container ul {
     display: flex;
-    
+    width: 90%;
+    margin: 0 auto;
+}
+.services-container li {
+    flex: 1 1 200px;
+    list-style: none;
+    text-align: center;
+    padding: 20px;
 }
