@@ -92,6 +92,12 @@ p{
     text-align: center;
     padding: 20px;
 }
+.services-container h3 {
+    margin-bottom: 24px;
+}
+.services-container p {
+    line-height: 24px;
+}
 /* Icones */
 .fas {
     font-size: 60px;
