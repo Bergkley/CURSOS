@@ -191,3 +191,28 @@ p{
     font-size: 24px;
     margin-bottom: 25px;
 }
+/* Formulário */
+.searchdomain-container input{
+    display: block;
+    border: none;
+    border-radius: 5px;
+    margin: 0 auto;
+}
+.searchdomain-container input[type="text"]{
+    width: 60%;
+    padding: 20px;
+    font-size: 20px;
+    margin-bottom: 25px;
+}
+.searchdomain-container input[type="submit"]{
+ background-color: #2cc76a;
+ padding: 15px 30px;
+ color: #fff;
+ font-size: 24px;
+ cursor: pointer;
+ opacity: .8;
+}
+.searchdomain-container input[type="submit"]:hover {
+    opacity: 1;
+}
+
