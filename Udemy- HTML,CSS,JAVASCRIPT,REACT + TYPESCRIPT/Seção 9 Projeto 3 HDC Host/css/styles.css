@@ -13,3 +13,38 @@ h3{
 p{
     color: #70747a;
 }
+/* Navbar */
+.nav{
+    position: relative;
+}
+.navbar-container{
+    width: 100%;
+    height: 80px;
+    background-color: #232a31;
+    padding: 0 2rem;
+}
+.logo{
+    width: 50px;
+    margin-top: 15px;
+}
+.navbar-items {
+    position: absolute;
+    right: 0;
+    height: 80px;
+    line-height: 80px;
+    margin: 0;
+    display: inline-block;
+}
+.navbar-items li{
+    display: inline-block;
+    text-transform: uppercase;
+    margin-left: 25px;
+}
+.navbar-items a {
+    color: #FFF;
+    text-decoration: none;
+    transition: 0.5s;
+}
+.navbar-items a:hover {
+    color: #ccc;
+}
