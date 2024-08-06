@@ -175,3 +175,19 @@ p{
 .plan .recommended {
     background-color: #f45c57;
 }
+/* <!-- Seção de pesquisa de domínio --> */
+.searchdomain-container {
+    background-color: #34454e;
+    text-align: center;
+    padding: 5rem 0;
+}
+.searchdomain-container h2 {
+    color: #fff;
+    font-size: 42px;
+    margin-bottom: 15px;
+}
+.searchdomain-container p {
+    color: #d5d5d5;
+    font-size: 24px;
+    margin-bottom: 25px;
+}
