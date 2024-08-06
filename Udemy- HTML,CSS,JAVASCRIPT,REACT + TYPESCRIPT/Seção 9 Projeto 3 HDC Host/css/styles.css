@@ -77,3 +77,11 @@ p{
 .main-banner p {
     font-size: 54px;
 }
+/* Services */
+.services-container {
+    padding: 5rem 0;
+}
+.services-container ul {
+    display: flex;
+    
+}
