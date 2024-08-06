@@ -64,3 +64,16 @@ p{
     background-size: cover;
     padding: 10rem 0;
 }
+.main-banner h1,
+.main-banner p{
+    color: #FFF;
+    text-align: center;
+    font-weight: bold;
+    text-shadow: #000 3px 2px 3px;
+}
+.main-banner h1{
+    font-size: 54px;
+}
+.main-banner p {
+    font-size: 54px;
+}
