@@ -253,3 +253,9 @@ p{
     color: #fff;
     cursor: pointer;
 }
+/* footer */
+footer{
+    text-align: center;
+    font-weight: bold;
+    margin: 20px 0 100px;
+}
