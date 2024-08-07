@@ -221,3 +221,7 @@ p{
     text-align: center;
     padding: 5rem 0 2rem 0;
 }
+.contact-container h2{
+    font-size: 36px;
+    margin-bottom: 15px;
+}
