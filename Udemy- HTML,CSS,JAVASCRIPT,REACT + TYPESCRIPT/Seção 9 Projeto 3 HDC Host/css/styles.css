@@ -229,3 +229,12 @@ p{
     font-size: 20px;
     margin-bottom: 40px;
 }
+.contact-container input,
+.contact-container textarea{
+    width: 200px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 0 10px 20px;
+    margin: 0 10px 20px;
+}
