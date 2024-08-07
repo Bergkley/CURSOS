@@ -270,4 +270,12 @@ footer{
        margin: 0 5px; 
     }
 }
-
+/* tablet 900px */
+@media (max-width: 900px) {
+    .main-banner p {
+        padding: 0 6rem;
+    }
+    .searchdomain-container{
+        padding: 2rem 4rem;
+    }
+}
