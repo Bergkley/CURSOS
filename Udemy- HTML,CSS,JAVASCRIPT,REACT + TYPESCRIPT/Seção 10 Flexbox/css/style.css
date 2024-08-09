@@ -23,3 +23,23 @@ body{
     width: 33%;
     border: 1px solid red;
 }
+/* <!-- 4- justify --> */
+.center, .space-around, .space-between, .end{
+    display: flex;
+    margin-bottom: 20px;
+}
+.center .box, .space-around .box, .space-between .box, .end .box{
+    width: 50px;
+}
+.center{
+    justify-content: center;
+}
+.space-around{
+    justify-content: space-around;
+}
+.space-between{
+    justify-content: space-between;
+}
+.end{
+    justify-content: flex-end;
+}
