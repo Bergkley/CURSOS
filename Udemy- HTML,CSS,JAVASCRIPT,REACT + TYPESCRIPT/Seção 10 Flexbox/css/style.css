@@ -10,4 +10,16 @@ body{
 .flex-column{
     display: flex;
     flex-direction: column;
+    margin-bottom: 20px;
+}
+/* <!-- 3- wrap --> */
+.wrap{
+    display: flex;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+.box{
+    height: 40px;
+    width: 33%;
+    border: 1px solid red;
 }
