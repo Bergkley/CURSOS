@@ -2,7 +2,12 @@
 body{
     padding-bottom: 500px;
 }
-.fçex{
+.flex{
     display: flex;
     background-color: #ddd;
+}
+/* 2- column */
+.flex-column{
+    display: flex;
+    flex-direction: column;
 }
