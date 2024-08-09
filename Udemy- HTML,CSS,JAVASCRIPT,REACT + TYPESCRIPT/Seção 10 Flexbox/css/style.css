@@ -43,3 +43,26 @@ body{
 .end{
     justify-content: flex-end;
 }
+/* <!-- 5- align */
+.align-center, .stretch, .flex-end{
+    display: flex;
+    margin-bottom: 20px;
+    height: 200px;
+    border: 1px solid blue;
+}
+.align-center .box, .stretch .box, .flex-end .box{
+    width: 50px;
+}
+
+.align-center{
+    align-items: center;
+}
+.flex-end{
+    align-items: flex-end;
+}
+.stretch{
+    align-items: stretch;
+}
+.stretch .box{
+    height: auto;
+}
