@@ -90,3 +90,13 @@ body{
 #three {
     order: 3;
 }
+/* 8- grow */
+.grow{
+    display: flex;
+}
+.grow .box{
+    flex: 1;
+}
+.grow .big{
+    flex: 2;
+}
