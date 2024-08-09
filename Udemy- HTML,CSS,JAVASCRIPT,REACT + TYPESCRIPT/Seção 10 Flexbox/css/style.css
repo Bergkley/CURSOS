@@ -1,0 +1,8 @@
+/* 1-flex */
+body{
+    padding-bottom: 500px;
+}
+.fçex{
+    display: flex;
+    background-color: #ddd;
+}
