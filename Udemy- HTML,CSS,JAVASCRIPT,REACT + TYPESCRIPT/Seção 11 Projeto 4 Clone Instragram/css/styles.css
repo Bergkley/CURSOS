@@ -54,3 +54,25 @@
   #login-form {
     margin-top: 20px;
   }
+  
+  #login-form input{
+    display: block;
+    font-size: 12px;
+    padding: 12px 9px;
+    background-color: #fafafa;
+    border: 1px solid #dbdbdb;
+    border-radius: 3px;
+    width: 268px;
+    margin: 5px auto
+  }
+
+  #login-form input[type="submit"] {
+    background-color: #82dffc;
+    color: #fff;
+    margin-top: 15px;
+    border-radius: 5px;
+    height: 30px;
+    font-size: 13px;
+    padding: 0;
+    font-weight: bold;
+  }
