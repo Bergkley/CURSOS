@@ -1,32 +1,56 @@
-/* Geral */
-*{
+/* GERAL */
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family:  Helvetica;
-}
-body {
-    background-color: #fafafafa;
-}
-/* Container */
-#main-conainer {
+    font-family: Helvetica;
+  }
+  
+  body {
+    background-color: #fafafa;
+  }
+  
+  /* CONTAINERS */
+  #main-container {
     display: flex;
     margin-top: 30px;
-}
-#banner-container,
-#form-container {
+  }
+  
+  #banner-container,
+  #form-container {
     flex: 1 1 0;
     width: 50%;
-}
-#banner-container {
+  }
+  
+  #banner-container {
     text-align: right;
-}
-#banner-container img{
+  }
+  
+  #banner-container img {
     width: 100%;
     margin-right: 15px;
     margin-top: 25px;
     max-width: 380px;
-}
-#form-container {
+  }
+  
+  #form-container {
     text-align: center;
-}
+  }
+  
+  /* LOGIN FORM */
+  #form-box {
+    background-color: #fff;
+    border: 1px solid #dbdbdb;
+    width: 350px;
+    margin-top: 30px;
+  }
+  
+  #logo-insta {
+    width: 175px;
+    height: 51px;
+    margin: 30px auto 12px;
+  }
+  
+  #login-form {
+    margin-top: 20px;
+  }
