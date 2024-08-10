@@ -76,3 +76,23 @@ body {
   padding: 0;
   font-weight: bold;
 }
+
+/* SEPARADOR */
+.separator {
+    position: relative;
+}
+.line{
+    border-top: 1px solid #DBDBDB;
+    width: 268px;
+    margin: 25px auto 35px;
+}
+.separator span{
+    position: absolute;
+    text-transform: uppercase;
+    color: #fff;
+    background-color: #fff;
+    top: -6px;
+    width: 50px;
+    margin-left: -25px;
+    font-size: 14px;
+}
