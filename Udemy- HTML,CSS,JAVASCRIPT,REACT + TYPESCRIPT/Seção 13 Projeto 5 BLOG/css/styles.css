@@ -110,3 +110,10 @@ a:hover{
 #footer h2 {
     margin-bottom: 1rem;
 }
+/* Responsivo */
+@media (max-widht:450px){
+    .container{
+        flex-wrap: wrap;
+
+    }
+}
