@@ -99,3 +99,14 @@ a:hover{
     padding: 0.5rem 0.7rem;
     border-radius: 0.3rem;
 }
+/* Rodapé */
+#footer{
+    border-top: 2px solid #ddd;
+    padding: 3rem;
+    text-align: center;
+}
+
+#footer p,
+#footer h2 {
+    margin-bottom: 1rem;
+}
