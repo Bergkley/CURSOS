@@ -1,0 +1,17 @@
+/* Geral */
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Georgia;
+}
+ul{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+    color: #444;
+    transition: 0.4s;
+}
+a:hover{
+    color: #37a1f7;
+}
