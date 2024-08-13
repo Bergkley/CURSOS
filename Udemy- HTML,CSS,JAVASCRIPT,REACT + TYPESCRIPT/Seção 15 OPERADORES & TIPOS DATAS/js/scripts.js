@@ -13,3 +13,10 @@ console.log(typeof Infinity)
 console.log(typeof -Infinity)
 console.log(12 * "asd")
 console.log(typeof NaN)
+// 4 - String
+console.log("Um texto")
+console.log(`Outro texto`)
+
+console.log(typeof "Um texto")
+console.log(typeof `Outro texto`)
+
