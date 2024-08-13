@@ -57,3 +57,16 @@ console.log(9 == "9");
 console.log(9 === "9");
 console.log(9 != "9");
 console.log(9 !== "9");
+// 11- Operadores Lógicos
+console.log(true && true);
+console.log(true && false);
+console.log(false && true);
+console.log(false && false);
+console.log(true || true);
+console.log(true || false);
+console.log(false || true);
+console.log(false || false);
+console.log(!true);
+console.log(!false);
+console.log(5> 2 && 10 > 20);
+console.log(5> 2 || 10 > 20);
