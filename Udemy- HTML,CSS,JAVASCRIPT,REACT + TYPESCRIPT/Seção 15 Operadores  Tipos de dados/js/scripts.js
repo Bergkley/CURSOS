@@ -42,3 +42,13 @@ console.log(`Podemos executar qualquer coisa ${console.log("teste")}`);
 console.log(typeof true);
 console.log(typeof false);
 console.log(20>5)
+//9- Comparações
+console.log(2 == 2);
+console.log(2 == "2");
+console.log(2 != 2);
+console.log(2 != 3);
+console.log(2 > 2);
+console.log(2 < 2);
+console.log(2 >= 2);
+console.log(2 <= 2);
+console.log(2 === 2);
