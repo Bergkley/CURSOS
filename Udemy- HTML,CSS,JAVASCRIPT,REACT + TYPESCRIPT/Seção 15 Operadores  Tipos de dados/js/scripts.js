@@ -52,3 +52,8 @@ console.log(2 < 2);
 console.log(2 >= 2);
 console.log(2 <= 2);
 console.log(2 === 2);
+// 10- Idêntico
+console.log(9 == "9");
+console.log(9 === "9");
+console.log(9 != "9");
+console.log(9 !== "9");
