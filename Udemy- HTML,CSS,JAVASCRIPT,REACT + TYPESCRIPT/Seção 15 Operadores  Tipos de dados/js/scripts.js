@@ -37,3 +37,8 @@ console.log(`Testando ` + `Concatenação`);
 console.log(`A soma de 2 + 2 é: ${2 + 2}`);
 
 console.log(`Podemos executar qualquer coisa ${console.log("teste")}`);
+
+//8- Boolean
+console.log(typeof true);
+console.log(typeof false);
+console.log(20>5)
