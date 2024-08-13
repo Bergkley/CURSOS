@@ -70,3 +70,9 @@ console.log(!true);
 console.log(!false);
 console.log(5> 2 && 10 > 20);
 console.log(5> 2 || 10 > 20);
+// 12- Empaty values
+console.log(typeof null, typeof undefined)
+console.log(null === undefined)
+console.log(null == undefined)
+console.log(null == false)
+console.log(undefined == false)
