@@ -20,3 +20,6 @@ console.log(`Outro texto`)
 console.log(typeof "Um texto")
 console.log(typeof `Outro texto`)
 
+// 5 - Símbolos especiais em string
+console.log("Testado \N qeubra de linha")
+console.log(typeof "Testando \t espaçamento")
