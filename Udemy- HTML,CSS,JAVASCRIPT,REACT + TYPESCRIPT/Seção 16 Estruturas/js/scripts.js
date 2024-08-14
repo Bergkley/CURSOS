@@ -13,3 +13,7 @@ alert("Seu nome e: " + nome);
 console.log(Math.max(10,20,30));
 console.log(Math.floor(5.14));
 console.log(Math.ceil(5.5));
+// 6- console
+console.log("teste");
+console.error("erro");
+console.warn("aviso");
