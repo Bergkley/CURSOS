@@ -7,3 +7,5 @@ let _teste= "ok";
 let $teste2 = "ok2";
 // 3- Prompt
 let age = prompt("Qual seu idade?");
+// 4- alert
+alert("Seu nome e: " + nome);
