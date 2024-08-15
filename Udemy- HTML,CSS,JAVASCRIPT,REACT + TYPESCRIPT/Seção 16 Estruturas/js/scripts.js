@@ -41,3 +41,9 @@ if(1 > 2){
 }else{
     console.log("3 maior que 1");
 }
+// 10- While
+let i = 0;
+while(i < 5){
+console.log(`Repetindo: ${i}` )
+i++;
+}
