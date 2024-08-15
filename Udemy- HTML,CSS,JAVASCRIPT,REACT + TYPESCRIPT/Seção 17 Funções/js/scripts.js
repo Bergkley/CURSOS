@@ -85,3 +85,13 @@ const customGreeting = function(name, greet = "Olá"){
 
 console.log(customGreeting('João'))
 console.log(customGreeting('João', 'Bom dia'))
+
+// 9- Closure
+function someFunction () {
+    let txt = "Alguma coia";
+    function display() {
+        console.log(txt)
+    }
+    display();
+}
+someFunction();
