@@ -33,3 +33,11 @@ if(loggedIn){
 }else{
     console.log('Não está autenticado');
 }
+// 9- else if
+if(1 > 2){
+    console.log("1 maior que 2");
+}else if(2>3){
+    console.log("2 maior que 3");
+}else{
+    console.log("3 maior que 1");
+}
