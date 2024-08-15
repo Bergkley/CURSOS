@@ -26,3 +26,10 @@ const user = "João";
 if(user === "João"){
     console.log("Seu nome é João");
 }
+// 8- else
+const loggedIn = false;
+if(loggedIn){
+    console.log('Está autenticado');
+}else{
+    console.log('Não está autenticado');
+}
