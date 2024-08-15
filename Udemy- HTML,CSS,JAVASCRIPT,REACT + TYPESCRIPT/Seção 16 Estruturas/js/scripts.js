@@ -67,3 +67,10 @@ for(let u = 0; u < 5; u++){
         }
     }
 }
+// 14 - break
+for(let g = 0; g < 5; g++){
+    console.log(`valor de g é: ${g}`)
+    if(g === 2){
+        break;
+    }
+}
