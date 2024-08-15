@@ -49,3 +49,9 @@ function escopoAninhado() {
 }
 console.log(m)
 escopoAninhado()
+
+// 5- arrow function
+const funcaoArrow = () => {
+    console.log('Arrow Function');
+}
+funcaoArrow();
