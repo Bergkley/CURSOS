@@ -77,3 +77,11 @@ const multiplication = function(m,n){
 
 console.log(multiplication(5))
 console.log(multiplication(2,4))
+
+// 8- parametro default
+const customGreeting = function(name, greet = "Olá"){
+    return `${greet} ${name}`
+}
+
+console.log(customGreeting('João'))
+console.log(customGreeting('João', 'Bom dia'))
