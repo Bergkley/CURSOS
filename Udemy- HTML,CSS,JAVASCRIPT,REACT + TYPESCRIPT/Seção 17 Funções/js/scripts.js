@@ -24,3 +24,15 @@ function soma (n1, n2) {
 }
 
 const resultado = soma(a, b);
+
+// 3- Escopo da função
+let y = 10;
+
+function testandoEscopo() {
+    let y = 20;
+    console.log('dentro',y);
+}
+testandoEscopo();
+
+console.log('fora',y);
+testandoEscopo();
