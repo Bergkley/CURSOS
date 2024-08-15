@@ -53,3 +53,7 @@ do {
     console.log(`Valor do o: ${o}`);
     o--;
 }while(0 >1)
+// 12- for
+for(let t = 0; t < 5; t++){
+    console.log(`Repetindo algo : ${t}`)
+}
