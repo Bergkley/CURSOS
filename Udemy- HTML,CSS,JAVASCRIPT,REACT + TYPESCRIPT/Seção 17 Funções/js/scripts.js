@@ -36,3 +36,16 @@ testandoEscopo();
 
 console.log('fora',y);
 testandoEscopo();
+// 4- escopo aninhado
+let m = 10;
+
+function escopoAninhado() {
+    let m = 20;
+    if(true){
+        let m = 30;
+        console.log(m);
+    }
+    console.log(m);
+}
+console.log(m)
+escopoAninhado()
