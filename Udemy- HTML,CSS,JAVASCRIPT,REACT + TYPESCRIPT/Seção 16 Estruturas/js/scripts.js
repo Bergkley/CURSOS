@@ -74,3 +74,11 @@ for(let g = 0; g < 5; g++){
         break;
     }
 }
+// 15 - continue
+for(let s = 0; s < 5; s++){
+    if(s % 2 === 0){
+        console.log("Numero par")
+        continue;
+    }
+    console.log(`valor de s é: ${s}`)
+}
