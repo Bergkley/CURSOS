@@ -55,3 +55,14 @@ const funcaoArrow = () => {
     console.log('Arrow Function');
 }
 funcaoArrow();
+
+// 6- Arrow function mais sobre
+const raizQuadrada = (x) => {
+    return x * x;
+}
+console.log(raizQuadrada(4))
+
+const raizQuadrada2 = (x) => x * x;
+
+console.log(raizQuadrada2(12))
+
