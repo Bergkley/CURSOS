@@ -47,3 +47,9 @@ while(i < 5){
 console.log(`Repetindo: ${i}` )
 i++;
 }
+// 11- do while
+let o = 10 ;
+do {
+    console.log(`Valor do o: ${o}`);
+    o--;
+}while(0 >1)
