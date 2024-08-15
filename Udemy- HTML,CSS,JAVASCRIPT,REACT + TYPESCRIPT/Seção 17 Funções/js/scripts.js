@@ -66,3 +66,14 @@ const raizQuadrada2 = (x) => x * x;
 
 console.log(raizQuadrada2(12))
 
+// 7 - parametro opcional
+const multiplication = function(m,n){
+    if(n === undefined){
+        return m * 2;
+    } else {
+        return m * n
+    }
+}
+
+console.log(multiplication(5))
+console.log(multiplication(2,4))
