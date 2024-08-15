@@ -82,3 +82,20 @@ for(let s = 0; s < 5; s++){
     }
     console.log(`valor de s é: ${s}`)
 }
+
+// 16 - switch
+const job = "Advogado";
+
+switch(job){
+    case "Advogado":
+        console.log("Seu cargo é Advogado");
+        break;
+    case "Programador":
+        console.log("Seu cargo é Programador");
+        break;
+    case "Designer":
+        console.log("Seu cargo é Designer");
+        break;
+    default:
+        console.log("Seu cargo não foi encontrado");
+}
