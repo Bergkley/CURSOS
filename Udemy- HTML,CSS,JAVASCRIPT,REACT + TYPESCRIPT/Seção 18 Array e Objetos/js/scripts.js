@@ -45,3 +45,15 @@ car.doors = 4;
 console.log(car)
 delete car.km;
 console.log(car)
+
+// 7 - mais sobre objetos
+const obj = {
+    a:"teste",
+    b:"teste2"
+}
+console.log(obj instanceof Object);
+
+const obj2 ={
+    c: []
+}
+Object.assign(obj2, obj)
