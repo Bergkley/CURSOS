@@ -67,3 +67,9 @@ const a = {
     name: "Berrg",
 }
 const b = a;
+
+// 10 - loop em array
+const users = ["João", "Maria", "Pedro"];
+for (let i = 0; i < users.length; i++) {
+    console.log(`Listando o usuário: ${users[i]}`);
+}
