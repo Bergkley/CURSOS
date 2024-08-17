@@ -21,3 +21,12 @@ const text = "algum texto"
 console.log(text.toUpperCase())
 
 console.log(text.indexOf('g'))
+
+// 5 - objetos
+const person = {
+    name: "João",
+    age: 31,
+    job: "Programador",
+}
+console.log(person)
+console.log(person.name)
