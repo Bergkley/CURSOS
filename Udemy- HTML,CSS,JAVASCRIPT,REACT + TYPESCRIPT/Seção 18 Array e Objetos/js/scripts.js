@@ -61,3 +61,9 @@ Object.assign(obj2, obj)
 
 console.log(Object.keys(obj2));
 console.log(Object.entries(obj2));
+
+// 9 - Mutação
+const a = {
+    name: "Berrg",
+}
+const b = a;
