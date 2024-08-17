@@ -57,3 +57,7 @@ const obj2 ={
     c: []
 }
 Object.assign(obj2, obj)
+// 8 - conhecendo melhor os objetos
+
+console.log(Object.keys(obj2));
+console.log(Object.entries(obj2));
