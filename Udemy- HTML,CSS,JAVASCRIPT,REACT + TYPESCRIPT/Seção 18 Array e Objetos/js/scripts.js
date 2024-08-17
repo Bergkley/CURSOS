@@ -81,3 +81,10 @@ array.push("d");
 console.log(array);
 array.pop();
 console.log(array)
+
+// 12 - shift e unshift
+const array2 = ["a", "b", "c"];
+array2.shift();
+console.log(array2);
+array2.unshift("d");
+console.log(array2)
