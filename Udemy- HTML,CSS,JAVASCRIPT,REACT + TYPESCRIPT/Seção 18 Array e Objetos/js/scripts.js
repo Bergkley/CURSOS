@@ -176,3 +176,8 @@ const {name, age} = user;
 
 // renomear variaveis
 const {name: nome, age: idade} = user;
+
+// 26 - Destruturando arrays
+const mylist = ["Aviaos", "Carros", "Motos"];
+
+const [VeiculaA, VeiculaB, VeiculaC] = mylist;
