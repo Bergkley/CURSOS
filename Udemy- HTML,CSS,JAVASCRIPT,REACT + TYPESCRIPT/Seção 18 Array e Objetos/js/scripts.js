@@ -185,3 +185,12 @@ const [VeiculaA, VeiculaB, VeiculaC] = mylist;
 // 27 - Json
 
 const myJson = '{"name": "Bergkley", "age": 31}';
+
+// 28 - Json para objeto  e objeto para json
+const myObect = JSON.parse(myJson);
+
+const myJson2 = JSON.stringify(myObect);
+
+// json invalido
+const badJson = '{"name": "Bergkley, "age": 31,}';
+const myBadObject = JSON.parse(badJson);
