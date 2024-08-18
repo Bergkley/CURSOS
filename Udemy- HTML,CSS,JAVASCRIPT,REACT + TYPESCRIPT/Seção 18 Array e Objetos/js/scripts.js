@@ -150,3 +150,12 @@ console.log(joinTeste.join(","))
 // 22 - repeat (string)
 const repeatTeste = "1,2,3,4,5";
 console.log(repeatTeste.repeat(5))
+
+// 23 - rest operator
+const somaInfinita = (...args) => {
+    let total = 0;
+    for(let i=0; i < args.length; i++){
+        total += args[i];
+    }
+    return total;
+}
