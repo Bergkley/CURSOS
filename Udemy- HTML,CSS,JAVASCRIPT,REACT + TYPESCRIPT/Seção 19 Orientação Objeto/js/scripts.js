@@ -68,3 +68,12 @@ Cachorro.prototype.uivar = function(){
     console.log("Au au")
 }
 husky.uivars();
+
+// 9 - Classes es6
+class CachorroClasse {
+    constructor(nome,raca){
+        this.nome = nome;
+        this.raca = raca
+    }
+}
+const jeff = new CachorroClasse("Jeff","Pastor Alemao");
