@@ -77,3 +77,17 @@ class CachorroClasse {
     }
 }
 const jeff = new CachorroClasse("Jeff","Pastor Alemao");
+
+// 10 - mais sobre classes
+class Caminhao {
+    constructor(eixos,cor){
+        this.eixos = eixos;
+        this.cor = cor
+    }
+    descreverCaminhao(){
+        console.log(`Caminhão de ${this.eixos} e de cor ${this.cor}`)
+    }
+}
+
+const caminhao = new Caminhao(6,"Vermelho");
+caminhao.descreverCaminhao()
