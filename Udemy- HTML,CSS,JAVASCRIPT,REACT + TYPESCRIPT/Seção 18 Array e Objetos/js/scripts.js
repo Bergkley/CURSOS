@@ -117,3 +117,8 @@ posts.forEach((post) => {
 const arrayteste11 = ["a", "b", "c", "d", "e", "f"];
 console.log(brands.includes("a"));
 console.log(brands.includes("g"));
+
+// 17 - reverse (array)
+const reverseTeste = [1, 2, 3, 4, 5];
+reverseTeste.reverse();
+console.log(reverseTeste)
