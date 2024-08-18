@@ -110,3 +110,25 @@ class Aviao {
 }
 const asas = Symbol();
 Aviao.prototype[asas] = 2;
+
+// 13 - Getters e Setters
+
+class Post {
+    constructor(titulo,descricao,tags){
+        this.titulo = titulo;
+        this.descricao = descricao;
+        this.tags = tags
+    }
+
+    get exibirTitulo(){
+        return `O tiúlo é ${this.titulo}`
+    }
+
+    set adicionarTags(tags){
+        const tagsArrays = tags.split(",")
+        this.tags = tagsArrays
+    }
+
+}
+const myPost = new Post("Algum titulo ","Descricão sobre titulo");
+myPost.adicionarTags = "Programação,Js,Python"
