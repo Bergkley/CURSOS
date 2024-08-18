@@ -126,3 +126,13 @@ console.log(reverseTeste)
 // 18 - trim (string)
 const trimTeste = "  teste  ";
 console.log(trimTeste.trim())
+
+// 19 - padStart & padEnd (string)
+const testePadStart = "1";
+
+const newNumber = testePadStart.padStart(4, '0');
+
+console.log(newNumber)
+const testePadEnd = newNumber.padEnd(10, '0');
+
+console.log(testePadEnd)
