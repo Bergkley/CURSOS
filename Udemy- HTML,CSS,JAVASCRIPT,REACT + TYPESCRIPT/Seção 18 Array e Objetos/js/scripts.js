@@ -98,3 +98,18 @@ console.log(array3.lastIndexOf("a"));
 
 const testesSlice = ["a", "b", "c", "d", "e", "f"];
 const subArray = testesSlice.slice(2 ,4)
+
+// 15 -  foreach
+const nums = [1, 2, 3, 4, 5];
+nums.forEach((numero) => {
+    console.log(`o numero é ${numero}`)
+})
+const posts = [
+    {title: "Primeiro post", category: "PHP"},
+    {title: "Segundo post", category: "Js"},
+    {title: "Terceiro post", category: "Python"},
+];
+
+posts.forEach((post) => {
+    console.log(`Exibindo post: ${post.title} da categorias: ${post.category}`)
+});
