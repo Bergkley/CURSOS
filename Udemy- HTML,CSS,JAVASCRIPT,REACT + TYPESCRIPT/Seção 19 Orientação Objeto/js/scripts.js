@@ -7,3 +7,17 @@ const animal = {
 };
 
 console.log(animal.latir())
+
+// 2 - mais sobre metodos
+const pessoa = {
+    nome: "João",
+    getNome: () => {
+        return this.nome
+    },
+    SetNome: function (nome) {
+        this.nome = nome;
+    }
+}
+console.log(pessoa.getNome())
+pessoa.SetNome("Joaquim")
+console.log(pessoa.getNome())
