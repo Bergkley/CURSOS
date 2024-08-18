@@ -159,3 +159,11 @@ const somaInfinita = (...args) => {
     }
     return total;
 }
+// 24 - for of
+const somaInfinita2 = (...args) => {
+    let total = 0;
+    for(valor of args){
+        total += valor;
+    }
+    return total;
+}
