@@ -28,3 +28,11 @@ console.log(Object.getPrototypeOf(text))
 
 const bool = true;
 console.log(Object.getPrototypeOf(bool))
+
+// 4 - mais sobre prototype
+const myObject = {
+    a: "b"
+}
+const mySecondObject = Object.create(myObject);
+console.log(mySecondObject.a)
+console.log(Object.getPrototypeOf(mySecondObject) === myObject)
