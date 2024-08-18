@@ -181,3 +181,7 @@ const {name: nome, age: idade} = user;
 const mylist = ["Aviaos", "Carros", "Motos"];
 
 const [VeiculaA, VeiculaB, VeiculaC] = mylist;
+
+// 27 - Json
+
+const myJson = '{"name": "Bergkley", "age": 31}';
