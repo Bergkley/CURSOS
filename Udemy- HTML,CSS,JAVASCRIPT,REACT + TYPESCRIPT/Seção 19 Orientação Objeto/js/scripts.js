@@ -91,3 +91,12 @@ class Caminhao {
 
 const caminhao = new Caminhao(6,"Vermelho");
 caminhao.descreverCaminhao()
+
+// 11 - Override
+class Humano {
+    constructor(nome,idade){
+        this.nome = nome;
+        this.idade = idade
+    }
+}
+Humano.prototype.idade = "Não definida";
