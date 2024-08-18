@@ -113,3 +113,7 @@ const posts = [
 posts.forEach((post) => {
     console.log(`Exibindo post: ${post.title} da categorias: ${post.category}`)
 });
+// 16 - includes
+const arrayteste11 = ["a", "b", "c", "d", "e", "f"];
+console.log(brands.includes("a"));
+console.log(brands.includes("g"));
