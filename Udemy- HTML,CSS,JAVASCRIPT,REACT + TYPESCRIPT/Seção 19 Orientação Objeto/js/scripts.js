@@ -55,3 +55,10 @@ function criarCachorro(nome,raca){
     return cachorro
 }
 const bob = criarCachorro("Bob","Pastor Alemao");
+
+// 7 - Função como classe
+function Cachorro(nome,raca){
+    this.nome = nome;
+    this.raca = raca
+}
+const husky = new Cachorro("Ozzy","Husky");
