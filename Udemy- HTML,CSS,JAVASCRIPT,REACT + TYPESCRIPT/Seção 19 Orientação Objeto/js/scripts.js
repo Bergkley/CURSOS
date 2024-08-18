@@ -132,3 +132,18 @@ class Post {
 }
 const myPost = new Post("Algum titulo ","Descricão sobre titulo");
 myPost.adicionarTags = "Programação,Js,Python"
+
+// 14 - Herança
+class Mamifero {
+    constructor(patas){
+        this.patas = patas
+    }
+}
+
+class Lobo extends Mamifero {
+    constructor(patas,nome){
+        super(patas,patas);
+        this.nome = nome
+    }
+}
+const shark = new Lobo(4,"shark");
