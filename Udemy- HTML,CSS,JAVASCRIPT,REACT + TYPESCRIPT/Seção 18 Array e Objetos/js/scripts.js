@@ -140,3 +140,9 @@ console.log(testePadEnd)
 // 20 - split (string)
 const splitTeste = "1,2,3,4,5";
 console.log(splitTeste.split(","))
+
+// 21 - join (string)
+const itemsParaComprar = ["arroz", "feijão", "carne"];
+const fraseDeCompra = `Precisamos comprar: ${itemsParaComprar.join(", ")}`;
+console.log(fraseDeCompra)
+console.log(joinTeste.join(","))
