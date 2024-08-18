@@ -93,3 +93,8 @@ console.log(array2)
 const array3 = ["a", "b", "c", "d", "a"];
 console.log(array3.indexOf("a"));
 console.log(array3.lastIndexOf("a"));
+
+// 14 - slice
+
+const testesSlice = ["a", "b", "c", "d", "e", "f"];
+const subArray = testesSlice.slice(2 ,4)
