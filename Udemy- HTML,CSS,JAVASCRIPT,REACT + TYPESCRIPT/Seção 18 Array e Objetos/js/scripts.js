@@ -88,3 +88,8 @@ array2.shift();
 console.log(array2);
 array2.unshift("d");
 console.log(array2)
+
+// 13 - indexOf e lastIndexOf
+const array3 = ["a", "b", "c", "d", "a"];
+console.log(array3.indexOf("a"));
+console.log(array3.lastIndexOf("a"));
