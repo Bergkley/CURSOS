@@ -46,3 +46,12 @@ const cachorro = {
 const pastorAlemao = Object.create(cachorro);
 
 pastorAlemao.raca = "Pastor Alemao";
+
+// 6 - função como classe - função construtora
+function criarCachorro(nome,raca){
+    const cachorro = Object.create({});
+    cachorro.raca = raca;
+    cachorro.nome = nome;
+    return cachorro
+}
+const bob = criarCachorro("Bob","Pastor Alemao");
