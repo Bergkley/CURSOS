@@ -100,3 +100,13 @@ class Humano {
     }
 }
 Humano.prototype.idade = "Não definida";
+
+// 12 - Symbols
+class Aviao {
+    constructor(marca, turbinas){
+        this.marca = marca;
+        this.turbinas = turbinas
+    }
+}
+const asas = Symbol();
+Aviao.prototype[asas] = 2;
