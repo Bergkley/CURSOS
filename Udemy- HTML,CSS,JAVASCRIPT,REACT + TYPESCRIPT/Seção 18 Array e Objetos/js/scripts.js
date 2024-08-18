@@ -167,3 +167,12 @@ const somaInfinita2 = (...args) => {
     }
     return total;
 }
+// 25 - Destruturando objetos
+const user = {
+    name: "Bergkley",
+    age: 31
+}
+const {name, age} = user;
+
+// renomear variaveis
+const {name: nome, age: idade} = user;
