@@ -36,3 +36,13 @@ const myObject = {
 const mySecondObject = Object.create(myObject);
 console.log(mySecondObject.a)
 console.log(Object.getPrototypeOf(mySecondObject) === myObject)
+
+// 5 - classes básicas
+const cachorro = {
+    raca: null,
+    patas:4
+}
+
+const pastorAlemao = Object.create(cachorro);
+
+pastorAlemao.raca = "Pastor Alemao";
