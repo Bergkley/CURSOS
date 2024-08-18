@@ -136,3 +136,7 @@ console.log(newNumber)
 const testePadEnd = newNumber.padEnd(10, '0');
 
 console.log(testePadEnd)
+
+// 20 - split (string)
+const splitTeste = "1,2,3,4,5";
+console.log(splitTeste.split(","))
