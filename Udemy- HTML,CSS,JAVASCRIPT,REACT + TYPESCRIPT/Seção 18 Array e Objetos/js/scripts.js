@@ -146,3 +146,7 @@ const itemsParaComprar = ["arroz", "feijão", "carne"];
 const fraseDeCompra = `Precisamos comprar: ${itemsParaComprar.join(", ")}`;
 console.log(fraseDeCompra)
 console.log(joinTeste.join(","))
+
+// 22 - repeat (string)
+const repeatTeste = "1,2,3,4,5";
+console.log(repeatTeste.repeat(5))
