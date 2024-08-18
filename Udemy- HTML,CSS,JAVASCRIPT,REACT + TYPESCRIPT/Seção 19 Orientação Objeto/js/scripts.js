@@ -147,3 +147,8 @@ class Lobo extends Mamifero {
     }
 }
 const shark = new Lobo(4,"shark");
+
+// 15 - Instanceof
+console.log(shark instanceof Lobo)
+console.log(Lobo instanceof Mamifero)
+console.log(new Lobo(4,"shark") instanceof Mamifero)
