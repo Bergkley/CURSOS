@@ -21,3 +21,10 @@ const pessoa = {
 console.log(pessoa.getNome())
 pessoa.SetNome("Joaquim")
 console.log(pessoa.getNome())
+
+// 3 - Prototype
+const text = "asd"
+console.log(Object.getPrototypeOf(text))
+
+const bool = true;
+console.log(Object.getPrototypeOf(bool))
