@@ -15,3 +15,13 @@ for(let i = 0; i < b; i++){
     a = a + 2;
     console.log(a);
 }
+
+// 3 - debugger
+let c = 1;
+let d = 2;
+
+if (c == 1){
+    c = d + 2;
+}
+
+debugger;
