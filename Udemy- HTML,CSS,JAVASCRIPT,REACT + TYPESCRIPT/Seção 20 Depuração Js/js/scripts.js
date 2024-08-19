@@ -58,3 +58,15 @@ try{
 }catch(error){
     console.log(`Erro no programa ${error}`);
 }
+
+// 7 - finally
+try{
+    const value = checkNumber("asd")
+    if(!value){
+        throw new Error("Is not a number");
+    }
+}catch(erro){
+    console.log(`Erro no programa ${erro}`);
+}finally{
+    console.log("Cheguei no finally");
+}
