@@ -51,3 +51,10 @@ let x = 10;
 if(x != 11){
     throw new Error("X não pode ser 11");
 }
+
+// 6 - Try Catch
+try{
+    const soma = x + y;
+}catch(error){
+    console.log(`Erro no programa ${error}`);
+}
