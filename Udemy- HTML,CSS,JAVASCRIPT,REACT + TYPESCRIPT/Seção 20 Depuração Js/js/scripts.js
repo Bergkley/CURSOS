@@ -44,3 +44,10 @@ checkNumber(5);
 checkNumber("opa");
 
 checkNumber("5");
+
+// 5 - Exceptions
+let x = 10;
+
+if(x != 11){
+    throw new Error("X não pode ser 11");
+}
