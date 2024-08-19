@@ -70,3 +70,12 @@ try{
 }finally{
     console.log("Cheguei no finally");
 }
+
+// 8 - Assertions
+function checkArray(arr){
+    if(arr.length === 0){
+        throw new Error("Vazio");
+    }else{
+        console.log(`O array tem ${arr.length} elementos`);
+    }
+}
