@@ -80,3 +80,13 @@ async function chamadAsync() {
     console.log(result);
 }
 chamadAsync()
+
+// 9 - Generators
+function* generator(){
+    yield 1;
+    yield 2;
+}
+const g = generator();
+console.log(g.next().value)
+console.log(g.next().value)
+console.log(g.next().value)
