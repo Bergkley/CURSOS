@@ -64,3 +64,19 @@ async function somarComDelay(a,b){
     return a + b
 }
 somarComDelay(2,4).then(value => console.log(value))
+
+// 8 - Async Await
+function resolveComDelay (){
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve("Resolveu a Promise");
+        }, 2000)
+    })
+}
+
+async function chamadAsync() {
+    console.log("Chamada a promise, e esperando o resultado");
+    const result = await resolveComDelay();
+    console.log(result);
+}
+chamadAsync()
