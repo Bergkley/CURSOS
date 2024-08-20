@@ -15,3 +15,12 @@ console.log("Depois de executar");
 // 3 - Promises
 const promessa = Promise.resolve(5 + 5);
 promessa.then(value => console.log(value))
+
+// 4 - Falha na promise
+Promise.resolve(4 * "asd")
+.then((n)=>{
+    if(Number.isNaN(n)){
+        throw new Error("Is not a number")
+    }
+})
+.catch(erro => console.log(erro))
