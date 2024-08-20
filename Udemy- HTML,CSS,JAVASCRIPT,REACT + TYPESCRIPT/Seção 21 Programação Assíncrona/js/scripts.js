@@ -40,3 +40,21 @@ const b = checkNumber(10)
 
 a.then((v)=> console.log(`o resultado é ${v}`)).catch((e)=> console.log(e))
 b.then((v)=> console.log(`o resultado é ${v}`)).catch((e)=> console.log(e))
+
+// 6 - promisse all
+const p1 = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        resolve(10)
+    }, 3000)    
+})
+
+const p2 = Promise.resolve(10 +10);
+
+const p3 = new Promise((resolve, reject) => {
+    if(30 > 10){
+        resolve(30)
+    }else{
+        reject("Erro!");
+    }
+})
+Promise.all ([p1, p2, p3]).then(values => console.log(values))
