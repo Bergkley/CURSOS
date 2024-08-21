@@ -32,3 +32,8 @@ header.insertBefore(p, title);
 const navlinks = document.querySelector("nav ul");
 const li = document.createElement("li");
 navlinks.appendChild(li);
+
+// 8 - removeChild
+const h2 = document.createElement("h2");
+h2.textContent = "Novo h2";
+header.replaceChild(h2, title);
