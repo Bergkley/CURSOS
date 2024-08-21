@@ -48,3 +48,9 @@ mainContainer.appendChild(h3);
 const firstLink = navlinks.querySelector("a");
 firstLink.setAttribute("href", "https://google.com");
 console.log(firstLink.getAttribute("href"));
+
+// 11 - altura e largura
+const footer = document.querySelector("footer");
+console.log(footer.offsetHeight, footer.offsetWidth);
+// não considera a borda
+console.log(footer.clientHeight, footer.clientWidth);
