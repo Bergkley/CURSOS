@@ -54,3 +54,7 @@ const footer = document.querySelector("footer");
 console.log(footer.offsetHeight, footer.offsetWidth);
 // não considera a borda
 console.log(footer.clientHeight, footer.clientWidth);
+
+// 12 - posição do elemento
+const product1 = products[0];
+console.log(product1.getBoundingClientRect())
