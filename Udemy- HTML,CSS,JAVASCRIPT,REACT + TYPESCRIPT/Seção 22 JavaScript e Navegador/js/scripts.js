@@ -63,3 +63,9 @@ console.log(product1.getBoundingClientRect())
 mainContainer.style.color = "red";
 mainContainer.style.backgroundColor = "#333";
 mainContainer.style.paddingBottom = "10px";
+
+// 14 - HTMLColletion alterando estilos de varios elementos
+for(const li of listItens){
+    li.style.backgroundColor = "#red";
+}
+
