@@ -12,3 +12,6 @@ console.log("tag",listItens);
 const title = document.getElementById('title');
 console.log("id",title);
 
+// 4 - Selecionar elementos (class)
+const products = document.getElementsByClassName('product');
+console.log("class",products);
