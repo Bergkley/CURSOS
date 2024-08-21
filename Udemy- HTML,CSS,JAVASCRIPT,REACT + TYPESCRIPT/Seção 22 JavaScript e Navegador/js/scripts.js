@@ -22,3 +22,8 @@ console.log("css",productQuery);
 
 const mainContainer = document.querySelector("#main-container");
 console.log("css",mainContainer);
+
+// 6 - insertBefore
+const p = document.createElement('p');
+const header = title.parentElement;
+header.insertBefore(p, title);
