@@ -6,4 +6,9 @@ console.log(document.body.childNodes[1].textContent)
 // 2 - Selecionar elementos (tag)
 
 const listItens = document.getElementsByTagName('li');
-console.log(listItens);
+console.log("tag",listItens);
+
+// 3 - Selecionar elementos (id)
+const title = document.getElementById('title');
+console.log("id",title);
+
