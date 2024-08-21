@@ -43,3 +43,8 @@ const myText = document.createTextNode("Novo texto");
 const h3 = document.createElement("h3");
 h3.appendChild(myText);
 mainContainer.appendChild(h3);
+
+// 10 - atributos
+const firstLink = navlinks.querySelector("a");
+firstLink.setAttribute("href", "https://google.com");
+console.log(firstLink.getAttribute("href"));
