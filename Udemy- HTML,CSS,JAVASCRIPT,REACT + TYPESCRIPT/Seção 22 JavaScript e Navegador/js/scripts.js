@@ -27,3 +27,8 @@ console.log("css",mainContainer);
 const p = document.createElement('p');
 const header = title.parentElement;
 header.insertBefore(p, title);
+
+// 7 - apendChild
+const navlinks = document.querySelector("nav ul");
+const li = document.createElement("li");
+navlinks.appendChild(li);
