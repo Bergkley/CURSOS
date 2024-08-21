@@ -58,3 +58,8 @@ console.log(footer.clientHeight, footer.clientWidth);
 // 12 - posição do elemento
 const product1 = products[0];
 console.log(product1.getBoundingClientRect())
+
+// 13 -Css com Js
+mainContainer.style.color = "red";
+mainContainer.style.backgroundColor = "#333";
+mainContainer.style.paddingBottom = "10px";
