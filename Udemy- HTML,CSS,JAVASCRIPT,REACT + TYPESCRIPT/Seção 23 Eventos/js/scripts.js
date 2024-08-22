@@ -83,3 +83,10 @@ document.addEventListener('mousemove',(e)=>{
     console.log('eixo x', e.x)
     console.log('eixo x', e.y)
 });
+
+// 9 - eventos de scroll
+window.addEventListener('scroll', ()=>{
+    if(window.pageYOffset > 200){
+        console.log('Passou do 200')
+    }
+})
