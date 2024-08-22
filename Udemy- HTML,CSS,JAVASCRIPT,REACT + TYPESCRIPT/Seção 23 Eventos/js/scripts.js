@@ -20,3 +20,15 @@ btn.addEventListener('click', function(){
     console.log('Evento removido')
      secondBtn.removeEventListener('click',imprimirMensagem)
  })
+ 
+//   3 - argumento do evento
+const myTitle = document.querySelector('#my-title');
+
+myTitle.addEventListener("click",(event)=>{
+    console.log(event);
+    console.log(event.srcElement);
+    console.log(event.offtext);
+    console.log(event.pointerType);
+    console.log(event.target);
+})
+
