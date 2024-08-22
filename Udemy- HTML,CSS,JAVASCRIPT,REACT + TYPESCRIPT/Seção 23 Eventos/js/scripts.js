@@ -77,3 +77,9 @@ mouseEvents.addEventListener('mouseup', ()=>{
 mouseEvents.addEventListener('dblclick', ()=>{
     console.log('Clicou 2x o botão');
 })
+
+// 8 - movimentos do mouse
+document.addEventListener('mousemove',(e)=>{
+    console.log('eixo x', e.x)
+    console.log('eixo x', e.y)
+});
