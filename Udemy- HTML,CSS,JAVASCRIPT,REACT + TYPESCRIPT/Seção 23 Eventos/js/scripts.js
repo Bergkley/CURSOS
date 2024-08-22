@@ -90,3 +90,14 @@ window.addEventListener('scroll', ()=>{
         console.log('Passou do 200')
     }
 })
+
+// 10 - eventos de focus
+const input = document.querySelector("#my-input");
+
+input.addEventListener('focus', (e)=>{
+    console.log('Entrou no input');
+});
+
+input.addEventListener('blur', (e)=>{
+    console.log('Saiu do input');
+});
