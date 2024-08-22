@@ -45,3 +45,11 @@ btnInsideContainer.addEventListener('click', (e)=>{
     e.stopPropagation();
     console.log("Evento 1")
 })
+
+// 5 - removendo evento padrão
+const a = document.querySelector('a');
+
+a.addEventListener('click', (event)=>{
+    event.preventDefault();
+    console.log('Clicou');
+})
