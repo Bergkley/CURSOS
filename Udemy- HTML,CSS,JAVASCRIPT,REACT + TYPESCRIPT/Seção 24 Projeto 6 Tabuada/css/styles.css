@@ -5,3 +5,26 @@
     box-sizing: border-box;
     font-family:  Helvetica;
 }
+/* 2- body */
+body{
+    text-align: center;
+    padding: 2rem;
+    min-height: 100vh;
+    background: linear-gradient(180deg,#db4444, #3f24dd 98%);
+    color: #fff;
+}
+h2{
+    margin-bottom: 1rem;
+}
+#multiplication-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 1rem auto;
+    max-width: 300px;
+    padding: 1rem;
+    background-color: #fff;
+    border-radius: 1rem;
+    color: #333;
+}
