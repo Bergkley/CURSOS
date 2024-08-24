@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tabuada</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <script src="js/scripts.js" defer></script>
+  </head>
+  <body>
+    <h2>Digite o número e confirme para gerar uma tabuada</h2>
+    <!-- 1 - FORM -->
+    <form id="multiplication-form">
+      <div class="form-control">
+        <label>Tabuada do:</label>
+        <input type="number" id="number" placeholder="3" required />
+      </div>
+      <div class="form-control">
+        <label>Até:</label>
+        <input
+          type="number"
+          id="multiplicator"
+          placeholder="Digite o número de multiplicações"
+          value="10"
+          required
+        />
+      </div>
+      <div class="form-control">
+        <label>Operadores:</label>
+        <div class="operators">
+          <label
+            ><input type="checkbox" name="operator" value="+" /> Adição</label
+          >
+          <label
+            ><input type="checkbox" name="operator" value="-" />
+            Subtração</label
+          >
+          <label
+            ><input type="checkbox" name="operator" value="x" />
+            Multiplicação</label
+          >
+          <label
+            ><input type="checkbox" name="operator" value="÷" /> Divisão</label
+          >
+        </div>
+      </div>
+      <input type="submit" value="Calcular" />
+    </form>
+    <!-- OPERAÇOES -->
+    <div id="multiplication-table">
+      <h2 id="multiplication-title">Tabuada do número: <span></span></h2>
+      <div id="multiplication-operations">
+        <p>Informe um número para calcular uma tabuada...</p>
+      </div>
+    </div>
+  </body>
+</html>
