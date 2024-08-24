@@ -32,3 +32,11 @@ qrCodeBtn.addEventListener("keydown", (e)=>{
         generateQrCode();
     }
 });
+
+// Limpar
+qrCodeInput.addEventListener("keyup", ()=>{
+    if(!qrCodeInput.value){
+        container.classList.remove("active")
+        qrCodeBtn.innerHTML = "Gerar QR Code";
+    }
+})
