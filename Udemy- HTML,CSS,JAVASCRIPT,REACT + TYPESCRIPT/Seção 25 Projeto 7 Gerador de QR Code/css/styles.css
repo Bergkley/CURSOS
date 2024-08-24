@@ -25,6 +25,10 @@ body {
     transition: 0.2s;
 }
 
+.container.active {
+    height: 500px;
+}
+
 /* 4 - Header */
 #qr-header {
     text-align: center;
