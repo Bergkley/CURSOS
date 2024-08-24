@@ -14,3 +14,13 @@ body {
     min-height: 100vh;
     background-color: #34db7a ;
 }
+
+/* 3 -Container */
+.container {
+    background-color: #fff;
+    height: 260px;
+    width: 400px;
+    border-radius: 10px;
+    padding: 20px;
+    transition: 0.2s;
+}
