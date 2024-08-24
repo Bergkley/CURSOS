@@ -22,3 +22,13 @@ function generateQrCode() {
     })
 }
 
+// Eventos
+qrCodeBtn.addEventListener("click", ()=>{
+    generateQrCode();
+});
+
+qrCodeBtn.addEventListener("keydown", (e)=>{
+    if(e.code === "Enter"){
+        generateQrCode();
+    }
+});
