@@ -185,3 +185,26 @@ header nav {
  .selected{
   outline: 2px solid #43a1ff;
  }
+
+ /* Mobile */
+ @media (max-width: 480px) {
+    #navbar li {
+      display: none;
+    }
+    #navbar #logo {
+      display: flex;
+    }
+    #bottom-header-links a {
+      display: none;
+    }
+    #bottom-header-links .btn {
+      display: flex;
+    }
+    #main-content {
+      padding: 2rem;
+      overflow: hidden;
+    }
+    #main-content #subtitle {
+      font-size: 3rem;
+    }
+ }
