@@ -78,6 +78,10 @@ function validDigits(text){
     return text.replace(/[^0-9,]/g, "");
 }
 
+function calcImc(weight,height) {
+    const imc = (weight / (height * height)).toFixed(1);
+}
+
 //   4 - Inicialização
 
 createTable(data);
@@ -95,3 +99,22 @@ clearBtn.addEventListener("click", (e)=>{
     cleanInputs();
 });
 
+calcBtn.addEventListener("click", (e)=>{
+    e.preventDefault();
+    const height = +heightInput.value.replace(",", ".");
+    const weight = +weightInput.value.replace(",", ".");
+
+    if(!height || !weight) return;
+
+    const imc = calcImc(weight, height)
+
+    let info
+    data.forEach((item)=> {
+        if(imc >= item.min && imc <= item.max) {
+            info = item.info
+        }
+    })
+
+    if(!info) return;
+
+});
