@@ -71,4 +71,8 @@
   button:hover {
     opacity: 1;
   }
+
+  #clean-btn {
+    background-color: #444;
+  }
   
