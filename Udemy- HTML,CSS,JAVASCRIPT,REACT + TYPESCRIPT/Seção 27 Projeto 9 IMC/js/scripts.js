@@ -83,7 +83,15 @@ function validDigits(text){
 createTable(data);
 
 //   5 - Eventos
+[heightInput, weightInput].forEach((el) => {
+    el.addEventListener("input", (e) => {
+       const updateValue = validDigits(e.target.value);
+       e.target.value = updateValue;
+    });
+})
+
 clearBtn.addEventListener("click", (e)=>{
     e.preventDefault();
     cleanInputs();
 });
+
