@@ -1,8 +1,25 @@
-/* GERAL */
+/* 1 - GERAL */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: "Lato", sans-serif;
+}
+
+/* 2 - Body */
+body {
+    background-color: #090e22;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: #fff;
+}
+
+.cotainer {
+    min-width: 400px;
+    min-height: 400px;
+    background-color: #1d1e33;
+    padding: 2rem;
 }
 
