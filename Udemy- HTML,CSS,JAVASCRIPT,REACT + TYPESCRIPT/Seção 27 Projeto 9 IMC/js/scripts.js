@@ -79,3 +79,7 @@ function cleanInputs() {
 createTable(data);
 
 //   5 - Eventos
+clearBtn.addEventListener("click", (e)=>{
+    e.preventDefault();
+    cleanInputs();
+});
