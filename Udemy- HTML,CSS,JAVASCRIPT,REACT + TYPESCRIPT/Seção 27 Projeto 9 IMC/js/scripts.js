@@ -71,4 +71,6 @@ function createTable(data) {
 
 //   4 - Inicialização
 
+createTable(data);
+
 //   5 - Eventos
