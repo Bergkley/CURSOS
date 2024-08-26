@@ -69,6 +69,11 @@ function createTable(data) {
     })
 }
 
+function cleanInputs() {
+    heightInput.value = "";
+    weightInput.value = "";
+}
+
 //   4 - Inicialização
 
 createTable(data);
