@@ -54,3 +54,20 @@ const user = {
 
 user.sayUserName();
 user.sayUserNameArroy();
+
+// 3 - Filter
+
+const arr = [1,2,3,4,5,6,7,8,9,10];
+const highNumbers = arr.filter((n)=>{
+    if(n >=3){
+        return n
+    }
+})
+
+const users = [
+    {name: "Bergkley", available: true},
+    {name: "Vitoria", available: false}
+]
+
+const availableUsers = users.filter((user) => user.available)
+console.log('available',availableUsers)
