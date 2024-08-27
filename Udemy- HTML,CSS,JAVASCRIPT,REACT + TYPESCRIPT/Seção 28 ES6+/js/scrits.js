@@ -140,3 +140,20 @@ class Product {
 
 const shirt = new Product("Camisa", 30);
 console.log(shirt.productWithDiscount(20))
+
+// 9 - Herança
+class ProductWithAttributes extends Product {
+    constructor(name, price, color){
+        super(name, price);
+        this.color = color;
+    }
+    showColors(){
+        console.log("As cores são:");
+        this.color.forEach(color => console.log(color));
+    }
+}
+const hat = new ProductWithAttributes("Chapeu", 20, ["Azul", "Vermelho", "Preto"]);
+
+console.log(hat)
+console.log(hat.name)
+hat.showColors();
