@@ -110,3 +110,18 @@ const productDetails = {
 const {name, price, category, color} = productDetails;
 
 console.log(`O nome do produto é ${name}, o preço e ${price} e a categoria ${category}`)
+
+// 7 - Spread operator
+
+const a1 = [1,2,3];
+const a2 = [4,5,6];
+
+const a3 = [...a1, ...a2];
+
+const a4 = [0, ...a3,7];
+
+const carName = {name:"Gol"};
+const carBrand = {brand:"Volkswagen"};
+const otherInfos = {km:10000, color:"Black"};
+
+const car = {...carName, ...carBrand, ...otherInfos};
