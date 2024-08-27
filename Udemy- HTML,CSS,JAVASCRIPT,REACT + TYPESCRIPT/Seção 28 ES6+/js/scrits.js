@@ -93,3 +93,20 @@ const userName = "Berg";
 const age = 19;
 
 console.log(`o nome do usuário é ${userName} e ele tem ${age} anos`)
+
+//  6 - Destructuring
+
+const fruits = ["Apple", "Banana", "Orange"];
+
+const [f1,f2,f3] = fruits
+console.log(f1,f2,f3)
+
+const productDetails = {
+    name: "Tablet",
+    price: 2000,
+    category: "Eletronics",
+    color: "Cinza"
+}
+const {name, price, category, color} = productDetails;
+
+console.log(`O nome do produto é ${name}, o preço e ${price} e a categoria ${category}`)
