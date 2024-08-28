@@ -11,7 +11,7 @@ const getData = async () => {
       {
         headers: {
           "content-type": "application/json",
-          custom: "header",
+          teste: "header",
         },
       }
     );
