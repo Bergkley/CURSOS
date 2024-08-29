@@ -1,0 +1,19 @@
+/* Geral */
+
+* {
+    font-family: Helvetica;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #333;
+}
+
+.title {
+    text-align: center;
+    color: #FFF;
+    font-size: 2rem;
+    padding: 2rem;
+    background-color: #222;
+}
