@@ -1,3 +1,23 @@
+/* Geral */
 * {
     font-family: "Montserrat", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: #333;
+
 }
+
+html, body {
+    height: auto;
+    min-height: 100vh;
+}
+
+html {
+    background: linear-gradient(180deg, #ea03ff 0%, #0097ff 100%);
+}
+
+input:focus {
+    outline: none;
+}
+
