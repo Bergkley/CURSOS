@@ -51,3 +51,30 @@ header {
     background-color: #fff;
     color: #333;
 }
+
+/* Form */
+#add-note-container {
+    display: flex;
+    width: 400px;
+    margin: 1rem auto 0;
+    gap: 1rem;
+}
+
+#add-note-container input,
+#add-note-container button {
+   padding: 10px;
+   border-radius: 5px;
+}
+
+#add-note-container input {
+    flex: 1;
+    background-color: transparent;
+    border: 1px solid #525356;
+    color: #fff;
+  }
+  
+  #add-note-container button {
+    cursor: pointer;
+    background-color: #333;
+    color: #fff;
+  }
