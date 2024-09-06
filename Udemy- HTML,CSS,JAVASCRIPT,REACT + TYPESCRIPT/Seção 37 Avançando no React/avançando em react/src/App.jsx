@@ -4,6 +4,7 @@ import night from "./assets/night.jpg"
 import ConditionalRender from './components/ConditionalRender'
 import Data from './components/Data'
 import ListRender from './components/ListRender'
+import ShowUserName from './components/ShowUserName'
 
 function App() {
   return (
@@ -20,6 +21,8 @@ function App() {
         <ListRender />
         {/* 7 - render condicional */}
         <ConditionalRender />
+        {/* 8 - Props */}
+        <ShowUserName name="Berg"/>
       </div>
     </>
   )
