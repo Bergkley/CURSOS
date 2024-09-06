@@ -1,6 +1,7 @@
 import './App.css'
 // 2 - imagem em assets
 import night from "./assets/night.jpg"
+import ConditionalRender from './components/ConditionalRender'
 import Data from './components/Data'
 import ListRender from './components/ListRender'
 
@@ -17,6 +18,8 @@ function App() {
         <Data />
         {/* 4 - render de lista */}
         <ListRender />
+        {/* 7 - render condicional */}
+        <ConditionalRender />
       </div>
     </>
   )
