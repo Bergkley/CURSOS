@@ -4,6 +4,7 @@ import night from "./assets/night.jpg"
 import CarDetails from './components/CarDetails'
 import ConditionalRender from './components/ConditionalRender'
 import Data from './components/Data'
+import Fragment from './components/Fragment'
 import ListRender from './components/ListRender'
 import ShowUserName from './components/ShowUserName'
 
@@ -39,7 +40,8 @@ function App() {
         {cars.map(car => (
           <CarDetails key={car.id} brand={car.brand} km={car.km} color={car.color} />
         ))}
-
+        {/* 12 - Fragment */}
+        <Fragment />
       </div>
     </>
   )
