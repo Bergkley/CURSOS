@@ -1,6 +1,7 @@
 import './App.css'
 // 2 - imagem em assets
 import night from "./assets/night.jpg"
+import CarDetails from './components/CarDetails'
 import ConditionalRender from './components/ConditionalRender'
 import Data from './components/Data'
 import ListRender from './components/ListRender'
@@ -23,6 +24,8 @@ function App() {
         <ConditionalRender />
         {/* 8 - Props */}
         <ShowUserName name="Berg"/>
+        {/* 9 - Destruturando props */}
+        <CarDetails brand="VW" km={10000} color="Branco"/>
       </div>
     </>
   )
