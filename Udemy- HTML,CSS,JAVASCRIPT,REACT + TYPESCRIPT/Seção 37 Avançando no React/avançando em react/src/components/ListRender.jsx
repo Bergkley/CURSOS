@@ -9,6 +9,13 @@ const [users,setUsers] = useState([
     {id: 3, name: "João",age: 19},
 ]);
 
+const deleteRandom = () => {
+    const randomNumber = Math.floor(Math.random() * 4)
+    setUsers((prevUsers) => {
+        return prevUsers.filter((user) => randomNumber !== user.id);
+    })
+}
+
   return (
     <div>
         <h1>lista</h1>
@@ -23,6 +30,8 @@ const [users,setUsers] = useState([
             <li key={user.id}>{user.name} - {user.age} anos</li>
         )}
       </ul>
+      {/* 6 - previous state */}
+      <button onClick={deleteRandom}>Remover user</button>
     </div>
   )
 }
