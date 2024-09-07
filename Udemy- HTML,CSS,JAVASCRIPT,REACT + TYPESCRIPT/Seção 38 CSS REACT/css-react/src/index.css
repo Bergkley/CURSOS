@@ -7,3 +7,10 @@
 body {
     padding-bottom: 500px;
 }
+
+/* classe dinamica */
+.red-title {
+    font-size: 50px;
+    color: red;
+    background-color: #000;
+}
