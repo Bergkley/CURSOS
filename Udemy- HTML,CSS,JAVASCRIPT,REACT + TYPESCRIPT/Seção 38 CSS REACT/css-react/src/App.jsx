@@ -1,5 +1,6 @@
 import './App.css'
 import MyComponent from './components/MyComponent'
+import Title from './components/Title';
 
 // 2 - css de componente
 
@@ -24,7 +25,8 @@ function App() {
       </h2>
       {/* 5 - classe dinamica */}
       <h3 className={redTitle ? 'red-title' : 'title'}>Classe dinamica</h3>
-
+      {/* 6 - componente title */}
+      <Title />
     </div>
     
     </>
