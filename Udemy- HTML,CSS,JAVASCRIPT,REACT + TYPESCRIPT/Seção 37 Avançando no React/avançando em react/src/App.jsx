@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import './App.css'
 // 2 - imagem em assets
 import night from "./assets/night.jpg"
@@ -9,6 +10,8 @@ import ExecuteFunction from './components/ExecuteFunction'
 import Fragment from './components/Fragment'
 import ListRender from './components/ListRender'
 import ShowUserName from './components/ShowUserName'
+import Message from './components/Message'
+import ChangeMessage from './components/ChangeMessage'
 
 // 11 - renderização de listas com componente
 const cars = [
@@ -19,6 +22,11 @@ const cars = [
 function App() {
   function showMessage () {
     console.log("evento do coponente pai")
+  }
+  // 15 - state lift
+  const [message,setMessage] = useState("");
+  const handleMessage = (msg) => {
+    setMessage(msg);
   }
   return (
     <>
@@ -53,6 +61,10 @@ function App() {
         </Container>
         {/* 14 - Função em prop */}
         <ExecuteFunction myFunction={showMessage}/>
+        
+        {/* 15 - state lift */}
+        <Message msg={message}/>
+        <ChangeMessage handleMessage={handleMessage}/>
       </div>
     </>
   )
