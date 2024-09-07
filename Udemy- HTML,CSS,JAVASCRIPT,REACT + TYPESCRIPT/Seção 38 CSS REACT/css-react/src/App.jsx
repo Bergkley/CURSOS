@@ -13,6 +13,8 @@ function App() {
 
     {/* 2 - css de componente */}
     <MyComponent />
+    {/* 3 - inline style */}
+    <p style={{color: 'blue', padding: '10px', borderTop: '1px dotted #000'}}></p>
     </>
   )
 }
