@@ -3,6 +3,7 @@ import './App.css'
 import night from "./assets/night.jpg"
 import CarDetails from './components/CarDetails'
 import ConditionalRender from './components/ConditionalRender'
+import Container from './components/Container'
 import Data from './components/Data'
 import Fragment from './components/Fragment'
 import ListRender from './components/ListRender'
@@ -42,6 +43,10 @@ function App() {
         ))}
         {/* 12 - Fragment */}
         <Fragment />
+        {/* 13 - children */}
+        <Container> 
+          <h1>Este e o children</h1>
+        </Container>
       </div>
     </>
   )
