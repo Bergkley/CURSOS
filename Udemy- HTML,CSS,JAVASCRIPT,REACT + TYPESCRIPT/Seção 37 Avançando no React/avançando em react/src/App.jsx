@@ -5,6 +5,7 @@ import CarDetails from './components/CarDetails'
 import ConditionalRender from './components/ConditionalRender'
 import Container from './components/Container'
 import Data from './components/Data'
+import ExecuteFunction from './components/ExecuteFunction'
 import Fragment from './components/Fragment'
 import ListRender from './components/ListRender'
 import ShowUserName from './components/ShowUserName'
@@ -16,6 +17,9 @@ const cars = [
   { id: 3, brand: "Renault", color: "Azul", km: 32000 },
 ];
 function App() {
+  function showMessage () {
+    console.log("evento do coponente pai")
+  }
   return (
     <>
       <div className='App' style={{paddingBottom: "500px"}}> 
@@ -47,6 +51,8 @@ function App() {
         <Container> 
           <h1>Este e o children</h1>
         </Container>
+        {/* 14 - Função em prop */}
+        <ExecuteFunction myFunction={showMessage}/>
       </div>
     </>
   )
