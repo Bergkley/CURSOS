@@ -10,6 +10,10 @@ const MyForm = ({userName,userEmail}) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    // 7 - Limpar form
+    setName("");
+    setEmail("");
   };
   return (
     <div>
