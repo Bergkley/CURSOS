@@ -7,10 +7,15 @@ const MyForm = () => {
   const handleName = (e) => {
     setName(e.target.value);
   };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
   return (
     <div>
       {/* 1- criação de form */}
-      <form>
+      {/* 5 - envio de formulário */}
+      <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="name">Nome</label>
           <input
