@@ -10,6 +10,11 @@ const MyForm = () => {
         </div>
         <input type="submit" value="Enviar" />
       </form>
+      {/* 2- label envolvendo input */}
+      <label>
+        <span>E-mail</span>
+        <input type="text" name="email" placeholder="Digite seu e-mail" />
+      </label>
     </div>
   )
 }
