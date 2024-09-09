@@ -3,6 +3,7 @@ import "./MyForm.css";
 const MyForm = ({userName,userEmail}) => {
   const [name, setName] = useState(userName);
   const [email, setEmail] = useState(userEmail);
+  const [role, setRole] = useState("");
 
   const [bio, setBio] = useState("");
   const handleName = (e) => {
@@ -16,6 +17,7 @@ const MyForm = ({userName,userEmail}) => {
     setName("");
     setEmail("");
     setBio("");
+    setRole("");
   };
   return (
     <div>
@@ -52,6 +54,15 @@ const MyForm = ({userName,userEmail}) => {
       <label>
         <span>Bio:</span>
         <textarea name="bio" placeholder="Descrição do user" onChange={(e) => setBio(e.target.value)} value={bio}></textarea>
+      </label>
+      {/* 9 - select */}
+      <label>
+        <span>Função no sistema</span>
+        <select name="role" onChange={(e) => setRole(e.target.value)} value={role} >
+          <option value="user">Usário</option>
+          <option value="editor">Editor</option>
+          <option value="admin">Admin</option>
+        </select>
       </label>
     </div>
   );
