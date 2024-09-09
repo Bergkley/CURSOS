@@ -1,3 +1,4 @@
+import Button from "./Button";
 import "./ImcCalc.css";
 
 const ImcCalc = () => {
@@ -22,6 +23,10 @@ const ImcCalc = () => {
                 id="weight"
                 placeholder="Exemplo 70,5"
               />
+            </div>
+            <div className="action-control">
+                <Button id="calc-btn" text="Calcular"/>
+                <Button id="clear-btn" text="Limpar"/>
             </div>
           </div>
       </form>
