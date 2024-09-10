@@ -75,7 +75,9 @@ function App() {
            <span>Preço:</span>
            <input type="text" value={price} onChange={(e) => setPrice(e.target.value)} />
         </label>
-        <input type="submit" value="Enviar"  />
+        {/* 7 - loading post */}
+        {loading && <input type="submit" value="Aguarde..." disabled />}
+        {!loading && <input type="submit" value="Enviar" />}
       </form>
     </div>
    </div>
