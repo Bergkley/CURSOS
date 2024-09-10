@@ -9,7 +9,7 @@ function App() {
   const [products, setProducts] = useState([]);
 
   // 4 - custom hook
-  const {data: items, httpConfig} = useFetch(url);
+  const {data: items, httpConfig, loading} = useFetch(url);
 
   //  useEffect(() => {
   //   async function fetchData() {
@@ -57,6 +57,8 @@ function App() {
    <div className="App">
     <h1>HTTP em React</h1>
     {/* 1 - resgantando dados */}
+    {/* 6 - loading */}
+    {loading && <p>Carregando dados...</p>}
     <ul>
       {items && items.map((product) => (
         <li key={product.id}>{product.name}</li>
