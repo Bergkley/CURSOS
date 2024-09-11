@@ -3,7 +3,7 @@ import { createRoot } from "react-dom/client";
 import App from "./App.jsx";
 import "./index.css";
 
-import { createBrowserRouter, RouterProvider, Route } from "react-router-dom";
+import { createBrowserRouter, RouterProvider, Route, Navigate } from "react-router-dom";
 
 
 import Contact from "./routes/Contact.jsx";
@@ -39,7 +39,11 @@ const router = createBrowserRouter([
       {
         path: "search",
         element: <Search />,
-      }
+      },
+       {
+        path: "teste",
+        element: <Navigate to="/" />,
+       }
     ]
   },
   // {
