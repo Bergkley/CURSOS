@@ -7,7 +7,7 @@ import {
 
 import "./ReviewForm.css";
 
-const ReviewForm = () => {
+const ReviewForm = ({ data, updateFieldHandler }) => {
   return (
     <div className="review-form">
       <div className="form-control score-container">
@@ -16,7 +16,9 @@ const ReviewForm = () => {
             type="radio"
             value="unsatisfied"
             name="review"
+            checked={data.review === "unsatisfied"}
             required
+            onChange={(e) => updateFieldHandler("review", e.target.value)}
           />
           <BsFillEmojiFrownFill />
           <p>Insatisfeito</p>
@@ -26,6 +28,8 @@ const ReviewForm = () => {
             type="radio"
             value="neutral"
             name="review"
+            checked={data.review === "neutral"}
+            onChange={(e) => updateFieldHandler("review", e.target.value)}
           />
           <BsFillEmojiNeutralFill />
           <p>Poderia ser melhor</p>
@@ -35,6 +39,8 @@ const ReviewForm = () => {
             type="radio"
             value="satisfied"
             name="review"
+            checked={data.review === "satisfied"}
+            onChange={(e) => updateFieldHandler("review", e.target.value)}
           />
           <BsFillEmojiSmileFill />
           <p>Satisfeito</p>
@@ -44,6 +50,8 @@ const ReviewForm = () => {
             type="radio"
             value="very_satisfied"
             name="review"
+            checked={data.review === "very_satisfied"}
+            onChange={(e) => updateFieldHandler("review", e.target.value)}
           />
           <BsFillEmojiHeartEyesFill />
           <p>Muito satisfeito</p>
@@ -55,7 +63,9 @@ const ReviewForm = () => {
           name="cooment"
           id="comment"
           placeholder="Conte como foi a sua experiência com o produto..."
+          value={data.comment || ""}
           required
+          onChange={(e) => updateFieldHandler("comment", e.target.value)}
         ></textarea>
       </div>
     </div>
