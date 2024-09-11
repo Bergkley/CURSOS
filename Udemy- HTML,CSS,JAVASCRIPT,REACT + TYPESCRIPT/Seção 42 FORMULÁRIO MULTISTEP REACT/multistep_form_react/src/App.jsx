@@ -8,6 +8,7 @@ import './App.css'
 
 // Hooks
 import { userForm } from './hooks/userForm';
+import Steps from './components/Steps';
 
 function App() {
 
@@ -29,7 +30,7 @@ function App() {
         </p>
       </div>
       <div className="form-container">
-        <p>etapas</p>
+        <Steps currentStep={currentStep}/>
         <form onSubmit={(e) => changeStep(currentStep + 1, e)}>
           <div className="inputs-container">{currentComponent}</div>
           <div className="actions">
