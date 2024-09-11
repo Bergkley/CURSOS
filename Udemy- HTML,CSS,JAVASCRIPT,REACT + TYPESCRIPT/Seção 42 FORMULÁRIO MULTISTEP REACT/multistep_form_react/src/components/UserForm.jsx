@@ -1,4 +1,4 @@
-const UserForm = () => {
+const UserForm = ({data}) => {
   return (
     <div>
       <div className="form-control">
