@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { QuizContext } from '../context/quiz';
 
-
+import './Question.css';
 const Question = () => {
     const [quizState, dispatch] = useContext(QuizContext);
 
@@ -13,7 +13,7 @@ const Question = () => {
       <div id="options-container">
         <p>Opções</p>
       </div>
-      <button>Continuar</button>
+      <button onClick={() => dispatch({ type: "CHANGE_QUESTION" })}>Continuar</button>
     </div>
   )
 }
