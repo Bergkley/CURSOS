@@ -56,6 +56,28 @@ const serviceController = {
         } catch (error) {
             console.log(error)
         }
+    },
+    udpate: async (req, res) => {
+        try {
+            const id = req.params.id
+            const service = {
+                name: req.body.name,
+                description: req.body.description,
+                price: req.body.price,
+                image: req.body.image
+            }
+
+            const updateService = await ServiceModel.findByIdAndUpdate(id, service)
+
+            if(!updateService){
+                return res.status(404).json({msg: "Serviço não encontrado"})
+            } 
+
+
+            res.status(200).json({service,msg: "Serviço atualizado com sucesso"})
+        } catch (error) {
+            console.log(error)
+        }
     }
     
 }
