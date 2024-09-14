@@ -10,6 +10,11 @@ app.use(express.json());
 
 const conn = require('./db/conn');
 
+// Routes
+
+const routes = require('./routes/router');
+app.use("/api", routes);
+
 conn();
 
 app.listen(3000, function(){
