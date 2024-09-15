@@ -1,3 +1,5 @@
+import { Outlet } from 'react-router-dom'
+
 import './App.css'
 
 function App() {
@@ -5,6 +7,8 @@ function App() {
     <>
       <div className="App">
         Party time
+
+        <Outlet />
       </div>
     </>
   )
