@@ -3,7 +3,7 @@ import partyFetch from "../axios/config";
 import { useState, useEffect } from "react";
 
 import { useParams, Link, useNavigate } from "react-router-dom";
-import useToast from "../../hooks/useToast";
+import useToast from "../hook/useToast";
 
 import "./Party.css";
 
