@@ -53,3 +53,6 @@ Content-Type: application/json
         "price": 129.90
     }]
 }
+
+###
+GET http://localhost:3000/api/parties
