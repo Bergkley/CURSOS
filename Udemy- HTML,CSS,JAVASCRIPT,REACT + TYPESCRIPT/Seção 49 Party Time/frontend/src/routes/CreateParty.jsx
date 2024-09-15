@@ -4,9 +4,9 @@ import { useState, useEffect } from "react";
 
 import { useNavigate } from "react-router-dom";
 
-import useToast from "../../hooks/useToast";
+// import useToast from "../../hooks/useToast";
 
-import "./Form.css";
+ import "./Form.css";
 
 const CreateParty = () => {
   const [services, setServices] = useState([]);
@@ -79,7 +79,7 @@ const CreateParty = () => {
     <div className="form-page">
       <h2>Crie sua próxima Festa</h2>
       <p>Defina o seu orçamento e escolha os serviços</p>
-      <form onSubmit={(e) => createParty(e)}>
+      <form>
         <label>
           <span>Nome da festa:</span>
           <input
