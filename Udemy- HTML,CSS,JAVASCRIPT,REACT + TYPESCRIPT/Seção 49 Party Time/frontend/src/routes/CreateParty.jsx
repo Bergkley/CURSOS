@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 
 import { useNavigate } from "react-router-dom";
 
-// import useToast from "../../hooks/useToast";
+import useToast from "../hook/useToast";
 
  import "./Form.css";
 
@@ -79,7 +79,7 @@ const CreateParty = () => {
     <div className="form-page">
       <h2>Crie sua próxima Festa</h2>
       <p>Defina o seu orçamento e escolha os serviços</p>
-      <form>
+      <form onSubmit={(e) => createParty(e)}>
         <label>
           <span>Nome da festa:</span>
           <input

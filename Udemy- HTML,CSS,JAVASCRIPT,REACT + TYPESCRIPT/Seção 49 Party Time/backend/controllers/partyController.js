@@ -27,7 +27,7 @@ const partyController = {
             }
             const response = await PartyModel.create(party);
 
-            res.status(200).json({response,msg: "Festa criada com sucesso!"});
+            res.status(201).json({response,msg: "Festa criada com sucesso!"});
             
         } catch (error) {
             console.log(error);
