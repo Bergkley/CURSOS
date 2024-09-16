@@ -1,4 +1,4 @@
-
+import './Title.css'
 const Title = ({title}) => {
   return (
     <h1>
