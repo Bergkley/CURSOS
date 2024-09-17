@@ -3,8 +3,10 @@ import './App.css'
 import Counter from './components/Counter'
 import Title from './components/Title'
 
+
 import NewYear from './assets/newyear.jpg'
 import useCountdown from './hooks/useCountdown'
+import { Outlet } from 'react-router-dom'
 
 
 function App() {
@@ -21,7 +23,7 @@ function App() {
             <Counter title="Segundos" number={second}/>
           </div>
         </div>
-        
+        <Outlet />
       </div>
     </>
   )
