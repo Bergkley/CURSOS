@@ -1,35 +1,36 @@
-import "./Home.css";
-
-import { CountdownContext } from "../context/CountdownContext";
 import { useContext, useState } from "react";
+import { CountdownContext } from "../context/CountdownContext";
 import { useNavigate } from "react-router-dom";
 
+import "./Home.css";
 
+const Countdown = () => {
+  const [title, setTitle] = useState();
+  const [date, setDate] = useState();
+  const [image, setImage] = useState();
+  const [color, setColor] = useState();
 
-const Home = () => {
-    const [title, setTitle] = useState("");
-    const [date, setDate] = useState("");
-    const [image, setImage] = useState("");
-    const [color, setColor] = useState("");
+  const { event, setEvent } = useContext(CountdownContext);
 
-    const [SetEvent] = useContext(CountdownContext);
+  const navigate = useNavigate();
 
-    const navigate = useNavigate();
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
+    const eventObject = {
+      title,
+      date,
+      image,
+      color,
+    };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
+    setEvent(eventObject);
 
-        const eventObject = {
-            title,
-            date,
-            image,
-            color,
-        };
-        SetEvent(eventObject);
+    console.log(eventObject);
 
-        navigate("/countdown");
-    }
+    navigate("/countdown");
+  };
+
   return (
     <div className="home">
       <h2>Monte a sua contagem regressiva!</h2>
@@ -76,4 +77,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Countdown;
