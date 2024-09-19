@@ -25,7 +25,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div>
+    <div className="home">
       <h1>Últimos posts</h1>
       {posts.length === 0 ? (
         <p>Carregando...</p>
