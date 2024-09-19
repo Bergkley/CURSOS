@@ -1,16 +1,17 @@
-import { useEffect, useState } from "react";
-import "./Home.css";
-import { Link } from "react-router-dom";
 import blogFetch from "../axios/config";
+
+import { useState, useEffect } from "react";
+
+import { Link } from "react-router-dom";
+
+import "./Home.css";
 
 const Home = () => {
   const [posts, setPosts] = useState([]);
 
   const getPosts = async () => {
     try {
-      const response = await blogFetch.get(
-        "/posts"
-      );
+      const response = await blogFetch.get("/posts");
 
       const data = response.data;
 
@@ -31,10 +32,12 @@ const Home = () => {
         <p>Carregando...</p>
       ) : (
         posts.map((post) => (
-          <div key={post.id}>
+          <div className="post" key={post.id}>
             <h2>{post.title}</h2>
             <p>{post.body}</p>
-            <Link className="btn" to={`/posts/${post.id}`}>Ler mais</Link>
+            <Link className="btn" to={`/posts/${post.id}`}>
+              Ler mais
+            </Link>
           </div>
         ))
       )}

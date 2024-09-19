@@ -1,13 +1,17 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import App from './App.jsx'
-import './index.css'
+import React from "react";
+import ReactDOM from "react-dom/client";
 
-import { RouterProvider, createBrowserRouter, Route } from 'react-router-dom'
-import Home from './routes/Home.jsx'
-import NewPost from './routes/NewPost.jsx'
-import Post from './routes/Post.jsx'
-import Admin from './routes/Admin.jsx'
+import { createBrowserRouter, RouterProvider, Route } from "react-router-dom";
+
+import App from "./App";
+
+import Home from "./routes/Home";
+import Post from "./routes/Post";
+import NewPost from "./routes/NewPost";
+import Admin from "./routes/Admin";
+import EditPost from "./routes/EditPost";
+
+import "./index.css";
 
 const router = createBrowserRouter([
   {
@@ -18,23 +22,28 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path:"/new",
-        element: <NewPost />
-      },
-      {
         path: "/posts/:id",
         element: <Post />,
       },
       {
-        path:"/posts/:id",
+        path: "/new",
+        element: <NewPost />,
+      },
+      {
+        path: "/admin",
         element: <Admin />,
-      }
+      },
+      ,
+      {
+        path: "/posts/edit/:id",
+        element: <EditPost />,
+      },
     ],
   },
-])
+]);
 
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
     <RouterProvider router={router} />
-  </StrictMode>,
-)
+  </React.StrictMode>
+);
