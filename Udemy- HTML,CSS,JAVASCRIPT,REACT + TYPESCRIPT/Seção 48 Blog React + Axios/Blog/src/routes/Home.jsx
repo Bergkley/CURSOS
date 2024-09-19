@@ -1,32 +1,45 @@
 import { useEffect, useState } from "react";
 import "./Home.css";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const Home = () => {
-    const [posts, setPosts] = useState([])
+  const [posts, setPosts] = useState([]);
 
-    const getPosts = async() =>{
-        try {
-            const response = await axios.get('https://jsonplaceholder.typicode.com/posts')
+  const getPosts = async () => {
+    try {
+      const response = await axios.get(
+        "https://jsonplaceholder.typicode.com/posts"
+      );
 
-            const data = response.data;
+      const data = response.data;
 
-            
-            
-        } catch (error) {
-            console.log(error)
-        }
+      setPosts(data);
+    } catch (error) {
+      console.log(error);
     }
+  };
 
-    useEffect(() => {
-        getPosts()
-    }, [])
+  useEffect(() => {
+    getPosts();
+  }, []);
 
   return (
     <div>
-      Home
+      <h1>Últimos posts</h1>
+      {posts.length === 0 ? (
+        <p>Carregando...</p>
+      ) : (
+        posts.map((post) => (
+          <div key={post.id}>
+            <h2>{post.title}</h2>
+            <p>{post.body}</p>
+            <Link className="btn" to={`/posts/${post.id}`}>Ler mais</Link>
+          </div>
+        ))
+      )}
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
