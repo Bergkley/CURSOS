@@ -133,3 +133,26 @@ const coordObj: Point = {
 };
 
 showCoords(coordObj);
+
+// 14 - interface x type alias
+
+interface Person {
+  name: string;
+}
+
+interface Person {
+    age: number;
+}
+
+const SomePerson: Person = {
+  name: "Berg",
+  age: 30
+}
+
+type personType = {
+  name: string;
+}
+
+// type personType = {
+//   age: number;
+// }
