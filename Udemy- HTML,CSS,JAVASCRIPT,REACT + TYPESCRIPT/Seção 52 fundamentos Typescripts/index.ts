@@ -9,3 +9,10 @@ console.log("Number", x);
 let firstName: string = "Bergkley";
 
 console.log(firstName.toUpperCase())
+
+// 3 - boolean
+
+let isProgrammer: boolean = true;
+
+console.log(isProgrammer);
+console.log(typeof isProgrammer);
