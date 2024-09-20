@@ -24,3 +24,10 @@ function soma(a: number, b: number) {
 }
 
 soma(4,5)
+
+// 5 - retorno de função
+function greeting(name: string): string {
+    return `Ola ${name}`
+}
+
+greeting("Berg")
