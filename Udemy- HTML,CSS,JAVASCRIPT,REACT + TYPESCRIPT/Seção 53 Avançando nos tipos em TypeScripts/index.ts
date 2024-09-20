@@ -31,3 +31,10 @@ function greeting(name: string): string {
 }
 
 greeting("Berg")
+
+// 6 - Função anonima
+
+setTimeout(function() {
+    const sallary: number = 1000;
+    console.log(sallary);
+}, 2000)
