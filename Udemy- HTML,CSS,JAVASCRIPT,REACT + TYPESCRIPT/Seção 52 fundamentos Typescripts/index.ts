@@ -16,3 +16,10 @@ let isProgrammer: boolean = true;
 
 console.log(isProgrammer);
 console.log(typeof isProgrammer);
+
+// 4 - inference e annotation
+
+const ann: string ="teste";
+
+let inf = "teste";
+
