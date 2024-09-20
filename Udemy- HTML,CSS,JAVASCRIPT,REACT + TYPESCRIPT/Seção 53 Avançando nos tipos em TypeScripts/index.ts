@@ -80,3 +80,12 @@ function advancedGreeting(firstName: string, lastName?: string) {
 
 console.log(advancedGreeting("Berg", "Brasil"));
 console.log(advancedGreeting("Berg"))
+
+// 10 - Union Types
+function showBalance(balance: string | number) {
+  console.log(`O saldo da conta e ${balance}`)
+}
+
+showBalance(100);
+showBalance("500");
+// showBalance(true);
