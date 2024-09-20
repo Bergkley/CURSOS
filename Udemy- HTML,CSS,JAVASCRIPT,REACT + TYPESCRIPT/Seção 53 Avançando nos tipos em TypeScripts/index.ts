@@ -6,64 +6,77 @@ numbers.push(6);
 
 // numbers = "teste"
 
-const nomes: string[] = ["Berg","John"]
+const nomes: string[] = ["Berg", "John"];
 
 // outra sintaxe do array
 const nums: Array<number> = [1, 2, 3, 4, 5];
 
-nums.push(6)
+nums.push(6);
 
 // 3 - any
 
-const arr1: any = [1, 2, "teste",true,[],{nome:"Berg"}];
+const arr1: any = [1, 2, "teste", true, [], { nome: "Berg" }];
 
 // 4 - Parâmetro tipados
 
 function soma(a: number, b: number) {
-    console.log(a + b);
+  console.log(a + b);
 }
 
-soma(4,5)
+soma(4, 5);
 
 // 5 - retorno de função
 function greeting(name: string): string {
-    return `Ola ${name}`
+  return `Ola ${name}`;
 }
 
-greeting("Berg")
+greeting("Berg");
 
 // 6 - Função anonima
 
-setTimeout(function() {
-    const sallary: number = 1000;
-    console.log(sallary);
-}, 2000)
+setTimeout(function () {
+  const sallary: number = 1000;
+  console.log(sallary);
+}, 2000);
 
 // 7 - tipos de objeto
 
 function passCoordinates(coord: { x: number; y: number }) {
-    console.log("X: " + coord.x);
-    console.log("Y: " + coord.y);
+  console.log("X: " + coord.x);
+  console.log("Y: " + coord.y);
 }
 
-const objCoord = {x: 10, y: 20};
+const objCoord = { x: 10, y: 20 };
 
-passCoordinates(objCoord)
+passCoordinates(objCoord);
 
-const pessoaObj: {nome: string, surname: string} = {
-    nome: "Berg",
-    surname: "Brasil"
-}
+const pessoaObj: { nome: string; surname: string } = {
+  nome: "Berg",
+  surname: "Brasil",
+};
 
 // 8 - propriedade opcional
 
 function showNumbers(a: number, b: number, c?: number) {
-    console.log("A: " + a);
-    console.log("B: " + b);
-    if (c) {
-        console.log("C: " + c);
-    }
+  console.log("A: " + a);
+  console.log("B: " + b);
+  if (c) {
+    console.log("C: " + c);
+  }
 }
 
-showNumbers(1,2,3);
-showNumbers(4,5);
+showNumbers(1, 2, 3);
+showNumbers(4, 5);
+
+// 9 - validando argumentos opcional
+
+function advancedGreeting(firstName: string, lastName?: string) {
+  if (lastName !== undefined) {
+    return `Ola ${firstName} ${lastName}, tudo bem?`
+  }
+
+  return `Ola ${firstName}, tudo bem?`;
+}
+
+console.log(advancedGreeting("Berg", "Brasil"));
+console.log(advancedGreeting("Berg"))
