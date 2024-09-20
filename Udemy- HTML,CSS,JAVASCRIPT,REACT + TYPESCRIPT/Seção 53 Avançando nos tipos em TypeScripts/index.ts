@@ -12,3 +12,7 @@ const nomes: string[] = ["Berg","John"]
 const nums: Array<number> = [1, 2, 3, 4, 5];
 
 nums.push(6)
+
+// 3 - any
+
+const arr1: any = [1, 2, "teste",true,[],{nome:"Berg"}];
