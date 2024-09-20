@@ -9,3 +9,8 @@ const nums = [1, 2, 3, 4, 5];
 nums.push(6);
 // 3 - any
 const arr1 = [1, 2, "teste", true, [], { nome: "Berg" }];
+// 4 - Parâmetro tipados
+function soma(a, b) {
+    return a + b;
+}
+soma(4, 5);

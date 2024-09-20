@@ -16,3 +16,11 @@ nums.push(6)
 // 3 - any
 
 const arr1: any = [1, 2, "teste",true,[],{nome:"Berg"}];
+
+// 4 - Parâmetro tipados
+
+function soma(a: number, b: number) {
+    return a + b;
+}
+
+soma(4,5)
