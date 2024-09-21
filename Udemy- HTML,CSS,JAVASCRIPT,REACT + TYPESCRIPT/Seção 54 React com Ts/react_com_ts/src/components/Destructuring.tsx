@@ -5,9 +5,20 @@ type Props = {
     content:string
     commentsQty:number
     tags: string[]
+
+    // 8 - enum
+    category: Category
 }
 
-const Destructuring = ({title, content, commentsQty, tags}: Props) => {
+export enum Category {
+    CSS = "CSS",
+    HTML = "HTML",
+    JAVASCRIPT = "JAVASCRIPT",
+    REACT = "REACT",
+    TYPESCRIPT = "TYPESCRIPT"
+}
+
+const Destructuring = ({title, content, commentsQty, tags, category}: Props) => {
   return (
     <div>
         <h2>{title}</h2>
@@ -16,6 +27,7 @@ const Destructuring = ({title, content, commentsQty, tags}: Props) => {
         {tags.map((tag) => (
             <span>#{tag}</span>
         ))}
+        <h4>Categoria: {category}</h4>
     </div>
   )
 }

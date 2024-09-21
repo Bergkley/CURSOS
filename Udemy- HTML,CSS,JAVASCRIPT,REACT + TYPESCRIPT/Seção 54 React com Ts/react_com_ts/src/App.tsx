@@ -1,8 +1,9 @@
 
 // 4 - importação de componente
-import Destructuring from "./components/Destructuring";
+import Destructuring, {Category} from "./components/Destructuring";
 import FirstComponent from "./components/FirstComponent";
 import SecondComponent from "./components/SecondComponent";
+import State from "./components/State";
 
 function App() {
   //  1 - variaveis
@@ -24,7 +25,8 @@ function App() {
       <p>{userGreeting(name)}</p>
       <FirstComponent />
       <SecondComponent name={name} />
-      <Destructuring title="Primeiro post" content="Conteudo" commentsQty={5} tags={["tag1", "tag2"]} />
+      <Destructuring title="Primeiro post" content="Conteudo" commentsQty={5} tags={["tag1", "tag2"]} category={Category.TYPESCRIPT} />
+      <State />
     </div>
   );
 }
