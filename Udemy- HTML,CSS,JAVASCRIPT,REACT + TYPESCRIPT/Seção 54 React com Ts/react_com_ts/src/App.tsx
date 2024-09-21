@@ -1,6 +1,8 @@
 
 // 4 - importação de componente
+import Destructuring from "./components/Destructuring";
 import FirstComponent from "./components/FirstComponent";
+import SecondComponent from "./components/SecondComponent";
 
 function App() {
   //  1 - variaveis
@@ -21,6 +23,8 @@ function App() {
       {isWorking && <p>Esta trabalhando</p>}
       <p>{userGreeting(name)}</p>
       <FirstComponent />
+      <SecondComponent name={name} />
+      <Destructuring title="Primeiro post" content="Conteudo" commentsQty={5} tags={["tag1", "tag2"]} />
     </div>
   );
 }
