@@ -24,8 +24,19 @@ const createMemory = async (req, res) => {
       console.error(err.message);
       res.status(500).send("Server Error");
     }
-  };
+};
+
+const getMemories = async (req, res) => {
+    try {
+        const memories = await Memory.find();
+        res.json(memories);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send("Server Error");
+    }
+}
 
 module.exports = {
-    createMemory
+    createMemory,
+    getMemories
 };

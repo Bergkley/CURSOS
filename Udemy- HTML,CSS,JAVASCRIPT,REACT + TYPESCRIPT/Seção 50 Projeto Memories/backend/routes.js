@@ -1,5 +1,5 @@
 const express = require("express");
-const { createMemory } = require("./controllers/MemoryController");
+const { createMemory, getMemories } = require("./controllers/MemoryController");
 const upload = require("./helpers/upload");
 const router = express.Router();
 
@@ -16,6 +16,8 @@ router.post(
       next();
     },
     (req, res) => createMemory(req, res)
-  );
+);
+
+router.get("/", (req, res) => getMemories(req, res))
 
 module.exports = router;
