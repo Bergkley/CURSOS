@@ -6,6 +6,7 @@ const {
   deleteMemory,
   updateMemory,
   toggleFavorite,
+  addComent,
 } = require("./controllers/MemoryController");
 const upload = require("./helpers/upload");
 const router = express.Router();
@@ -33,6 +34,10 @@ router.patch("/:id", upload.single("image"), (req, res, next) =>
 
 router.patch("/favorite/:id", (req, res) =>
   toggleFavorite(req, res)
+);
+
+router.patch("/:id/comment", (req, res) =>
+  addComent(req, res)
 );
 
 

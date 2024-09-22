@@ -125,6 +125,32 @@ const toggleFavorite = async (req, res) => {
   }
 };
 
+const addComent = async (req, res) => {
+  try {
+
+    const {name,text} = req.body;
+
+    if(!name){
+      return res.status(400).json({msg: "Por favor, preencha todos os campos."});
+    }
+
+    const coment = {name,text};
+
+    const memory = await Memory.findById(req.params.id);
+    if (!memory) {
+      return res.status(404).json({ msg: "Memória não encontrada." });
+    }
+
+    memory.comments.push(coment);
+
+    await memory.save();
+    res.json({msg: "Comentário adicionado com sucesso",memory});
+    
+  } catch (error) {
+    return res.status(500).json({msg: "Server Error"});
+  }
+}
+
 module.exports = {
   createMemory,
   getMemories,
@@ -132,4 +158,5 @@ module.exports = {
   deleteMemory,
   updateMemory,
   toggleFavorite,
+  addComent
 };
