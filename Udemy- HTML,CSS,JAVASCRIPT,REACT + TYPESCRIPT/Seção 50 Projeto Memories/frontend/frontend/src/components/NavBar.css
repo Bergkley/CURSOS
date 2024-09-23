@@ -14,4 +14,16 @@
   .navbar a {
     color: #fff;
   }
+ 
+  .search-form {
+    display: flex;
+    align-items: center;
+    width: 600px;
+    border-radius: 5px;
+    cursor: pointer;
+    justify-content: center;
+    right: 10px;
+  }
+  
+  
   

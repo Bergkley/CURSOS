@@ -8,6 +8,7 @@ import { createBrowserRouter,RouterProvider } from 'react-router-dom';
 import Home from './routes/Home.jsx';
 import AddMemory from './routes/AddMemory.jsx';
 import Memory from './routes/Memory.jsx';
+import { SearchProvider } from './context/SearchContext.jsx';
 
 
 const router = createBrowserRouter([
@@ -34,6 +35,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <SearchProvider>
+      <RouterProvider router={router} />
+    </SearchProvider>
   </StrictMode>,
 )

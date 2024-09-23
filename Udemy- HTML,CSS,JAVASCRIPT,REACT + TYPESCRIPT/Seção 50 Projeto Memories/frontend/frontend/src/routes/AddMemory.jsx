@@ -12,6 +12,7 @@ const AddMemory = () => {
   const [inputs, setInputs] = useState({});
   const [image, setImage] = useState(null);
 
+
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
