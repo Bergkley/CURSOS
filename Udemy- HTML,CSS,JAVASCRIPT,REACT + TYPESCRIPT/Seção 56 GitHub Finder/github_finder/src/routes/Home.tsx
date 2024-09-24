@@ -5,6 +5,7 @@ import { useState } from "react";
 import Search from "../components/Search";
 import User from "../components/User";
 import Error from "../components/Error";
+import Loader from "../components/Loader";
 
 const Home = () => {
   const [user, setUser] = useState<UserProps | null>(null);
@@ -44,6 +45,7 @@ const Home = () => {
   return (
     <div>
       <Search loadUser={loadUser} />
+      {isLoading && <Loader />}
       {user && <User {...user} />}
       {error && <Error />}
     </div>
