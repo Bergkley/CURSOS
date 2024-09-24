@@ -4,12 +4,11 @@ import { useState } from "react";
 
 import Search from "../components/Search";
 import User from "../components/User";
-import Error from "../components/Error";
 import Loader from "../components/Loader";
+import { toast } from "react-toastify";
 
 const Home = () => {
   const [user, setUser] = useState<UserProps | null>(null);
-  const [error, setError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
   const loadUser = async function (userName: string) {
@@ -23,11 +22,9 @@ const Home = () => {
     setIsLoading(false);
 
     if (res.status === 404) {
-      setError(true);
+      toast.error("Usuário não encontrado");
       return;
     }
-
-    setError(false);
 
     const { avatar_url, login, location, followers, following } = data;
 
@@ -47,7 +44,6 @@ const Home = () => {
       <Search loadUser={loadUser} />
       {isLoading && <Loader />}
       {user && <User {...user} />}
-      {error && <Error />}
     </div>
   );
 };

@@ -7,11 +7,13 @@ import { createBrowserRouter,RouterProvider } from 'react-router-dom'
 // Pages
 import Home from "./routes/Home.tsx";
 import Repos from './routes/Repos.tsx'
+import PageError from './routes/PageError.tsx'
 
 const router = createBrowserRouter([
    {
     path: '/',
     element: <App/>,
+    errorElement: <PageError />,
     children: [
       {
         path: '/',
