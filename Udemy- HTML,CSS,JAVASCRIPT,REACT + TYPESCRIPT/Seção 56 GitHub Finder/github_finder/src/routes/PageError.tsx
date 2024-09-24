@@ -1,9 +1,8 @@
-import { useRouteError } from "react-router-dom";
+import { useRouteError, RouteError  } from "react-router-dom";
 import BackBtn from './../components/BackBtn';
 import classes from "./PageError.module.css";
-
 const PageError = () => {
-  const error = useRouteError();
+  const error:RouteError = useRouteError();
   console.log({ error });
 
   return (
