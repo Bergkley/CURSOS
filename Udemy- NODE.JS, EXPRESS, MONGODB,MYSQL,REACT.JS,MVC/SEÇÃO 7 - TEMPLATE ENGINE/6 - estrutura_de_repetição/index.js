@@ -8,8 +8,8 @@ app.set("view engine", "handlebars");
 
 app.get("/", function (req, res) {
   const user = {
-    name: "Matheus",
-    surname: "Battisti",
+    name: "Berg",
+    surname: "Brasil",
   };
 
   res.render("home", { user: user, auth: true });
