@@ -8,8 +8,7 @@
     "start": "nodemon ./index.js localhost 3000"
   },
   "keywords": [],
-  "author": "Matheus <matheus@horadecodar.com.br> (http://www.horadecodar.com.br/)",
-  "license": "MIT",
+  "author": "Bergkley",
   "dependencies": {
     "express": "^4.17.1",
     "express-handlebars": "^5.3.3",
