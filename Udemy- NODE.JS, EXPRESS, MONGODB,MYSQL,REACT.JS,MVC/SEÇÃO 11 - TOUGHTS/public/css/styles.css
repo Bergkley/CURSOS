@@ -1,63 +1,122 @@
-*{
-    font-family: Helvetica;
-    margin: 0;
-    padding: 0;
-    background-color: #222;
-    color: #fff;
+* {
+  font-family: Helvetica;
+  margin: 0;
+  padding: 0;
+  background-color: #222;
+  color: #fff;
 }
 
 /* NavBar */
 #logo img {
-    height: 40px;
+  height: 40px;
 }
 
 #navbar {
-    padding: 1.2em 1.4em;
-    margin-bottom: 1em;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: #222;
-    border-bottom: 1px solid #F6982D;
+  padding: 1.2em 1.4em;
+  margin-bottom: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #222;
+  border-bottom: 1px solid #f6982d;
 }
 
 #navbar ul {
-    display: flex;
-    list-style: none;
+  display: flex;
+  list-style: none;
 }
 
 #navbar ul li {
-    margin-left: 1.5em;
+  margin-left: 1.5em;
 }
 
 #navbar ul li a {
-    text-decoration: none;
-    transition: 0.5s;
-    font-weight: bold;
+  text-decoration: none;
+  transition: 0.5s;
+  font-weight: bold;
 }
 
 #navbar ul li a:hover {
-    color: #F6982D;
+  color: #f6982d;
 }
 
 /* CONTAINER */
 
 .container {
-    min-height: 60vh;
-    padding: 2em;
+  min-height: 60vh;
+  padding: 2em;
+}
+
+/* LOGIN E REGISTER */
+.auth-container {
+  max-width: 450px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-container h2 {
+  margin-bottom: 1em;
+  color: #fff;
+  border-left: 4px solid #f6982d;
+  padding: 0.3em;
+  width: 100px;
+}
+
+.auth-container a {
+  color: #f6982d;
+}
+
+.form-control {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1em;
+}
+
+.form-control label {
+  font-weight: bold;
+  margin-bottom: 0.5em;
+}
+
+.form-control input,
+.form-control textarea {
+  padding: 7px;
+  border-radius: 3px;
+  border: 1px solid #f6982d;
+}
+
+form input[type="submit"],
+.btn {
+  background-color: transparent;
+  color: #f6982d;
+  border: 2px solid #f6982d;
+  padding: 0.5em 1.3em;
+  margin-bottom: 1em;
+  font-size: 1em;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: 0.5s;
+}
+
+form input[type="submit"]:hover,
+.btn:hover {
+  background-color: #f6982d;
+  color: #fff;
 }
 
 /* FOOTER */
 
 footer {
-    height: 150px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-top: 1px solid #F6982D;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid #f6982d;
 }
 
 footer span {
-    font-weight: bold;
-    color: #F6982D;
+  font-weight: bold;
+  color: #f6982d;
 }
