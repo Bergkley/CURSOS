@@ -12,7 +12,10 @@ const app = express();
 
 const conn = require("./db/conn");
 
+// Routes
+
 const toughtRouter = require("./routes/toughtRouter");
+const authRouter = require("./routes/authRoutes");
 
 // Controllers
 const ToughtController = require("./controllers/ToughtController");
@@ -67,6 +70,8 @@ app.use((req, res, next) => {
 
 // Routes
 app.use("/toughts", toughtRouter);
+
+app.use("/", authRouter);
 app.use("/", ToughtController.showToughts);
 
 conn
