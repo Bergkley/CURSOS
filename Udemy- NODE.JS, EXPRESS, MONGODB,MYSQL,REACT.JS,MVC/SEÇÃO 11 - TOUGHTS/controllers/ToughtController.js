@@ -46,8 +46,11 @@ module.exports = class ToughController {
       .catch((err) => console.log());
   }
 
-  static showToughts(req, res) {
-    res.render("toughts/home");
+  static async showToughts(req, res) {
+    const toughtsData = await Tought.findAll({include: User});
+    const toughts = toughtsData.map((result) => result.get({ plain: true }));
+
+    res.render("toughts/home", { toughts });
   }
 
   static removeTought(req, res) {
