@@ -9,5 +9,6 @@ const ToughtController = require("../controllers/ToughtController");
 
 router.get("/", ToughtController.showToughts)
 router.get("/dashboard",checkAuth, ToughtController.dashboard)
+router.get("/add",checkAuth, ToughtController.createTought)
 
 module.exports = router
