@@ -1,55 +1,66 @@
-const Tought = require("../models/Tought");
-const User = require("../models/User");
+const Tought = require('../models/Tought')
+const User = require('../models/User')
 
-module.exports = class ToughtController {
-  static async showToughts(req, res) {
-    res.render("toughts/home");
-  }
+const { Op } = require('sequelize')
+
+module.exports = class ToughController {
   static async dashboard(req, res) {
-    const userId = req.session.userid;
+    const userId = req.session.userid
 
     const user = await User.findOne({
-        where: {
-          id: userId,
-        },
-        include: Tought,
-        plain: true,
-      })
+      where: {
+        id: userId,
+      },
+      include: Tought,
+      plain: true,
+    })
 
-    
-    // check if user exists
+    const toughts = user.Toughts.map((result) => result.dataValues)
 
-    if(!user){
-      res.redirect("/login")
-      return
+    let emptyToughts = true
+
+    if (toughts.length > 0) {
+      emptyToughts = false
     }
 
-    const toughts = user.Toughts.map((item) => item.dataValues);
 
-    
-
-    res.render("toughts/dashboard", { toughts });
+    res.render('toughts/dashboard', { toughts, emptyToughts })
   }
 
   static createTought(req, res) {
-    res.render("toughts/create");
+    res.render('toughts/create')
   }
-  static async createToughtSave(req, res) {
+
+  static createToughtSave(req, res) {
     const tought = {
       title: req.body.title,
       UserId: req.session.userid,
-    };
-
-    try {
-      await Tought.create(tought);
-
-      req.flash("message", "Pensamento criado com sucesso!");
-
-      req.session.save(() => {
-        res.redirect("/toughts/dashboard");
-      });
-    } catch (error) {
-      console.log(error);
     }
+
+    Tought.create(tought)
+      .then(() => {
+        req.flash('message', 'Pensamento criado com sucesso!')
+        req.session.save(() => {
+          res.redirect('/toughts/dashboard')
+        })
+      })
+      .catch((err) => console.log())
   }
-};
+
+  static showToughts(req, res) {
+    render('toughts/home')
+  }
+
+  static removeTought(req, res) {
+    const id = req.body.id
+
+    Tought.destroy({ where: { id: id } })
+      .then(() => {
+        req.flash('message', 'Pensamento removido com sucesso!')
+        req.session.save(() => {
+          res.redirect('/toughts/dashboard')
+        })
+      })
+      .catch((err) => console.log(err))
+  }
+}
