@@ -1,3 +1,4 @@
+
 const express = require("express");
 
 const exphbs = require("express-handlebars");
@@ -75,6 +76,7 @@ app.use("/", authRouter);
 app.use("/", ToughtController.showToughts);
 
 conn
+//   .sync({force:true})
   .sync()
   .then(() => {
     app.listen(3000);
