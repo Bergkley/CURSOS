@@ -6,7 +6,30 @@ module.exports = class ToughtController {
     res.render("toughts/home");
   }
   static async dashboard(req, res) {
-    res.render("toughts/dashboard");
+    const userId = req.session.userid;
+
+    const user = await User.findOne({
+        where: {
+          id: userId,
+        },
+        include: Tought,
+        plain: true,
+      })
+
+    
+    // check if user exists
+
+    if(!user){
+      res.redirect("/login")
+      return
+    }
+
+    const toughts = user.Toughts.map((item) => item.dataValues);
+
+    
+    console.log('toughts', toughts);
+
+    res.render("toughts/dashboard", { toughts });
   }
 
   static createTought(req, res) {
