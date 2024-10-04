@@ -47,24 +47,33 @@ module.exports = class ToughController {
   }
 
   static async showToughts(req, res) {
-     let search = '';
+    let search = "";
 
-    if(req.query.search) {
+    if (req.query.search) {
       search = req.query.search;
     }
 
+    let order = "DESC";
+    if (req.query.order === "old") {
+      order = "ASC";
+    } else {
+      order = "DESC";
+    }
 
-
-    const toughtsData = await Tought.findAll({include: User, where: {title: {[Op.like]: `%${search}%`}}});
+    const toughtsData = await Tought.findAll({
+      include: User,
+      where: { title: { [Op.like]: `%${search}%` } },
+      order: [[ "createdAt", order ]],
+    });
     const toughts = toughtsData.map((result) => result.get({ plain: true }));
 
     let toughtsQty = toughts.length;
 
-    if(toughtsQty === 0) {
+    if (toughtsQty === 0) {
       toughtsQty = false;
     }
 
-    res.render("toughts/home", { toughts,search,toughtsQty });
+    res.render("toughts/home", { toughts, search, toughtsQty });
   }
 
   static removeTought(req, res) {
