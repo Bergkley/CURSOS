@@ -27,7 +27,6 @@ module.exports = class ToughtController {
     const toughts = user.Toughts.map((item) => item.dataValues);
 
     
-    console.log('toughts', toughts);
 
     res.render("toughts/dashboard", { toughts });
   }
