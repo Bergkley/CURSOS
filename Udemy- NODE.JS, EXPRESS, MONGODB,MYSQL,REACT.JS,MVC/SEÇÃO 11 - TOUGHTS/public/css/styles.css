@@ -181,6 +181,10 @@ form input[type="submit"]:hover,
   margin: 0 0.5em;
 }
 
+.dashboard {
+  color: #fff;
+}
+
 /* FOOTER */
 
 footer {
