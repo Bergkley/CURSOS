@@ -8,7 +8,7 @@
     "start": "nodemon ./index.js localhost 3000"
   },
   "keywords": [],
-  "author": "Matheus",
+  "author": "bergkley",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
