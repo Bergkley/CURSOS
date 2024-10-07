@@ -13,5 +13,6 @@ app.use(cors({Credentials: true, origin: 'http://localhost:3000'}));
 
 // Routes
 
+// Conexão
 conn();
 app.listen(5000)
