@@ -15,6 +15,8 @@ const conn = require('./db/conn');
 const routes = require('./routes/router');
 app.use("/api", routes);
 
+// Conexão
+
 conn();
 
 app.listen(3000, function(){
