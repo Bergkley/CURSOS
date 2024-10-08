@@ -6,6 +6,7 @@ const jwt = require('jsonwebtoken')
 // Helpers
 const createUserToken = require("../helpers/create-user-token");
 const getToken = require("../helpers/get-token");
+const getUserByToken = require("../helpers/get-user-by-token");
 
 module.exports = class UserController {
   static async register(req, res) {
@@ -135,7 +136,77 @@ module.exports = class UserController {
   }
 
   static async editUser(req, res) {
-    res.status(422).json({ message: "Deu certo" });
-    return;
+    const id = req.params.id;
+    const {name, email, password,confirmpassword, phone} = req.body;
+     let image = '';
+
+    //  check if user exists
+    const token = getToken(req)
+
+     const user = await getUserByToken(token);
+
+     if (!user) {
+      res.status(422).json({ message: "Usuário não encontrado!" });
+      return;
+    }
+    //  validação
+
+    if (!name) {
+      res.status(422).json({ message: "O nome é obrigatório!" });
+      return;
+    }
+    user.name = name;
+
+    if (!email) {
+      res.status(422).json({ message: "O e-mail é obrigatório!" });
+      return;
+    }
+
+    const userExists = await User.findOne({ email: email });
+
+    if (user.email !== email && userExists) {
+      res.status(422).json({ message: 'Por favor, utilize outro e-mail!' })
+      return
+    }
+    user.email = email;
+
+    if (!phone) {
+      res.status(422).json({ message: "O telefone é obrigatório!" });
+      return;
+    }
+
+    user.phone = phone;
+
+    if (!password) {
+      res.status(422).json({ message: "A senha é obrigatória!" });
+      return;
+    }
+
+
+   if(password != confirmpassword) {
+      res.status(422).json({ message: "A senha e a confirmação precisam ser iguais!" });
+      return;
+   }else if(password === confirmpassword && password != null) {
+    const salt = await bcrypt.genSalt(12)
+    const passwordHash = await bcrypt.hash(password, salt)
+    user.password = passwordHash;
+   }
+
+   try {
+    // returns updated data
+    const updatedUser = await User.findOneAndUpdate(
+      { _id: user._id },
+      { $set: user },
+      { new: true },
+    )
+    res.json({
+      message: 'Usuário atualizado com sucesso!',
+    })
+  } catch (error) {
+    res.status(500).json({ message: error })
+  }
+    
+
+
   }
 };
