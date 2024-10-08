@@ -12,6 +12,9 @@ app.use(express.json());
 app.use(cors({Credentials: true, origin: 'http://localhost:3000'}));
 
 // Routes
+const UserRoutes = require('./routes/UserRouter');
+
+app.use('/users', UserRoutes);
 
 // Conexão
 app.listen(5000)
