@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const conn = require('./db/conn');
+const mongoose = require('./db/conn');
 
 const app = express();
 
@@ -14,5 +14,4 @@ app.use(cors({Credentials: true, origin: 'http://localhost:3000'}));
 // Routes
 
 // Conexão
-conn();
 app.listen(5000)

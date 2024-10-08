@@ -12,4 +12,6 @@ async function main() {
     }
 }
 
-module.exports = main;
+main().catch((err) => console.log(err));
+
+module.exports = mongoose;
