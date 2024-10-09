@@ -149,7 +149,7 @@ module.exports = class UserController {
 
      if(req.file) {
       
-      const Url_image = await uploadImageToFirebase(req.file)
+      const Url_image = await uploadImageToFirebase(req, req.file);
 
       user.image = Url_image;
       

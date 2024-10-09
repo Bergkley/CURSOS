@@ -26,8 +26,15 @@ const imageUpload = multer({
   }
 });
 
-const uploadImageToFirebase = async (file) => {
-  const filename = `Users/${Date.now()}${path.extname(file.originalname)}`; 
+const uploadImageToFirebase = async (req, file) => {
+  let folder = '';
+  if (req.baseUrl.includes('users')) {
+    folder = "Users";
+  } else if (req.baseUrl.includes('pets')) {
+    folder = "Pets";
+  }
+  const filename = `${folder}/${Date.now()}${path.extname(file.originalname)}`; 
+  console.log('filename', filename)
   const blob = bucket.file(filename);
 
   const blobStream = blob.createWriteStream({
