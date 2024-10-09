@@ -7,6 +7,7 @@ const jwt = require('jsonwebtoken')
 const createUserToken = require("../helpers/create-user-token");
 const getToken = require("../helpers/get-token");
 const getUserByToken = require("../helpers/get-user-by-token");
+const {uploadImageToFirebase} = require('../helpers/image.upload')
 
 module.exports = class UserController {
   static async register(req, res) {
@@ -138,12 +139,21 @@ module.exports = class UserController {
   static async editUser(req, res) {
     const id = req.params.id;
     const {name, email, password,confirmpassword, phone} = req.body;
-     let image = '';
-
+     
+     
     //  check if user exists
     const token = getToken(req)
 
      const user = await getUserByToken(token);
+
+
+     if(req.file) {
+      
+      const Url_image = await uploadImageToFirebase(req.file)
+
+      user.image = Url_image;
+      
+     }
 
      if (!user) {
       res.status(422).json({ message: "Usuário não encontrado!" });
@@ -177,11 +187,6 @@ module.exports = class UserController {
 
     user.phone = phone;
 
-    if (!password) {
-      res.status(422).json({ message: "A senha é obrigatória!" });
-      return;
-    }
-
 
    if(password != confirmpassword) {
       res.status(422).json({ message: "A senha e a confirmação precisam ser iguais!" });
@@ -194,7 +199,7 @@ module.exports = class UserController {
 
    try {
     // returns updated data
-    const updatedUser = await User.findOneAndUpdate(
+    await User.findOneAndUpdate(
       { _id: user._id },
       { $set: user },
       { new: true },
