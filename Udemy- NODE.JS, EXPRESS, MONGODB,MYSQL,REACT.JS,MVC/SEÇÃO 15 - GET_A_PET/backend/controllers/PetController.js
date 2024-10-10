@@ -137,12 +137,10 @@ module.exports = class PetController {
     const user = await getUserByToken(token);
 
     if (pet.user._id.toString() !== user._id.toString()) {
-      res
-        .status(422)
-        .json({
-          message:
-            "Houve um problema em processar a sua solicitação. Tente novamente mais tarde.",
-        });
+      res.status(422).json({
+        message:
+          "Houve um problema em processar a sua solicitação. Tente novamente mais tarde.",
+      });
       return;
     }
 
@@ -173,12 +171,10 @@ module.exports = class PetController {
     const user = await getUserByToken(token);
 
     if (pet.user._id.toString() !== user._id.toString()) {
-      res
-        .status(422)
-        .json({
-          message:
-            "Houve um problema em processar a sua solicitação. Tente novamente mais tarde.",
-        });
+      res.status(422).json({
+        message:
+          "Houve um problema em processar a sua solicitação. Tente novamente mais tarde.",
+      });
       return;
     }
 
@@ -219,7 +215,7 @@ module.exports = class PetController {
       const imageUploadPromises = images.map((image) =>
         uploadImageToFirebase(req, image)
       );
-  
+
       try {
         const imagesUrls = await Promise.all(imageUploadPromises);
         updateData.images = imagesUrls;
@@ -231,6 +227,56 @@ module.exports = class PetController {
 
     await Pet.findByIdAndUpdate(id, updateData);
 
-    res.status(200).json({ message: "Pet atualizado com sucesso!", updateData });
+    res
+      .status(200)
+      .json({ message: "Pet atualizado com sucesso!", updateData });
+  }
+
+  static async scheduleAdoption(req, res) {
+    const id = req.params.id;
+
+    // check if pet exits
+
+    const pet = await Pet.findOne({ _id: id });
+
+    if (!pet) {
+      res.status(404).json({ message: "Pet não encontrado" });
+      return;
+    }
+
+    //  check if user registered the pet
+
+    const token = getToken(req);
+    const user = await getUserByToken(token);
+
+    if (pet.user._id.equals(user._id)) {
+      res.status(422).json({
+        message: "Você não pode agendar uma visita com seu próprio pet.",
+      });
+      return;
+    }
+
+    //   check if user already scheduled a visit
+
+    if (pet.adopter) {
+      if (pet.adopter._id.equals(user._id)) {
+        res
+          .status(422)
+          .json({ message: "Voce ja agendou uma visita para este pet." });
+        return;
+      }
+    }
+    //  add user to pet
+    pet.adopter = {
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      image: user.image,
+    }
+    await Pet.findByIdAndUpdate(id, pet);
+
+    res.status(200).json({
+      message: `A visita foi agendada com sucesso, entre em contato com ${pet.user.name} no telefone: ${pet.user.phone}`,
+    });
   }
 };
