@@ -49,7 +49,9 @@ const uploadImageToFirebase = async (req, file) => {
     blobStream.on("finish", () => {
       const publicUrl = `https://firebasestorage.googleapis.com/v0/b/${bucket.name}/o/${encodeURIComponent(blob.name)}?alt=media`;
       resolve(publicUrl); 
+      console.log('publicUrl', publicUrl)
     });
+
 
     blobStream.on("error", (err) => {
       reject(err);
