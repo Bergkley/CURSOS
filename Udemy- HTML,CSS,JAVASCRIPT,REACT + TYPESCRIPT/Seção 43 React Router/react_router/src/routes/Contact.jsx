@@ -3,7 +3,7 @@ const Contact = () => {
     <div>
       <h1>Página de contato</h1>
     </div>
-  )
-}
+  );
+};
 
-export default Contact
+export default Contact;
