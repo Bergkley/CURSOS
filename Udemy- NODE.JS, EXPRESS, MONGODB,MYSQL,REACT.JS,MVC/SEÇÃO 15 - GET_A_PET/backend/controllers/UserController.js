@@ -1,13 +1,13 @@
 const User = require("../models/User");
 
-const bcrypt = require('bcrypt')
-const jwt = require('jsonwebtoken')
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
 // Helpers
 const createUserToken = require("../helpers/create-user-token");
 const getToken = require("../helpers/get-token");
 const getUserByToken = require("../helpers/get-user-by-token");
-const {uploadImageToFirebase} = require('../helpers/image.upload')
+const { uploadImageToFirebase } = require("../helpers/image.upload");
 
 module.exports = class UserController {
   static async register(req, res) {
@@ -57,8 +57,8 @@ module.exports = class UserController {
     }
 
     // create a password
-    const salt = await bcrypt.genSalt(12)
-    const passwordHash = await bcrypt.hash(password, salt)
+    const salt = await bcrypt.genSalt(12);
+    const passwordHash = await bcrypt.hash(password, salt);
 
     // create a user
     const user = new User({
@@ -70,7 +70,6 @@ module.exports = class UserController {
     try {
       const newUser = await user.save();
       await createUserToken(newUser, req, res);
-        
     } catch (error) {
       res.status(500).json({ message: error });
     }
@@ -89,23 +88,23 @@ module.exports = class UserController {
       return;
     }
 
-      // check if user exists
-      const user = await User.findOne({ email: email });
+    // check if user exists
+    const user = await User.findOne({ email: email });
 
-      if (!user) {
-        res.status(422).json({ message: "Não há um usuário com esse e-mail" });
-        return;
-      }
+    if (!user) {
+      res.status(422).json({ message: "Não há um usuário com esse e-mail" });
+      return;
+    }
 
-      // check if password match
-      const checkPassword = await bcrypt.compare(password, user.password);
+    // check if password match
+    const checkPassword = await bcrypt.compare(password, user.password);
 
-      if (!checkPassword) {
-        res.status(422).json({ message: "Senha inválida" });
-        return;
-      }
+    if (!checkPassword) {
+      res.status(422).json({ message: "Senha inválida" });
+      return;
+    }
 
-      await createUserToken(user, req, res);
+    await createUserToken(user, req, res);
   }
 
   static async checkUser(req, res) {
@@ -116,9 +115,8 @@ module.exports = class UserController {
       currentUser = await User.findById(decoded.id);
 
       currentUser.password = undefined;
-
-    }else {
-      currentUser = null
+    } else {
+      currentUser = null;
     }
 
     res.status(200).send(currentUser);
@@ -138,24 +136,20 @@ module.exports = class UserController {
 
   static async editUser(req, res) {
     const id = req.params.id;
-    const {name, email, password,confirmpassword, phone} = req.body;
-     
-     
+    const { name, email, password, confirmpassword, phone } = req.body;
+
     //  check if user exists
-    const token = getToken(req)
+    const token = getToken(req);
 
-     const user = await getUserByToken(token);
+    const user = await getUserByToken(token);
 
-
-     if(req.file) {
-      
+    if (req.file) {
       const Url_image = await uploadImageToFirebase(req, req.file);
 
       user.image = Url_image;
-      
-     }
+    }
 
-     if (!user) {
+    if (!user) {
       res.status(422).json({ message: "Usuário não encontrado!" });
       return;
     }
@@ -175,8 +169,8 @@ module.exports = class UserController {
     const userExists = await User.findOne({ email: email });
 
     if (user.email !== email && userExists) {
-      res.status(422).json({ message: 'Por favor, utilize outro e-mail!' })
-      return
+      res.status(422).json({ message: "Por favor, utilize outro e-mail!" });
+      return;
     }
     user.email = email;
 
@@ -187,31 +181,29 @@ module.exports = class UserController {
 
     user.phone = phone;
 
-
-   if(password != confirmpassword) {
-      res.status(422).json({ message: "A senha e a confirmação precisam ser iguais!" });
+    if (password != confirmpassword) {
+      res
+        .status(422)
+        .json({ message: "A senha e a confirmação precisam ser iguais!" });
       return;
-   }else if(password === confirmpassword && password != null) {
-    const salt = await bcrypt.genSalt(12)
-    const passwordHash = await bcrypt.hash(password, salt)
-    user.password = passwordHash;
-   }
+    } else if (password === confirmpassword && password != null) {
+      const salt = await bcrypt.genSalt(12);
+      const passwordHash = await bcrypt.hash(password, salt);
+      user.password = passwordHash;
+    }
 
-   try {
-    // returns updated data
-    await User.findOneAndUpdate(
-      { _id: user._id },
-      { $set: user },
-      { new: true },
-    )
-    res.json({
-      message: 'Usuário atualizado com sucesso!',
-    })
-  } catch (error) {
-    res.status(500).json({ message: error })
-  }
-    
-
-
+    try {
+      // returns updated data
+      await User.findOneAndUpdate(
+        { _id: user._id },
+        { $set: user },
+        { new: true }
+      );
+      res.json({
+        message: "Usuário atualizado com sucesso!",
+      });
+    } catch (error) {
+      res.status(500).json({ message: error });
+    }
   }
 };
