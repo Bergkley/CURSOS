@@ -9,6 +9,8 @@ import Logo from '../../assets/img/logo.png'
 
 function Navbar() {
 
+  const teste = false
+
   return (
     <nav className={styles.navbar}>
       <div className={styles.navbar_logo}>
@@ -19,7 +21,7 @@ function Navbar() {
         <li>
           <Link to="/">Adotar</Link>
         </li>
-        {true ? (
+        {teste ? (
           <>
             <li>
               <Link to="/pet/myadoptions">Minhas Adoções</Link>
