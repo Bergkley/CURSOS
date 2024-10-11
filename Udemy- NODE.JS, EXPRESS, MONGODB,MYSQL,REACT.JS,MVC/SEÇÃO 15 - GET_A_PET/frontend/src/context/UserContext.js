@@ -5,9 +5,9 @@ import UserAuth from "../hooks/userAuth";
 const Context = createContext();
 
 function UserProvider({ children }) {
-    const { register} = UserAuth();
+    const { authenticated,register} = UserAuth();
 
-    return <Context.Provider value={{register}}>{children}</Context.Provider>;
+    return <Context.Provider value={{authenticated,register}}>{children}</Context.Provider>;
 }
 
 export {Context, UserProvider}

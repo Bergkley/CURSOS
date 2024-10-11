@@ -9,6 +9,7 @@ import Container from "../src/components/layout/Container";
 import Login from "../src/components/pages/Auth/Login";
 import Register from "../src/components/pages/Auth/Register";
 import Home from "../src/components/pages/Home";
+import Message from "./components/layout/Message";
 
 // context
 import { UserProvider } from "../src/context/UserContext";
@@ -18,6 +19,7 @@ function App() {
     <Router>
       <UserProvider>
         <Navbar />
+        <Message />
         <Container>
           <Switch>
             <Route path="/login">
