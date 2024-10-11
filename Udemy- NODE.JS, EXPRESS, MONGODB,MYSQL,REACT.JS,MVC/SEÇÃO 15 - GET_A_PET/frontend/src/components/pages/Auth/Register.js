@@ -3,11 +3,15 @@ import { Link } from 'react-router-dom'
 import Input from '../../form/input'
 
 import styles from '../../form/Form.module.css'
+import { Context } from '../../../context/UserContext'
+
 
 
 function Register() {
 
   const [user, setUser] = useState({});
+
+  const {register} = useContext(Context);
 
 
  
@@ -18,7 +22,8 @@ function Register() {
 
   function handleSubmit(e) {
    e.preventDefault();
-  //  Enviar
+
+   register(user)
   }
 
   return (
