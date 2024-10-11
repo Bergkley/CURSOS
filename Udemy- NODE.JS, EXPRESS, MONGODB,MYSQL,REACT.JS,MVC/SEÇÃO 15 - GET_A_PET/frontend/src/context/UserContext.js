@@ -1,13 +1,19 @@
-import { createContext } from "react";
+import React, { createContext } from "react";
 
-import UserAuth from "../hooks/userAuth";
+import useAuth from "../hooks/userAuth";
 
 const Context = createContext();
 
 function UserProvider({ children }) {
-    const { authenticated,register} = UserAuth();
+  const { authenticated, loading, register, login, logout } = useAuth();
 
-    return <Context.Provider value={{authenticated,register}}>{children}</Context.Provider>;
+  return (
+    <Context.Provider
+      value={{ loading, authenticated, register, login, logout }}
+    >
+      {children}
+    </Context.Provider>
+  );
 }
 
-export {Context, UserProvider}
+export { Context, UserProvider };

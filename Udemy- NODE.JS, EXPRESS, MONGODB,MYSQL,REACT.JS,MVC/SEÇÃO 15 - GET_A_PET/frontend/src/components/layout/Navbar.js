@@ -5,9 +5,12 @@ import styles from './Navbar.module.css'
 
 import Logo from '../../assets/img/logo.png'
 
+import { Context } from '../../context/UserContext'
 
 
 function Navbar() {
+
+  const { authenticated } = useContext(Context)
 
   const teste = false
 
@@ -21,7 +24,7 @@ function Navbar() {
         <li>
           <Link to="/">Adotar</Link>
         </li>
-        {teste ? (
+        {authenticated ? (
           <>
             <li>
               <Link to="/pet/myadoptions">Minhas Adoções</Link>
