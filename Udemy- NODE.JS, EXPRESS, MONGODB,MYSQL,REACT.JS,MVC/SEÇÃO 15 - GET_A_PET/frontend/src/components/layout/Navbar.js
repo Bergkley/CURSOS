@@ -10,7 +10,7 @@ import { Context } from '../../context/UserContext'
 
 function Navbar() {
 
-  const { authenticated } = useContext(Context)
+  const { authenticated, logout } = useContext(Context)
 
   const teste = false
 
@@ -35,7 +35,7 @@ function Navbar() {
             <li>
               <Link to="/user/profile">Meu Perfil</Link>
             </li>
-            <li >Sair</li>
+            <li onClick={logout}>Sair</li>
           </>
         ) : (
           <>
