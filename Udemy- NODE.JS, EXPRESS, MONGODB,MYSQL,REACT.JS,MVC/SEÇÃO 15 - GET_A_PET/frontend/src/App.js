@@ -13,6 +13,8 @@ import Message from "./components/layout/Message";
 import Profile from "./components/pages/User/Profile";
 import MyPets from "./components/pages/Pet/MyPets";
 import EditPet from "./components/pages/Pet/EditPet";
+import PetDetails from "./components/pages/Pet/PetDetails";
+
 
 
 
@@ -46,6 +48,9 @@ function App() {
             </Route>
             <Route path="/pet/edit/:id">
               <EditPet />
+            </Route>
+            <Route path="/pet/:id">
+              <PetDetails />
             </Route>
             <Route path="/">
               <Home />
