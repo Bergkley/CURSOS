@@ -4,6 +4,7 @@ import formStyles from "./Form.module.css";
 
 import Input from "./input";
 import Select from "./Select";
+import RoundedImage from "../layout/RoundedImage";
 
 const PetForm = ({ handleSubmit, petData, btnText }) => {
   const [pet, setPet] = useState(petData || {});
@@ -37,7 +38,7 @@ const PetForm = ({ handleSubmit, petData, btnText }) => {
         <div className={formStyles.preview_pet_images}>
         {preview.length > 0
           ? preview.map((image, index) => (
-              <img
+              <RoundedImage
                 src={URL.createObjectURL(image)}
                 alt={pet.name}
                 key={`${pet.name}+${index}`}
@@ -45,7 +46,7 @@ const PetForm = ({ handleSubmit, petData, btnText }) => {
             ))
           : pet.images &&
             pet.images.map((image, index) => (
-              <img
+              <RoundedImage
                 src={`${image}`}
                 alt={pet.name}
                 key={`${pet.name}+${index}`}
