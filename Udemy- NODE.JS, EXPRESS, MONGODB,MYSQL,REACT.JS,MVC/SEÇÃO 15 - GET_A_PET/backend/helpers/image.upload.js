@@ -33,7 +33,8 @@ const uploadImageToFirebase = async (req, file) => {
   } else if (req.baseUrl.includes('pets')) {
     folder = "Pets";
   }
-  const filename = `${folder}/${Date.now()}${path.extname(file.originalname)}`; 
+  const filename = `${folder}/${Date.now()}-${Math.floor(Math.random() * 10000)}${path.extname(file.originalname)}`;
+
   console.log('filename', filename)
   const blob = bucket.file(filename);
 
