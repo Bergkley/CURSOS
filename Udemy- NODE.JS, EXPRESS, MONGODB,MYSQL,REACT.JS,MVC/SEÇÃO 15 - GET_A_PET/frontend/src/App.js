@@ -49,6 +49,9 @@ function App() {
             <Route path="/pet/edit/:id">
               <EditPet />
             </Route>
+            <Route path="/pet/myadoptions">
+              <PetDetails />
+            </Route>
             <Route path="/pet/:id">
               <PetDetails />
             </Route>
