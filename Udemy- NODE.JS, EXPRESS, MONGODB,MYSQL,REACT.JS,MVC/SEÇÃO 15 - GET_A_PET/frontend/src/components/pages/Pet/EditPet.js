@@ -16,7 +16,7 @@ const EditPet = () => {
     useEffect(()=> {
         api.get(`/pets/${id}`, {
             headers: {
-                Authorization: `Bearer ${JSON.parse(token)}`
+                Authorization: `Bearer ${(token)}`
             }
         }).then((response)=> {
             setPet(response.data.pet) 
@@ -43,7 +43,7 @@ const EditPet = () => {
         const data = await api
           .patch(`pets/${pet._id}`, formData, {
             headers: {
-              Authorization: `Bearer ${JSON.parse(token)}`,
+              Authorization: `Bearer ${(token)}`,
               'Content-Type': 'multipart/form-data',
             },
           })

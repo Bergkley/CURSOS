@@ -31,7 +31,7 @@ const AddPet = () => {
         const data = await api
           .post(`pets/create`, formData, {
             headers: {
-              Authorization: `Bearer ${JSON.parse(token)}`,
+              Authorization: `Bearer ${(token)}`,
               'Content-Type': 'multipart/form-data',
             },
           })

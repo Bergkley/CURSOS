@@ -22,6 +22,7 @@ import PetDetails from "./components/pages/Pet/PetDetails";
 // context
 import { UserProvider } from "../src/context/UserContext";
 import AddPet from "./components/pages/Pet/AddPet";
+import MyAdoptions from "./components/pages/Pet/MyAdoptions";
 
 function App() {
   return (
@@ -50,7 +51,7 @@ function App() {
               <EditPet />
             </Route>
             <Route path="/pet/myadoptions">
-              <PetDetails />
+              <MyAdoptions />
             </Route>
             <Route path="/pet/:id">
               <PetDetails />

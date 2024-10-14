@@ -14,10 +14,14 @@ const MyPets = () => {
     const {setFlashMessage} = useFlashMessage();
 
     useEffect(() => {
+      api.defaults.headers.Authorization = `Bearer ${(token)}`
+    }, [token])
+
+    useEffect(() => {
       api
         .get('/pets/mypets', {
           headers: {
-            Authorization: `Bearer ${JSON.parse(token)}`,
+            Authorization: `Bearer ${(token)}`,
           },
         })
         .then((response) => {
@@ -29,7 +33,7 @@ const MyPets = () => {
       let msgType = 'success'
       const data  = await api.delete(`/pets/${id}`, {
         headers: {
-          Authorization: `Bearer ${JSON.parse(token)}`,
+          Authorization: `Bearer ${(token)}`,
         },
       }).then((response)=> {
         const updatedPets = pets.filter((pet) => pet._id !== id)
@@ -44,24 +48,32 @@ const MyPets = () => {
     }
     async function concludeAdoption(id) {
       let msgType = 'success'
-  
+    
       const data = await api
         .patch(`/pets/conclude/${id}`, {
           headers: {
-            Authorization: `Bearer ${JSON.parse(token)}`,
+            Authorization: `Bearer ${(token)}`,
           },
         })
         .then((response) => {
-          return response.data
+          const updatedPets = pets.map((pet) => {
+            if (pet._id === id) {
+              return { ...pet, available: false }; 
+            }
+            return pet;
+          });
+          setPets(updatedPets);
+          return response.data;
         })
         .catch((err) => {
-          console.log(err)
-          msgType = 'error'
-          return err.response.data
-        })
-  
-      setFlashMessage(data.message, msgType)
+          console.log(err);
+          msgType = 'error';
+          return err.response.data;
+        });
+    
+      setFlashMessage(data.message, msgType);
     }
+    
     return (
       <section>
         <div className={styles.petslist_header}>
