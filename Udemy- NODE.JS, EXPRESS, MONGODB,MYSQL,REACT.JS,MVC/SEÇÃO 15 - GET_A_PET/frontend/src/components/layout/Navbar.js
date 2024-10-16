@@ -12,7 +12,6 @@ function Navbar() {
 
   const { authenticated, logout } = useContext(Context)
 
-  const teste = false
 
   return (
     <nav className={styles.navbar}>
