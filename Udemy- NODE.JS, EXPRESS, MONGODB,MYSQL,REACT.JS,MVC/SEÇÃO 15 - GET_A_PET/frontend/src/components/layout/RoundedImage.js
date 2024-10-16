@@ -1,4 +1,4 @@
-import styles from './RoundedImage.module.css'
+import styles from "./RoundedImage.module.css";
 
 function RoundedImage({ src, alt, width }) {
   return (
@@ -7,7 +7,7 @@ function RoundedImage({ src, alt, width }) {
       src={src}
       alt={alt}
     />
-  )
+  );
 }
 
-export default RoundedImage
+export default RoundedImage;
