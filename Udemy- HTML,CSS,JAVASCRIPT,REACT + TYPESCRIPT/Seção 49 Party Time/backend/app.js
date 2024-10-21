@@ -8,17 +8,17 @@ app.use(express.json());
 
 // DB connection
 
-const conn = require('./db/conn');
+const conn = require("./db/conn");
 
 // Routes
 
-const routes = require('./routes/router');
+const routes = require("./routes/router");
 app.use("/api", routes);
 
 // Conexão
 
 conn();
 
-app.listen(3000, function(){
-    console.log("Servidor online")
-})
+app.listen(3000, function () {
+  console.log("Servidor online");
+});
