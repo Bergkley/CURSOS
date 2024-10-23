@@ -10,7 +10,7 @@ class ReserveController {
 
         return res.json(reserves);
     }
-    
+
     async store(req, res) {
         const { user_id } = req.headers;
         const { house_id } = req.params;
@@ -21,7 +21,7 @@ class ReserveController {
         if (!house) {
             return res.status(400).json({ error: 'House not found' });
         }
-        
+
         if(house.status !== "true") {
             return res.status(400).json({ error: 'House not available' });
         }
