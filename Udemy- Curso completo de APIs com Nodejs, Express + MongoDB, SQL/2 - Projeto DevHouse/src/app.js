@@ -1,6 +1,6 @@
 import express from 'express';
 import routes from './routes';
-import conn from '../db/conn';
+import conn from './db/conn';
 
 class App{
     constructor(){
