@@ -51,7 +51,7 @@ class ReserveController {
 
         const reserve = await Reserve.findByIdAndDelete({_id: reserve_id});
 
-        return res.json({mensage: "Reserve deleted"});
+        return res.json({mensage: "Reserve deleted",}, reserve);
     }
 }
 
