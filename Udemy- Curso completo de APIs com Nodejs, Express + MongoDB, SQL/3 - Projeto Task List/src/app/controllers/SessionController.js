@@ -29,10 +29,6 @@ class SessionController {
       }),
     });
   }
-
-  async update(req, res) {
-    res.json({ ok: true });
-  }
 }
 
 export default new SessionController();
