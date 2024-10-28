@@ -91,3 +91,15 @@ function showDogDetails(dog: Dog){
 
 showDogDetails(turca)
 showDogDetails(bob)
+
+// 5  - task
+
+function reviewUser (nota: boolean | number){
+  if(!nota){
+    console.log('Por favor, defina uma nota')
+    return
+  }else{
+    console.log(`Sua nota e ${nota}`)
+  }
+
+}
