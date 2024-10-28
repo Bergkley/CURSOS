@@ -78,3 +78,13 @@ function showDogDetails(dog) {
 }
 showDogDetails(turca);
 showDogDetails(bob);
+// 5  - task
+function reviewUser(nota) {
+    if (!nota) {
+        console.log('Por favor, defina uma nota');
+        return;
+    }
+    else {
+        console.log(`Sua nota e ${nota}`);
+    }
+}
