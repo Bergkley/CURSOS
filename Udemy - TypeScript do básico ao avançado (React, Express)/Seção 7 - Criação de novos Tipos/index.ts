@@ -61,3 +61,27 @@ const myChar: Character = {
 }
 
 console.log(showCharName(myChar, "name"))
+
+// 6 - typeof type operator
+const userName: string = "Berg"
+const userName2: typeof userName = "John"
+
+// 7 - indexed Acess types
+
+type Truck = {
+  km: number;
+  kg: number;
+  description: string;
+}
+
+type Km = Truck["km"];
+
+const newTruck: Truck = {
+  km: 10000,
+  kg: 5000,
+  description: "Caminhão"
+}
+
+function showkm(km: Km) {
+  console.log(km)
+}
