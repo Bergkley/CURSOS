@@ -59,3 +59,13 @@ const fusca: Car = {
 };
 
 console.log(fusca);
+
+// 4 - index signature
+
+interface Coordinates {
+  [index: string]: number;
+}
+
+let coordinates: Coordinates = {
+  x: 10,  
+}
