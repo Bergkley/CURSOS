@@ -69,3 +69,29 @@ interface Coordinates {
 let coordinates: Coordinates = {
   x: 10,  
 }
+
+// 5 - Extending Types interfaces
+
+interface Human {
+  name: string;
+  age: number;
+}
+
+interface SuperHuman extends Human {
+  superpowers: string[];
+}
+
+const berg1: Human = {
+  name: "Berg",
+  age: 30,
+};
+
+const goku: SuperHuman = {
+  name: "Goku",
+  age: 50,
+  superpowers: ["Kamehameha", "Genjutsu"],
+};
+
+
+console.log('Berg', berg1);
+console.log('Goku', goku);
