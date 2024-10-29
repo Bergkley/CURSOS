@@ -128,3 +128,16 @@ myArray.forEach((item)=>{
 myArray = myArray.map((item) => {
   return `Fruta: ${item}`
 })
+
+// 8 - tuplas
+type fiveNumbers = [number, number, number, number, number];
+
+const myNumber: fiveNumbers = [1,2,3,4,5];
+
+// 9 - tuplas com readonly
+function showNumbers(numbers: readonly [number, number]) {
+  console.log(numbers[0]);
+  console.log(numbers[1]);
+}
+
+showNumbers([1,2]);
