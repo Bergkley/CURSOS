@@ -85,3 +85,13 @@ const newTruck: Truck = {
 function showkm(km: Km) {
   console.log(km)
 }
+
+showkm(newTruck.km)
+
+// 8 - conditional types
+
+interface A {}
+interface B extends A {}
+type myType = A extends B ? number : string
+
+const someVar: myType = 5
