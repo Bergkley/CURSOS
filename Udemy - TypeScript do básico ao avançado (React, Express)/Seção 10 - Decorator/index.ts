@@ -149,3 +149,103 @@ const newItem = new ID("1")
 
 console.log(newItem.id)
 
+//  7 - exemplo real com class decorator
+function createdDate(created: Function) {
+  created.prototype.createdAt = new Date();
+}
+
+
+@createdDate
+class Book {
+  id
+  createdAt?: Date
+
+  constructor(id: number) {
+    this.id = id
+  }
+}
+
+@createdDate
+class Pen {
+  id
+  createdAt?: Date
+
+  constructor(id: number) {
+    this.id = id
+  }
+}
+
+const newBook = new Book(12)
+
+console.log(newBook)
+
+// 8 - exemplo real com method decorator
+
+function checkIfUserPosted(
+  target:Object,
+  key:string | Symbol,
+  descriptor:PropertyDescriptor
+){
+  const childFunctions = descriptor.value
+  descriptor.value = function (...args: any[]) {
+
+    if(args[1]===true){
+      console.log("Usuaário postou!")
+      return null
+    }else{
+      return childFunctions.apply(this, args)
+    }
+  }
+  return descriptor;
+}
+
+class Post {
+  alreadyPosted = false
+
+  @checkIfUserPosted
+  post(content: string, alreadyPosted: boolean) {
+    this.alreadyPosted = true;
+    console.log(`Post do usuário: ${content}`);
+  }
+
+}
+
+
+const newPost = new Post()
+newPost.post("Meu primeiro post!", newPost.alreadyPosted)
+
+
+// 9 - exemplo real com property decorator
+
+function Max(limit:number){
+  return function (target: Object, propertyKey: string) {
+    let value: string;
+    
+    const getter = function() {
+      return value;
+    }
+
+    const setter = function(newVal: string) {
+      if(newVal.length > limit){
+        console.log(`O valor deve ter no maximo ${limit} digitos.`)
+        return
+      }else {
+        value = newVal
+      }
+      Object.defineProperty(target, propertyKey, {
+        set: setter,
+        get: getter
+      })
+    }
+  }
+}
+
+class Admin {
+  @Max(10)
+  username
+
+  constructor(username: string) {
+    this.username = username
+  }
+}
+

@@ -129,3 +129,53 @@ __decorate([
 ], ID.prototype, "id", void 0);
 const newItem = new ID("1");
 console.log(newItem.id);
+//  7 - exemplo real com class decorator
+function createdDate(created) {
+    created.prototype.createdAt = new Date();
+}
+let Book = class Book {
+    constructor(id) {
+        this.id = id;
+    }
+};
+Book = __decorate([
+    createdDate
+], Book);
+let Pen = class Pen {
+    constructor(id) {
+        this.id = id;
+    }
+};
+Pen = __decorate([
+    createdDate
+], Pen);
+const newBook = new Book(12);
+console.log(newBook);
+// 8 - exemplo real com method decorator
+function checkIfUserPosted(target, key, descriptor) {
+    const childFunctions = descriptor.value;
+    descriptor.value = function (...args) {
+        if (args[1] === true) {
+            console.log("Usuaário postou!");
+            return null;
+        }
+        else {
+            return childFunctions.apply(this, args);
+        }
+    };
+    return descriptor;
+}
+class Post {
+    constructor() {
+        this.alreadyPosted = false;
+    }
+    post(content, alreadyPosted) {
+        this.alreadyPosted = true;
+        console.log(`Post do usuário: ${content}`);
+    }
+}
+__decorate([
+    checkIfUserPosted
+], Post.prototype, "post", null);
+const newPost = new Post();
+newPost.post("Meu primeiro post!", newPost.alreadyPosted);
