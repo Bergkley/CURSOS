@@ -56,3 +56,19 @@ class KillerMachine extends Machine {
 
 const destroyer = new KillerMachine("Destroyer", 2);
 console.log(destroyer)
+
+// 5 - Métodos
+class Dwarf {
+  name
+
+  constructor(name: string) {
+    this.name = name
+  }
+
+  greeting(){
+    console.log(`Hey Stranger`)
+  }
+}
+
+const cerberus = new Dwarf("Cerberus");
+cerberus.greeting()
