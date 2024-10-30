@@ -49,7 +49,8 @@ const multiple = new MultipleClass();
 multiple.testing();
 // 3 - class decorator
 function classDec(constructor) {
-    console.log(constructor);
+    console.log('construtor', constructor);
+    console.log('construtor', constructor.name);
     if (constructor.name === "User") {
         console.log("Criando usuário!");
     }
@@ -62,7 +63,7 @@ let User = class User {
 User = __decorate([
     classDec
 ], User);
-const matheus = new User("Matheus");
+const Berg = new User("Berg");
 // 4 - method decorator
 function enumerable(value) {
     return function (target, propertyKey, descriptor) {
@@ -179,3 +180,33 @@ __decorate([
 ], Post.prototype, "post", null);
 const newPost = new Post();
 newPost.post("Meu primeiro post!", newPost.alreadyPosted);
+// 9 - exemplo real com property decorator
+function Max(limit) {
+    return function (target, propertyKey) {
+        let value;
+        const getter = function () {
+            return value;
+        };
+        const setter = function (newVal) {
+            if (newVal.length > limit) {
+                console.log(`O valor deve ter no maximo ${limit} digitos.`);
+                return;
+            }
+            else {
+                value = newVal;
+            }
+            Object.defineProperty(target, propertyKey, {
+                set: setter,
+                get: getter
+            });
+        };
+    };
+}
+class Admin {
+    constructor(username) {
+        this.username = username;
+    }
+}
+__decorate([
+    Max(10)
+], Admin.prototype, "username", void 0);

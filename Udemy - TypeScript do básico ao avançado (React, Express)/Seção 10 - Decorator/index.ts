@@ -50,7 +50,8 @@ multiple.testing()
 
 // 3 - class decorator
 function classDec(constructor: Function) {
-  console.log(constructor)
+  console.log('construtor',constructor)
+  console.log('construtor',constructor.name)
   if(constructor.name === "User") {
     console.log("Criando usuário!")
   }
@@ -65,7 +66,7 @@ class User {
   }
 }
 
-const matheus = new User("Matheus")
+const Berg = new User("Berg")
 
 // 4 - method decorator
 function enumerable(value: boolean) {
