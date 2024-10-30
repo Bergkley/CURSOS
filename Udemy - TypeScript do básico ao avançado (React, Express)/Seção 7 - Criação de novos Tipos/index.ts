@@ -30,7 +30,7 @@ console.log(myCar, myPen)
 
 //4 - type parameters
 function getSomeKey<T, K extends keyof T>(obj: T, key: K) {
-  return `O valor da chave ${key} é ${obj[key]}`
+  return `O valor da chave ${String(key)} é ${obj[key]}`
 }
 
 const server2 = {
@@ -95,3 +95,16 @@ interface B extends A {}
 type myType = A extends B ? number : string
 
 const someVar: myType = 5
+
+// 9 - Template literals types
+
+type testA = "text"
+
+type CustomType = `some ${testA}`
+
+const testing: CustomType = "some text"
+
+type a1 = "Testando"
+type a2 = "Union"
+
+type a3 = `${a1}` | `${a2}`
