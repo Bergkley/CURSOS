@@ -4,6 +4,7 @@ import FirstComponent from "./components/FirstComponent";
 import SecondComponent from "./components/SecondComponent";
 import Destructuring, {Category} from "./components/Destructuring";
 import State from "./components/State";
+import Context from "./components/Context";
 import { createContext } from "react";
 
 interface IAppContext{
@@ -58,6 +59,7 @@ function App() {
         <State />
         {myText && <p>{myText}</p>}
         {mySecondText && <p>{myText}</p>}
+        <Context />
       </div>
     </AppContext.Provider>
   );
