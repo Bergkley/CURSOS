@@ -1,6 +1,8 @@
 
 // 4- importação de component
 import FirstComponent from "./components/FirstComponent";
+import SecondComponent from "./components/SecondComponent";
+import Destructuring from "./components/Destructuring";
 function App() {
   // 1 - variaveis
   const name: string = "Berg";
@@ -19,6 +21,8 @@ function App() {
 
       <p>{userGreeting(name)}</p>
       <FirstComponent />
+      <SecondComponent name="Berg" />
+      <Destructuring title="Post 1" content="Algum conteudo" commentsQty={10} tags={["ts", "js"]} />
     </div>
   );
 }
