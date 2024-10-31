@@ -1,5 +1,6 @@
 
-
+// 4- importação de component
+import FirstComponent from "./components/FirstComponent";
 function App() {
   // 1 - variaveis
   const name: string = "Berg";
@@ -17,6 +18,7 @@ function App() {
       {isWorking && <p>Estou trabalhando</p>}
 
       <p>{userGreeting(name)}</p>
+      <FirstComponent />
     </div>
   );
 }
