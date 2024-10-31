@@ -3,6 +3,7 @@
 import FirstComponent from "./components/FirstComponent";
 import SecondComponent from "./components/SecondComponent";
 import Destructuring from "./components/Destructuring";
+import State from "./components/State";
 function App() {
   // 1 - variaveis
   const name: string = "Berg";
@@ -23,6 +24,7 @@ function App() {
       <FirstComponent />
       <SecondComponent name="Berg" />
       <Destructuring title="Post 1" content="Algum conteudo" commentsQty={10} tags={["ts", "js"]} />
+      <State />
     </div>
   );
 }
