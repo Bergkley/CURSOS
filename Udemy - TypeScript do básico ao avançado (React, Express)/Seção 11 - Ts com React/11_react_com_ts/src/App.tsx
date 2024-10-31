@@ -14,6 +14,13 @@ function App() {
   const userGreeting = (name: string): string => {
     return `Ola, ${name}`;
   }
+
+  // 8 - type
+  type textOrNull = string | null;
+
+  const myText: textOrNull = "Tem algum texto aqui";
+  const mySecondText: textOrNull = null;
+
   return (
     <div className="App">
       <h1>TypeScript com React</h1>
@@ -30,6 +37,8 @@ function App() {
         category={Category.TS}
         />
       <State />
+      {myText && <p>{myText}</p>}
+      {mySecondText && <p>{myText}</p>}
     </div>
   );
 }
