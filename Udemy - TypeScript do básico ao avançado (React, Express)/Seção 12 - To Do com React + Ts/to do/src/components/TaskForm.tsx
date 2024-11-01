@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import styles from "./TaskForm.module.css";
 import { ITask } from "../interfaces/Task";
 
@@ -8,9 +8,10 @@ type Props = {
   btnText: string;
   taskList: ITask[];
   setTaskList?: React.Dispatch<React.SetStateAction<ITask[]>>;
+  task?: ITask | null;
 };
 
-const TaskForm = ({ btnText, taskList, setTaskList }: Props) => {
+const TaskForm = ({ btnText, taskList, setTaskList , task}: Props) => {
   const [id, setId] = useState<number>(0);
   const [title, setTitle] = useState<string>("");
   const [difficulty, setDifficulty] = useState<number>(0);
@@ -33,6 +34,14 @@ const TaskForm = ({ btnText, taskList, setTaskList }: Props) => {
       setDifficulty(parseInt(e.target.value));
     }
   };
+
+  useEffect(() => {
+    if (task) {
+      setId(task.id);
+      setTitle(task.title);
+      setDifficulty(task.difficulty);
+    }
+  },[task])
 
   return (
     <form onSubmit={addTaskHandler} className={styles.form}>
