@@ -7,6 +7,11 @@ interface Props {
   }
 
 const Modal = ({ children, title }: Props) => {
+  const closeModal = (e: React.MouseEvent) => {
+    const modal = document.getElementById("modal");
+    modal?.classList.add("hide");
+    
+  }
   return (
     <div id="modal" className="hide">
       <div className={styles.fade} onClick={closeModal}></div>

@@ -5,12 +5,10 @@ import styles from "./TaskList.module.css";
 type Props = {
   taskList: ITask[];
   handleDelete: (id: number) => void;
+  handleEdit: () => void
 };
 
-const TaskList = ({ taskList, handleDelete }: Props) => {
-  const handleEdit = () => {
-    
-  }
+const TaskList = ({ taskList, handleDelete, handleEdit }: Props) => {
   return (
     <>
       {taskList.length > 0 ? (
