@@ -26,6 +26,10 @@ app.get("/api/interfaces", (req: Request, res: Response) => {
     return res.send("utilizando as interfaces")
 })
 
+app.get("/api/json", (req: Request, res: Response) => {
+    return res.json({name: "shirts", price: 100})
+})
+
 app.listen(3000, () => {
     console.log("Server is running");
 })
