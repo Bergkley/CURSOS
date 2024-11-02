@@ -1,4 +1,4 @@
-import express from "express"
+import express, { Request, Response } from "express"
 const app = express();
 
 app.use(express.json());
@@ -21,6 +21,10 @@ app.all("/api/product/check", (req, res) => {
         return res.send("Algo deu errado");
     }
 });
+
+app.get("/api/interfaces", (req: Request, res: Response) => {
+    return res.send("utilizando as interfaces")
+})
 
 app.listen(3000, () => {
     console.log("Server is running");
