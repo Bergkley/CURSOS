@@ -12,6 +12,16 @@ app.post("/api/product", (req, res) => {
     return res.send('Produto adicionado');
 });
 
+app.all("/api/product/check", (req, res) => {
+    if(req.method === "POST"){
+        return res.send("Inseriu alguma coisa");
+    }else if(req.method === "GET"){ 
+        return res.send("Leu alguma coisa");
+    }else {
+        return res.send("Algo deu errado");
+    }
+});
+
 app.listen(3000, () => {
     console.log("Server is running");
 })
