@@ -7,6 +7,13 @@ app.get("/", (req, res) => {
     res.send("Hello World");
 })
 
+function showPath(req: Request, res: Response, next:NextFunction) {
+    console.log(req.path)
+    next()
+}
+
+app.use(showPath)
+
 app.post("/api/product", (req, res) => {
     console.log(req.body)
     return res.send('Produto adicionado');
