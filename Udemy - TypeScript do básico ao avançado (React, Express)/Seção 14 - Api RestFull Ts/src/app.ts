@@ -1,6 +1,9 @@
 // Env
 require('dotenv').config();
 
+// Logger
+import Logger from "../config/logger";
+
 import express from "express";
 import config from "config";
 
@@ -21,5 +24,5 @@ app.use('/api/', router);
 
 
 app.listen(config.get<number>("port"), async ()=>{
-    console.log(`Servidor online na porta ${config.get<number>("port")}`)
+    Logger.info(`Servidor online na porta ${config.get<number>("port")}`)
 })
