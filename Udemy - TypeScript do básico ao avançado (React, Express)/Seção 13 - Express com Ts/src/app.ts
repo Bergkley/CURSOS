@@ -1,4 +1,4 @@
-import express, { Request, Response } from "express"
+import express, { NextFunction, Request, Response } from "express"
 const app = express();
 
 app.use(express.json());
@@ -41,6 +41,20 @@ function getUser(req: Request, res: Response) {
     return res.send("Id: " + req.params.id)
 }
 app.get("/api/user/:id", getUser)
+
+function checkUser(req: Request, res: Response, next:NextFunction) {
+    if(req.params.id === "1"){
+        console.log("Pode seguir!")
+        next()
+    }else {
+        console.log("Não pode seguir!")
+        
+    }
+}
+
+app.get("/api/user/:id/acess",checkUser, (req: Request, res: Response) => {
+    return res.json({msg: "Acesso concedido"})
+})
 
 
 app.get("/api/json", (req: Request, res: Response) => {
