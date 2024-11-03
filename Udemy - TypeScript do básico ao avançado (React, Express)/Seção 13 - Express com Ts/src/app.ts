@@ -68,6 +68,11 @@ app.get("/api/json", (req: Request, res: Response) => {
     return res.json({name: "shirts", price: 100})
 })
 
+app.get("/api/user/:id/details/:name", (req: Request<{id: string, name: string}>, res: Response<{status: boolean}>) => {
+    console.log("id: " + req.params.id + " name: " + req.params.name)
+    return res.json({status: true})
+})
+
 app.listen(3000, () => {
     console.log("Server is running");
 })
