@@ -30,6 +30,11 @@ app.get("/api/product/:id", (req: Request, res: Response) => {
     console.log(req.params)
     return res.send("Id: " + req.params.id)
 })
+
+app.get ("/api/product/:id/review/:reviewId", (req: Request, res: Response) => {
+    console.log(req.params)
+    return res.send("Id: " + req.params.id + " Review: " + req.params.reviewId)
+})
 app.get("/api/json", (req: Request, res: Response) => {
     return res.json({name: "shirts", price: 100})
 })
