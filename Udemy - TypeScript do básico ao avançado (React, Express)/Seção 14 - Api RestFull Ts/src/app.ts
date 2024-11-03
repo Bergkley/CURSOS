@@ -1,3 +1,6 @@
+// Env
+require('dotenv').config();
+
 import express from "express";
 import config from "config";
 
@@ -5,6 +8,10 @@ const app = express();
 
 // JSON middleware
 app.use(express.json());
+
+// DB connection
+import connect from "../config/db";
+connect();
 
 // Routes
 import router from './router';
