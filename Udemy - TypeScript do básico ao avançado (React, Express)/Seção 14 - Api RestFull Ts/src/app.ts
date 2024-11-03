@@ -12,6 +12,10 @@ const app = express();
 // JSON middleware
 app.use(express.json());
 
+// Morgan middleware
+import morganMiddleware from "./middleware/morganMiddleware";
+app.use(morganMiddleware);
+
 // DB connection
 import connect from "../config/db";
 connect();
