@@ -73,6 +73,14 @@ app.get("/api/user/:id/details/:name", (req: Request<{id: string, name: string}>
     return res.json({status: true})
 })
 
+app.get("/api/error", (req: Request, res: Response) => {
+    try {
+        throw new Error("Ocorreu um erro")
+    } catch (e:any) {
+         res.status(500).json({error: e.message})
+    }
+})
+
 app.listen(3000, () => {
     console.log("Server is running");
 })
