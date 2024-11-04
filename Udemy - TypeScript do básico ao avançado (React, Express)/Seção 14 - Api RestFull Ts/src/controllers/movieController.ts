@@ -4,7 +4,7 @@ import { Request, Response } from "express";
 import { MovieModel } from "../models/Movie";
 
 // lOGGER
-import Logger from "../../config/Logger"
+import Logger from "../../config/logger"
 
 export async function createMovie(req: Request, res: Response) {
     try {
