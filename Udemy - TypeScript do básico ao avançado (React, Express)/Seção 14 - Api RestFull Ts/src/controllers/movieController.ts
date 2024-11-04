@@ -7,5 +7,11 @@ import { MovieModel } from "../models/Movie";
 import Logger from "../../config/Logger"
 
 export async function createMovie(req: Request, res: Response) {
-    return res.status(200).send({ message: "Cadastrado com sucesso!" });
+    try {
+        const data = req.body
+        const movie = await MovieModel.create(data)
+        return res.status(201).json(movie)
+    } catch (e:any) {
+        Logger.error(`Erro no sistema: ${e.message}`)
+    }
 }
