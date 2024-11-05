@@ -3,3 +3,6 @@ CREATE DATABASE (NOME)
 
 // Ver todos os Banco de dados
 SHOW DATABASE
+
+// Deleta o banco de dados
+DROP DATABASE (nome)
