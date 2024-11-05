@@ -1,2 +1,11 @@
 // Criar Banco de Dados
 CREATE DATABASE (NOME)
+
+// Ver todos os Banco de dados
+SHOW DATABASE
+
+//  Entrar no banco de dados
+USE (nome);
+
+// importar
+source (nome do arquivo);
