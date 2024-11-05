@@ -6,3 +6,6 @@ SHOW DATABASE
 
 // Deleta o banco de dados
 DROP DATABASE (nome)
+
+// Exportando banco de dados
+mysqldump -u root (nome do banco) > (nome do arquivo)
