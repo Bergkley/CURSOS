@@ -9,3 +9,9 @@ DROP DATABASE (nome)
 
 // Exportando banco de dados
 mysqldump -u root (nome do banco) > (nome do arquivo)
+
+// Utilizando banco de dados
+USE (nome do banco)
+
+// como utilizar  banco de dados sem tá nele
+SELECT * FROM (nome do banco).(nome da tabela)
