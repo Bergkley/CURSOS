@@ -21,7 +21,22 @@ DROP TABLE (nome da tabela);
 ● BOOL: 0 é falso e outros valores são verdadeiros;
 ● INT(x): valores entre -2147483648 a 2147483647;
 
+<!-- 4 - Tipos de dados (Data) -->
+● DATE: Aceita uma data no formato YYYY-MM-DD;
+● DATETIME: Aceita uma data com horário no formato YYYY-MM-DD
+hh:mm:ss;
+● TIMESTAMP: Aceita uma data no formato de DATETIME, porém apenas
+entre os anos 1970 a 2038;
+● As datas também inserimos entre aspas!
+
 <!-- 5 - Inserir dados -->
 INSERT INTO  (nome da tabela) (colunas) VALUES (valores);
 
 ● EX: INSERT INTO  produtos (nome,sku,informacoes) VALUES("Playstation 5","PS5XY","É um videogame da última geração")
+
+<!-- 6 - Alteração da tabela -->
+● ADD COLUNA : ALTER TABLE <tabela> ADD COLUMN <nome> <tipo>;
+
+● Remove Coluna : ALTER TABLE <tabela> DROP COLUMN <nome>;
+
+● Modificando Coluna :  ALTER TABLE <tabela> MODIFY COLUMN <coluna> <tipo>;
