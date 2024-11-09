@@ -21,3 +21,7 @@
 <!-- 6 - EXISTS -->
 ● EXISTS
 ● SELECT (coluna) FROM (tabela) WHERE EXISTS (SELECT (coluna) FROM (tabela) WHERE (coluna) = (valor));
+
+<!-- 7 - ANY -->
+● ANY
+● SELECT (coluna) FROM (tabela) WHERE (coluna) = ANY (SELECT (coluna) FROM (tabela) WHERE (coluna) = (valor));
