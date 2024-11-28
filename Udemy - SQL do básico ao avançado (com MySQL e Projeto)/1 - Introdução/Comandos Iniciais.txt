@@ -15,4 +15,5 @@ USE (nome);
 source (nome do arquivo);
 
 // Seleção de dados
+
 SELECT * FROM (nome da tabela);
