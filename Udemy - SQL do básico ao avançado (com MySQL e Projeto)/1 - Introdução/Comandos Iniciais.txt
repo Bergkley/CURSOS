@@ -3,6 +3,7 @@
 CREATE DATABASE (NOME)
 
 // Ver todos os Banco de dados
+
 SHOW DATABASE
 
 //  Entrar no banco de dados
