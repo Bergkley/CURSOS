@@ -11,6 +11,7 @@ SHOW DATABASE
 USE (nome);
 
 // importar
+
 source (nome do arquivo);
 
 // Seleção de dados
