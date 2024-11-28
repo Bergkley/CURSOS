@@ -1,4 +1,5 @@
 // Criar Banco de Dados
+
 CREATE DATABASE (NOME)
 
 // Ver todos os Banco de dados
