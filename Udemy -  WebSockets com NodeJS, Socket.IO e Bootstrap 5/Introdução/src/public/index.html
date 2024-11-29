@@ -11,6 +11,12 @@
     ></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <style>
+        #messagens {
+            height: 600px;
+            overflow: auto;
+        }
+    </style>
     <script>
       const socket = io("http://localhost:3333", {
         transports: ["websocket"],
@@ -33,17 +39,21 @@
           mensagem,
         });
 
-        escreverMensagemNaTela("Eu", mensagem);
+        escreverMensagemNaTela("EU", mensagem);
       }
 
       function escreverMensagemNaTela(usuario, mensagem) {
+        let bg = usuario === 'EU' ? 'alert-light' : 'alert-success text-end';
+
         let mensagemHtml = document.querySelector("#mensagens").innerHTML;
-        mensagemHtml += `<div class="alert alert-sucess">
+        mensagemHtml += `<div class="alert ${bg}">
             <h3 class="m-0">${usuario}</h3> 
             <p class="m-0">${mensagem}</p>
             </div>`;
 
         document.querySelector("#mensagens").innerHTML = mensagemHtml;
+        document.querySelector("#mensagens").scrollTo(0, document.body.scrollHeight);
+        document.querySelector("#mensagem").value = "";
       }
     </script>
   </head>
