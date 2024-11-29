@@ -12,8 +12,10 @@ io.on('connect',(socket)=> {
 
     io.to(socket.id).emit("teste", { status: true, message: "Conexão estabelecida!" });
 
-    socket.on('teste', (res)=>{
-        io.to(socket.id).emit('berg');
+    socket.on('teste', (res) => {
+        console.log('Mensagem recebida!', res);
+
+        socket.broadcast.emit('teste', res);
     })
 })
 

@@ -1,25 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <script src="https://cdn.socket.io/4.7.5/socket.io.min.js" integrity="sha384-2huaZvOR9iDzHqslqwpR87isEmrfxqyWOF7hr7BY6KG0+hVKLoEXMPUJw3ynWuhO" crossorigin="anonymous"></script>
+    <script
+      src="https://cdn.socket.io/4.7.5/socket.io.min.js"
+      integrity="sha384-2huaZvOR9iDzHqslqwpR87isEmrfxqyWOF7hr7BY6KG0+hVKLoEXMPUJw3ynWuhO"
+      crossorigin="anonymous"
+    ></script>
     <script>
-        const socket = io('http://localhost:3333', {
-            transports: ['websocket']
+      const socket = io("http://localhost:3333", {
+        transports: ["websocket"],
+      });
+
+      socket.on("teste", (res) => {
+        if (res.usuario && res.mensagem) {
+          escreverMensagemNaTela(res.usuario, res.mensagem);
+        } else if (res.message) {
+          escreverMensagemNaTela("Sistema", res.message);
+        }
+      });
+
+      function enviar() {
+        const usuario = document.querySelector("#usuario").value;
+        const mensagem = document.querySelector("#mensagem").value;
+
+        socket.emit("teste", {
+          usuario,
+          mensagem,
         });
 
-        socket.on('teste', (res)=> {
-            console.log(res);
-        })
+        escreverMensagemNaTela("Eu", mensagem);
+      }
 
-        function send() {
-            socket.emit('teste', 'teste de conexão a')
-        }
+      function escreverMensagemNaTela(usuario, mensagem) {
+        let mensagemHtml = document.querySelector("#mensagens").innerHTML;
+        mensagemHtml += `<p><strong>${usuario}</strong> - ${mensagem}</p>`;
+
+        document.querySelector("#mensagens").innerHTML = mensagemHtml;
+      }
     </script>
-</head>
-<body>
-    <h1>Hello World</h1>
-</body>
+  </head>
+  <body>
+    <input id="usuario" placeholder="Informar o usuario" />
+
+    <hr />
+    <textarea id="mensagem"></textarea>
+    <br />
+    <button onclick="enviar()">ENVIAR</button>
+    <hr />
+    <h1>Mensagens</h1>
+    <div id="mensagens"></div>
+  </body>
 </html>
