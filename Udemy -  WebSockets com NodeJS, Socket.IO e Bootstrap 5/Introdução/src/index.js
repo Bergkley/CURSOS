@@ -9,10 +9,14 @@ app.use(express.static(__dirname + '/public'));
 const io = sockeio(server);
 
 io.on('connect',(socket)=> {
+
+    io.to(socket.id).emit("teste", { status: true, message: "Conexão estabelecida!" });
+
     socket.on('teste', (res)=>{
-        console.log(res);
+        io.to(socket.id).emit('berg');
     })
 })
+
 
 
 
