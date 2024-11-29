@@ -4,6 +4,7 @@ import sockeio from 'socket.io';
 
 const app = express();
 const server = http.Server(app)
+app.use(express.static(__dirname + '/public'));
 
 const io = sockeio(server);
 
@@ -16,7 +17,7 @@ io.on('connect',(socket)=> {
 
 
 app.get('/', (req, res) => {
-    res.send('Welcome');
+    res.render('index.html');
 })
 
 server.listen(3333, () => {
