@@ -1,11 +1,16 @@
-export interface SavePurchases {
-  save(purchases: Array<SavePurchases.Params>): Promise<void>;
+class LocalSavePurchases{ 
+  constructor(private readonly cacheStore: CacheStore) {}
+}
+interface  CacheStore{ 
+}
+class CacheStoreSpy implements CacheStore{ 
+  deleteCallsCount = 0;
 }
 
-namespace SavePurchases {
-  export type Params = {
-    id: string;
-    date: Date;
-    value: number;
-  };
-}
+describe('LocalSavePurchases', () => {
+  test('Should not delete cache on sut.init', () => {
+      const cacheStore = new CacheStoreSpy();
+       new LocalSavePurchases(cacheStore);
+      expect(cacheStore.deleteCallsCount).toBe(0);
+  });
+});
