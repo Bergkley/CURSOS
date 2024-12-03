@@ -1,6 +1,6 @@
 import { CacheStore } from "@/data/protocolos/cache";
 import { LocalSavePurchases } from "@/data/usecases";
-import { SavePurchases } from "@/domain";
+import { SavePurchases } from "@/domain/usecases";
 
 class CacheStoreSpy implements CacheStore{ 
 
@@ -19,6 +19,18 @@ class CacheStoreSpy implements CacheStore{
         this.insertCallsCount++
         this.insertKey = key
         this.insertValues = value
+    }
+
+    simulateDeleteError (): void {
+        jest.spyOn(CacheStoreSpy.prototype,'delete').mockImplementationOnce(()=>{
+            throw new Error()
+        })
+    }
+
+    simulateInsertError (): void {
+        jest.spyOn(CacheStoreSpy.prototype,'insert').mockImplementationOnce(()=>{
+            throw new Error()
+        })
     }
 }
 
@@ -63,9 +75,7 @@ describe('LocalSavePurchases', () => {
 
     test('Should not insert new Cache if delete fails',  () => {
         const { cacheStore, sut } = makeSut();
-        jest.spyOn(cacheStore,'delete').mockImplementationOnce(()=>{
-            throw new Error()
-        })
+        cacheStore.simulateDeleteError()
         const promise = sut.save(mockPurchases());
         expect(cacheStore.insertCallsCount).toBe(0);
         expect(promise).rejects.toThrow()
@@ -80,6 +90,13 @@ describe('LocalSavePurchases', () => {
         expect(cacheStore.insertKey).toBe('purchases');
         expect(cacheStore.insertValues).toEqual(purchases);
 
+    });
+
+    test('Should thory if insert thorws',  () => {
+        const { cacheStore, sut } = makeSut();
+        cacheStore.simulateInsertError()
+        const promise = sut.save(mockPurchases());
+        expect(promise).rejects.toThrow()
     });
 
 
