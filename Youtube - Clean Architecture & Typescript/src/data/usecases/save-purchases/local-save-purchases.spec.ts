@@ -39,11 +39,12 @@ describe('LocalSavePurchases', () => {
         const timestamp = new Date();
         const { cacheStore, sut } = makeSut(timestamp);
         const purchases = mockPurchases()
-        await sut.save(purchases);
+        const promise = sut.save(purchases);
         expect(cacheStore.messages).toEqual([CacheStoreSpy.Message.delete, CacheStoreSpy.Message.insert]);
         expect(cacheStore.insertKey).toBe('purchases');
         expect(cacheStore.insertValues).toEqual({timestamp, value: purchases});
         expect(cacheStore.deleteKey).toBe('purchases');
+        await expect(promise).resolves.toBeFalsy()
 
 
     });
@@ -55,6 +56,12 @@ describe('LocalSavePurchases', () => {
         expect(cacheStore.messages).toEqual([CacheStoreSpy.Message.delete, CacheStoreSpy.Message.insert]);
         await expect(promise).rejects.toThrow()
     });
+
+    // novo
+
+
+    
+
 
   });
   
