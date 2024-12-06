@@ -1,82 +1,31 @@
-import { LocalLoadPurchases } from "@/data/usecases";
-import { CacheStoreSpy, mockPurchases } from "@/data/testes";
+import { CacheStore } from "@/data/protocolos/cache"
+import { SavePurchases , LoadPurchases} from "@/domain/usecases"
+export class LocalLoadPurchases implements SavePurchases, LoadPurchases { 
+    private readonly key = 'purchases'
+    constructor(
+        private readonly cacheStore: CacheStore,
+         private readonly currentDate: Date) {}
 
+     async save (purchases: Array<SavePurchases.Params>): Promise<void> {
+        this.cacheStore.replace(this.key, {
+            timestamp: this.currentDate,
+            value: purchases})
+    }
 
-
-type SutTypes = {
-    sut: LocalLoadPurchases,
-    cacheStore: CacheStoreSpy
-}
-
-const makeSut = (timeStamp = new Date()): SutTypes => {
-    
-    const cacheStore = new CacheStoreSpy();
-    const sut = new LocalLoadPurchases(cacheStore, timeStamp);
-
-    return {
-        sut,
-        cacheStore
+    async loadAll (): Promise<Array<LoadPurchases.Result>> {
+        try {
+            const cache = this.cacheStore.fetch(this.key)
+            const maxAge = new Date(cache.timestamp)
+            maxAge.setDate(maxAge.getDate() +3)
+            if(maxAge > this.currentDate) {
+                return cache.value
+            } else {
+                throw new Error()
+            }
+            
+        } catch (err) {
+            this.cacheStore.delete(this.key)
+            return [];
+        }
     }
 }
-
-describe('LocalLoadPurchases', () => {
-
-    test('Should not delete or insert cache on sut.init', () => {
-        const { cacheStore } = makeSut()
-        expect(cacheStore.actions).toEqual([]);
-    });
-
-  
-
-    test('Should return empty list if load fails ',async () => {
-        const { cacheStore,sut } = makeSut()
-        cacheStore.simulateFetchError()
-        const purchases = await sut.loadAll()
-        expect(cacheStore.actions).toEqual([CacheStoreSpy.Action.fetch, CacheStoreSpy.Action.delete]);
-        expect(cacheStore.deleteKey).toBe('purchases');
-        expect(purchases).toEqual([]);
-    });
-
-    test('Should return a list of purchases if cache is then 3 days old',async () => {
-        const currentDate = new Date()
-        const timestamp = new Date(currentDate)
-        timestamp.setDate(currentDate.getDate() - 3)
-        timestamp.setSeconds(timestamp.getSeconds() + 1)
-        const { cacheStore,sut } = makeSut(currentDate)
-        cacheStore.fetchResult = { timestamp, value: mockPurchases() }
-        const purchases = await sut.loadAll()
-        expect(cacheStore.actions).toEqual([CacheStoreSpy.Action.fetch]);
-        expect(purchases).toEqual(cacheStore.fetchResult.value);
-        expect(cacheStore.fetchKey).toBe('purchases');
-    });
-
-    test('Should return an empty list of purchases if cache is more than 3 days old',async () => {
-        const currentDate = new Date()
-        const timestamp = new Date(currentDate)
-        timestamp.setDate(currentDate.getDate() - 3)
-        timestamp.setSeconds(timestamp.getSeconds() - 1)
-        const { cacheStore,sut } = makeSut(currentDate)
-        cacheStore.fetchResult = { timestamp, value: mockPurchases() }
-        const purchases = await sut.loadAll()
-        expect(cacheStore.actions).toEqual([CacheStoreSpy.Action.fetch, CacheStoreSpy.Action.delete]);
-        expect(cacheStore.fetchKey).toBe('purchases');
-        expect(cacheStore.deleteKey).toBe('purchases');
-        expect(purchases).toEqual([]);
-    });
-
-
-    test('Should return an empty list of purchases if cache is 3 days old',async () => {
-        const currentDate = new Date()
-        const timestamp = new Date(currentDate)
-        timestamp.setDate(currentDate.getDate() - 3)
-        const { cacheStore,sut } = makeSut(currentDate)
-        cacheStore.fetchResult = { timestamp, value: mockPurchases() }
-        const purchases = await sut.loadAll()
-        expect(cacheStore.actions).toEqual([CacheStoreSpy.Action.fetch, CacheStoreSpy.Action.delete]);
-        expect(cacheStore.fetchKey).toBe('purchases');
-        expect(cacheStore.deleteKey).toBe('purchases');
-        expect(purchases).toEqual([]);
-    });
-    
-  });
-  
