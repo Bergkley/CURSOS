@@ -18,7 +18,6 @@ export class LocalLoadPurchases implements SavePurchases, LoadPurchases {
             if(CachePolicy.validade(cache.timestamp, this.currentDate)) {
                 return cache.value
             } else {
-               this.cacheStore.delete(this.key)
                return []
             }
             
