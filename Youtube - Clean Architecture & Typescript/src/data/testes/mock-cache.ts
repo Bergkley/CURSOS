@@ -1,4 +1,4 @@
-import { LoadPurchases, SavePurchases } from "@/domain/usecases";
+import {  SavePurchases } from "@/domain/usecases";
 import { CacheStore } from "@/data/protocolos/cache";
 
 const maxAgeInDays = 3;
