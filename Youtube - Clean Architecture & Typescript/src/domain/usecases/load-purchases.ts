@@ -5,5 +5,5 @@ export interface LoadPurchases {
 }
 
 export namespace LoadPurchases {
-  export type Result = PurchaseModel
+  export type Result = PurchaseModel;
 }
