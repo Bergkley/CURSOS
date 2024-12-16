@@ -5,7 +5,7 @@ export class CachePolicy {
     const maxAge = new Date(timestamp);
 
     maxAge.setDate(maxAge.getDate() + CachePolicy.maxAgeInDays);
-    
+
     return maxAge > date;
   }
 }
