@@ -21,7 +21,7 @@ export class CacheStoreSpy implements CacheStore {
     this.fetchKey = key;
     return this.fetchResult;
   }
-  
+
   delete(key: string): void {
     this.actions.push(CacheStoreSpy.Action.delete);
     this.deleteKey = key;
@@ -32,6 +32,7 @@ export class CacheStoreSpy implements CacheStore {
     this.insertKey = key;
     this.insertValues = value;
   }
+  
   replace(key: string, value: any): void {
     this.delete(key);
     this.insert(key, value);
