@@ -22,6 +22,7 @@ export class CacheStoreSpy implements CacheStore {
   insertValues: Array<SavePurchases.Params> = [];
   
   fetchKey: string = "";
+  
   fetchResult: any = [];
 
   fetch(key: string): any {
