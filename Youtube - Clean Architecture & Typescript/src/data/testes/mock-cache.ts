@@ -26,8 +26,9 @@ export class CacheStoreSpy implements CacheStore {
   fetch(key: string): any {
 
     this.actions.push(CacheStoreSpy.Action.fetch);
-    
+
     this.fetchKey = key;
+    
     return this.fetchResult;
   }
 
