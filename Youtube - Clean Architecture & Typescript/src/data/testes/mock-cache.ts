@@ -33,6 +33,7 @@ export class CacheStoreSpy implements CacheStore {
   }
 
   delete(key: string): void {
+    
     this.actions.push(CacheStoreSpy.Action.delete);
     this.deleteKey = key;
   }
