@@ -43,8 +43,9 @@ export class CacheStoreSpy implements CacheStore {
     this.actions.push(CacheStoreSpy.Action.insert);
 
     this.insertKey = key;
-    
+
     this.insertValues = value;
+    
   }
 
   replace(key: string, value: any): void {
