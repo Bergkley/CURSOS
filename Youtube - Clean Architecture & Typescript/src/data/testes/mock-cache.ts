@@ -46,11 +46,9 @@ export class CacheStoreSpy implements CacheStore {
   }
 
   replace(key: string, value: any): void {
-
     this.delete(key);
 
     this.insert(key, value);
-    
   }
 
   simulateDeleteError(): void {
