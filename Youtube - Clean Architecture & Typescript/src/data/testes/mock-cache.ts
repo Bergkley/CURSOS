@@ -52,9 +52,11 @@ export class CacheStoreSpy implements CacheStore {
   }
 
   simulateDeleteError(): void {
-    
+
     jest.spyOn(CacheStoreSpy.prototype, "delete").mockImplementationOnce(() => {
+
       this.actions.push(CacheStoreSpy.Action.delete);
+      
       throw new Error();
     });
   }
