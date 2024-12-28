@@ -56,6 +56,7 @@ export class CacheStoreSpy implements CacheStore {
       this.actions.push(CacheStoreSpy.Action.delete);
 
       throw new Error();
+      
     });
   }
 
