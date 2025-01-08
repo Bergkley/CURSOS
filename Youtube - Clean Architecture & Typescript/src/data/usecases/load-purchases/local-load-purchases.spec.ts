@@ -7,7 +7,9 @@ import {
 } from "@/data/testes";
 
 type SutTypes = {
+
   sut: LocalLoadPurchases;
+  
   cacheStore: CacheStoreSpy;
 };
 
