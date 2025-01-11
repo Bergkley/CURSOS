@@ -6,8 +6,9 @@ export class LocalLoadPurchases implements SavePurchases, LoadPurchases {
   
   constructor(
     private readonly cacheStore: CacheStore,
-    
+
     private readonly currentDate: Date
+    
   ) {}
 
   async save(purchases: Array<SavePurchases.Params>): Promise<void> {
