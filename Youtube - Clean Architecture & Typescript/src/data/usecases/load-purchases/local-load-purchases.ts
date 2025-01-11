@@ -1,6 +1,7 @@
 import { CachePolicy, CacheStore } from "@/data/protocolos/cache";
 import { SavePurchases, LoadPurchases } from "@/domain/usecases";
 export class LocalLoadPurchases implements SavePurchases, LoadPurchases {
+  
   private readonly key = "purchases";
   constructor(
     private readonly cacheStore: CacheStore,
