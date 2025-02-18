@@ -10,6 +10,8 @@ export default function Home() {
       <Link href={'/posts'}>Posts</Link>
       {/* Aula 3 - parametro na URL */}
       <Link href={'/exemplo?parametro=valor'}>Página com Parâmetro</Link>
+      {/* Aula 4 - nested routes */}
+      <Link href={'/produtos/categorias/roupas'}>Ir a categoria de roupas</Link>
     </main>
   );
 }
