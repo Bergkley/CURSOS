@@ -8,6 +8,8 @@ export default function Home() {
       {/* Aula 2 - dados dinamicos */}
       <h1>Acessar posts</h1>
       <Link href={'/posts'}>Posts</Link>
+      {/* Aula 3 - parametro na URL */}
+      <Link href={'/exemplo?parametro=valor'}>Página com Parâmetro</Link>
     </main>
   );
 }
