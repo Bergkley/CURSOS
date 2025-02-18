@@ -1,3 +1,4 @@
+import BotaoRedirect from "@/components/BotaoRedirect";
 import Link from "next/link"
 export default function Home() {
   return (
@@ -14,6 +15,8 @@ export default function Home() {
       <Link href={'/produtos/categorias/roupas'}>Ir a categoria de roupas</Link>
       {/* Aula 7 - nested Layout */}
       <Link href={'/dashboard'}>Ir para dashboard</Link>
+      {/* Aula 9 - useRouter  */}
+      <BotaoRedirect />
     </main>
   );
 }
