@@ -1,5 +1,6 @@
 import styles from './page.module.css';
 import MyComponent from '@/app/components/MyComponent';
+import Container from '@/app/components/Container';
 export default function Home() {
   return (
     <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
@@ -13,6 +14,8 @@ export default function Home() {
       </div>
       {/* 3 - Tailwind */}
       <MyComponent />
+      {/* 4 - Sass  */}
+      <Container />
     </main>
   );
 }
