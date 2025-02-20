@@ -1,21 +1,7 @@
 import React from 'react'
-import { db } from '@/db'
-import { redirect } from 'next/navigation'
+import { addTodo } from '@/actions';
 
 const TodoPage = () => {
-    const addTodo = async (formData) => {
-        "use server"
-
-        const titulo = formData.get('titulo')
-        const descricao = formData.get('descricao')
-        const status = "pendente"
-
-        const todo = await db.todo.create({data:{titulo,descricao, status}})
-
-        console.log(todo)
-
-        redirect('/')
-    }
     return (
         <div className="max-w-md mx-auto mt-10">
           <h1 className="text-2xl font-bold text-center mb-6">Criar Nova Tarefa</h1>
