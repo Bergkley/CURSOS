@@ -1,9 +1,11 @@
-import React from 'react'
+import React from "react";
 
 const LoadingTodo = () => {
   return (
-    <div><p>Carregando...</p></div>
-  )
-}
+    <div>
+      <p>Carregando...</p>
+    </div>
+  );
+};
 
-export default LoadingTodo
+export default LoadingTodo;
