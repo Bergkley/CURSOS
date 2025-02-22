@@ -2,6 +2,7 @@ import Link  from 'next/link';
 import { db } from '@/db';
 import Button from '@/components/Button';
 import { deleteTodo } from '@/actions';
+export const revalidate = 20;
 
 export default async function  Home() {
   const todos = await db.todo.findMany();
