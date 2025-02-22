@@ -12,7 +12,6 @@ export async function deleteTodo(formData) {
   });
 
   revalidatePath("/");
-
   redirect("/");
 }
 
