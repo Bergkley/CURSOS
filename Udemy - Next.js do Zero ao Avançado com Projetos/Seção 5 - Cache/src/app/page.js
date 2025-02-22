@@ -2,7 +2,11 @@ import Link  from 'next/link';
 import { db } from '@/db';
 import Button from '@/components/Button';
 import { deleteTodo } from '@/actions';
-export const revalidate = 20;
+// cache pelo tempo
+// export const revalidate = 20;
+
+// Removendo cache
+ export const dynamic = "force-dynamic";
 
 export default async function  Home() {
   const todos = await db.todo.findMany();
