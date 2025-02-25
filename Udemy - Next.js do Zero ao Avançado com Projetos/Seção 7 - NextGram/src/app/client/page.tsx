@@ -1,15 +1,16 @@
-"use client"
+"use client";
 
-import { useSession } from "next-auth/react"
-
+import { useSession } from "next-auth/react";
 
 const ClientPage = () => {
-    const {data: session} = useSession();
+  const { data: session } = useSession();
 
-    if(!session || !session.user) return <p>Você precisa estar autenticado!</p>
+  if (!session || !session.user) return <p>Você precisa estar autenticado!</p>;
   return (
-    <div><h1>Componente client autenticado</h1></div>
-  )
-}
+    <div>
+      <h1>Componente client autenticado</h1>
+    </div>
+  );
+};
 
-export default ClientPage
+export default ClientPage;
