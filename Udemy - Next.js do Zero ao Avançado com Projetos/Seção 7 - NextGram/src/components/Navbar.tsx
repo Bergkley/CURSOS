@@ -28,19 +28,11 @@ async function Navbar() {
             </form>
           </div>
         ) : (
-          <form
-            action={async () => {
-              "use server";
-              await signIn();
-            }}
-          >
-            <button
-              type="submit"
+            <Link href={"/signin"}
               className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded"
             >
               Entrar
-            </button>
-          </form>
+            </Link>
         )}
       </div>
     </div>
