@@ -1,3 +1,8 @@
+// Excluir dados do projeto antigo
+// npx prisma migrate dev
+// npx prisma generate
+// npx prisma migrate reset
+
 datasource db {
   provider = "sqlite"
   url      = "file:./dev.db"
@@ -17,6 +22,11 @@ model User {
   sessions      Session[]
   // Optional for WebAuthn support
   Authenticator Authenticator[]
+
+  // Relações da aplicação
+  posts         Post[]
+  likes         Like[]
+  comments      Comment[]
  
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -76,4 +86,36 @@ model Authenticator {
   transports           String?
  
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Post {
+  id        String   @id @default(cuid())
+  imageUrl  String
+  caption   String?
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  likes     Like[]
+  comments  Comment[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Like {
+  id        String   @id @default(cuid())
+  userId    String
+  postId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  post      Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+}
+
+model Comment {
+  id        String   @id @default(cuid())
+  content   String
+  userId    String
+  postId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  post      Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
