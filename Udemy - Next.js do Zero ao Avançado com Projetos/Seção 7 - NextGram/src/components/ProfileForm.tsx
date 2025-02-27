@@ -7,6 +7,7 @@ import ImagePreview from "./ImagePreview";
 import { User } from "next-auth";
 import Button from "./Button";
 import Label from "./Label";
+import FlashMessage from "./FlashMessage";
 
 type ProfileFormProps = {
   user: User;
@@ -20,6 +21,9 @@ const ProfileForm: React.FC<ProfileFormProps> = ({ user }) => {
 
   return (
     <div className="w-full p-4 border border-zinc-300 rounded">
+      {formState.message && (
+        <FlashMessage message={formState.message} type={formState.type} />
+      )}
       <form
         action={formAction}
         method="POST"

@@ -37,6 +37,10 @@ export async function updateUserProfile(
   const name = formData.get("name") as string;
   const imageFile = formData.get("image") as File;
 
+  if(name.length < 5) {
+    return { message: "O nome precisa ter pelo menos 5 caracteres", type: "error" }
+  }
+
   if (session.user.userId !== id) {
     return { message: "Unauthorized", type: "error" };
   }
