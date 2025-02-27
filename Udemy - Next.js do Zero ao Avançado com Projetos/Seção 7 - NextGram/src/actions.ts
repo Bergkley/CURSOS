@@ -175,3 +175,71 @@ export async function deletePost(formData: FormData) {
   redirect("/my-posts");
 }
 
+
+
+// Like
+export async function likePost(postId: string, userId: string) {
+  const session = await auth();
+
+  if (!session) {
+    redirect("/signin");
+  }
+
+  console.log(session.user.userId, userId);
+
+  if (session.user.userId !== userId) {
+    throw new Error("Unauthorized");
+  }
+
+  const existingLike = await prisma.like.findFirst({
+    where: {
+      postId,
+      userId,
+    },
+  });
+
+  if (existingLike) {
+    await prisma.like.delete({
+      where: {
+        id: existingLike.id,
+      },
+    });
+  } else {
+    await prisma.like.create({
+      data: {
+        postId,
+        userId,
+      },
+    });
+  }
+
+  revalidatePath("/");
+}
+
+// criar comentarios no post
+
+export async function addComment(
+  postId: string,
+  userId: string,
+  content: string
+) {
+  const session = await auth();
+
+  if (!session) {
+    redirect("/signin");
+  }
+
+  if (session.user.userId !== userId) {
+    throw new Error("Unauthorized");
+  }
+
+  await prisma.comment.create({
+    data: {
+      postId,
+      userId,
+      content,
+    },
+  });
+
+  revalidatePath("/");
+}
