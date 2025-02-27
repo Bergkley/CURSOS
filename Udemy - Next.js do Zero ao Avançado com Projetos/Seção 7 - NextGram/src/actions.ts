@@ -106,6 +106,24 @@ export async function createPost(
 
 }
 
+// Resgatar Todos os posts
+export async function getAllPosts() {
+  return await prisma.post.findMany({
+    orderBy: {
+      createdAt: "desc",
+    },
+    include: {
+      user: true,
+      likes: true,
+      comments: {
+        include: {
+          user: true,
+        },
+      },
+    },
+  });
+}
+
 // Resgatar posts de um user
 export async function getUserPosts(userId: string) {
   const session = await auth();
@@ -156,3 +174,4 @@ export async function deletePost(formData: FormData) {
 
   redirect("/my-posts");
 }
+
