@@ -104,5 +104,55 @@ export async function createPost(
 
   redirect("/")
 
-  return { message: "Postagem criada com sucesso!", type: "success" };
+}
+
+// Resgatar posts de um user
+export async function getUserPosts(userId: string) {
+  const session = await auth();
+
+  if (!session) {
+    redirect("/signin");
+  }
+
+  if (session.user.userId !== userId) {
+    throw new Error("Unauthorized");
+  }
+
+  return await prisma.post.findMany({
+    where: { userId },
+    include: {
+      user: true,
+      likes: true,
+      comments: true,
+    },
+    orderBy: {
+      createdAt: "desc",
+    },
+  });
+}
+
+// Deletar uma postagem
+export async function deletePost(formData: FormData) {
+  const session = await auth();
+
+  if (!session) {
+    redirect("/");
+  }
+
+  const userId = formData.get("userId") as string;
+  const postId = formData.get("postId") as string;
+
+  console.log(userId, session.user.userId);
+
+  if (session.user.userId !== userId) {
+    throw new Error("Unauthorized");
+  }
+
+  await prisma.post.delete({
+    where: { id: postId },
+  });
+
+  revalidatePath("/my-posts");
+
+  redirect("/my-posts");
 }
