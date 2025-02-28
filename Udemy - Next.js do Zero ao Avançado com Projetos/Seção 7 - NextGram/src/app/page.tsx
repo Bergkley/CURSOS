@@ -1,4 +1,5 @@
 import { getAllPosts } from "@/actions";
+import Post from "@/components/Post";
 import { auth } from "auth";
 
 export default async function Home() {
@@ -21,6 +22,7 @@ export default async function Home() {
         {posts && posts.length > 0 ? (
           <div className="mt-8">
             {posts.map((post) => (
+              <Post post={post} currentUserId={userId} key={post.id} />
             ))}
           </div>
         ) : (
