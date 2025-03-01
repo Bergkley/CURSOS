@@ -3,9 +3,11 @@ import { auth } from "auth";
 import Image from "next/image";
 import { redirect } from "next/navigation";
 import ProfileForm from "@/components/ProfileForm";
+import getSession from "@/utils/getSession";
+
 
 export default async function UserProfile() {
-  const session = await auth();
+  const session = await getSession();
 
   if (!session || !session.user?.email) return redirect(`/`);
 
