@@ -1,11 +1,11 @@
 import { getAllPosts } from "@/actions";
 import Post from "@/components/Post";
-import { auth } from "auth";
+import getSession from "@/utils/getSession";
 
 export default async function Home() {
   const posts = await getAllPosts();
 
-  const session = await auth();
+  const session = await getSession();
 
   let userId = null;
 
