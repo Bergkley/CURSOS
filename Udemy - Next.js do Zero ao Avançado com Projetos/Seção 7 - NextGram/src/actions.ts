@@ -2,18 +2,25 @@
 
 import { PrismaClient } from "@prisma/client";
 import { User } from "@prisma/client"
-import { auth } from "auth";
 import { redirect } from "next/navigation";
-import {promises as fs } from "fs"
-import path from "path"
 import { revalidatePath } from "next/cache";
-
+import getSession from './utils/getSession'
+import uploadImage from './utils/uploadImage'
+import { Session } from "next-auth";
 const prisma = new PrismaClient()
 
 type FormState = {
     message: string,
     type: string
 }
+
+let session: Session | null
+
+async function init() {
+   session = await getSession();
+}
+
+init();
 
 export async function getUserByEmail(email: string | null):Promise<User | null>  {
     if(!email)  return null
@@ -27,7 +34,7 @@ export async function updateUserProfile(
   formState: FormState,
   formData: FormData
 ): Promise<FormState> {
-  const session = await auth();
+  
 
   if (!session) {
     redirect("/");
@@ -47,12 +54,7 @@ export async function updateUserProfile(
 
   let imageUrl = "";
   if (imageFile) {
-    const uploadDir = path.join(process.cwd(), "public", "uploads");
-    await fs.mkdir(uploadDir, { recursive: true });
-    const filePath = path.join(uploadDir, imageFile.name);
-    const arrayBuffer = await imageFile.arrayBuffer();
-    await fs.writeFile(filePath, Buffer.from(arrayBuffer));
-    imageUrl = `/uploads/${imageFile.name}`;
+    ({imageUrl} = await uploadImage(imageFile));
   }
 
   await prisma.user.update({
@@ -73,7 +75,7 @@ export async function createPost(
   formState: FormState,
   formData: FormData
 ): Promise<FormState> {
-  const session = await auth();
+  
 
   if (!session) {
     redirect("/");
@@ -85,12 +87,7 @@ export async function createPost(
     return { message: "Preencha o formulário!", type: "error" };
   }
 
-  const uploadDir = path.join(process.cwd(), "public", "uploads");
-  await fs.mkdir(uploadDir, { recursive: true });
-  const filePath = path.join(uploadDir, imageFile.name);
-  const arrayBuffer = await imageFile.arrayBuffer();
-  await fs.writeFile(filePath, Buffer.from(arrayBuffer));
-  const imageUrl = `/uploads/${imageFile.name}`;
+  const {imageUrl} = await uploadImage(imageFile);
 
   await prisma.post.create({
     data: {
@@ -126,7 +123,7 @@ export async function getAllPosts() {
 
 // Resgatar posts de um user
 export async function getUserPosts(userId: string) {
-  const session = await auth();
+  
 
   if (!session) {
     redirect("/signin");
@@ -151,7 +148,7 @@ export async function getUserPosts(userId: string) {
 
 // Deletar uma postagem
 export async function deletePost(formData: FormData) {
-  const session = await auth();
+  
 
   if (!session) {
     redirect("/");
@@ -179,7 +176,7 @@ export async function deletePost(formData: FormData) {
 
 // Like
 export async function likePost(postId: string, userId: string) {
-  const session = await auth();
+  
 
   if (!session) {
     redirect("/signin");
@@ -223,7 +220,7 @@ export async function addComment(
   userId: string,
   content: string
 ) {
-  const session = await auth();
+  
 
   if (!session) {
     redirect("/signin");
