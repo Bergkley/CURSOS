@@ -2,9 +2,11 @@ import React from "react";
 import CreatePostForm from "@/components/CreatePostForm";
 import { auth } from "auth";
 import { redirect } from "next/navigation";
+import getSession from "@/utils/getSession";
+
 
 const CreatePostPage: React.FC = async () => {
-  const session = await auth();
+  const session = await getSession();
 
   if (!session || !session.user?.email) return redirect(`/`);
 
