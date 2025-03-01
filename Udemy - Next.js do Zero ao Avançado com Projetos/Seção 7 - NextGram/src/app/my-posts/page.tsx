@@ -5,9 +5,11 @@ import { redirect } from "next/navigation";
 import Button from "@/components/Button";
 import ButtonLink from "@/components/ButtonLink";
 import Image from "next/image";
+import getSession from "@/utils/getSession";
+
 
 const MyPosts: React.FC = async () => {
-  const session = await auth();
+  const session = await getSession();
 
   let userId = null;
 
