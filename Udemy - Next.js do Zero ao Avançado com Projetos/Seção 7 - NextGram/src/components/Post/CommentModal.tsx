@@ -8,6 +8,8 @@ import FlashMessage from "../FlashMessage";
 import { GrClose } from "react-icons/gr";
 import Button from "../Button";
 import Image from "next/image";
+import { formatDistanceToNow } from "date-fns";
+import { ptBR } from "date-fns/locale";
 
 interface CommentModalProps {
   post: PostType;
@@ -54,68 +56,85 @@ const CommentModal: React.FC<CommentModalProps> = ({
     <Modal
       isOpen={isOpen}
       onRequestClose={onRequestClose}
-      contentLabel="Comments"
+      contentLabel="Comentários"
       ariaHideApp={false}
-      className={
-        "w-[704px] mx-auto mt-28 bg-white rounded border border-zinc-300"
-      }
+      className="w-[704px] mx-auto mt-28 bg-white rounded border border-zinc-300 p-4"
     >
-      <div className="p-4">
-        <div className="flex justify-between items-center">
-          <h2 className="text-xl font-bold mb-4">Comentários</h2>
-          <button
-            onClick={onRequestClose}
-            className="bg-red-600 hover:bg-red-400 text-white p-2 rounded-full"
-          >
-            <GrClose />
-          </button>
-        </div>
-        {flashMessage && (
-          <FlashMessage
-            message={flashMessage.message}
-            type={flashMessage.type}
-          />
-        )}
-        <div className="mb-4 flex flex-col gap-0.5">
-          {post.comments && post.comments.length > 0 ? (
-            post.comments.map((comment) => (
-              <div key={comment.id} className="flex items-center">
-                {post.user.image && (
-                  <Image
-                    src={post.user.image}
-                    alt={`${post.user.name}'s profile`}
-                    className="w-10 h-10 object-cover rounded-full mr-3"
-                    width={40}
-                    height={40}
-                  />
-                )}
-                <p className="text-sm">
-                  <strong>{comment.user.name}:</strong> {comment.content}
-                </p>
-              </div>
-            ))
-          ) : (
-            <p>Nenhum comentário ainda. Seja o primeiro a comentar!</p>
+      <div className="flex justify-between items-center mb-4">
+        <h2 className="text-xl font-bold">Comentários</h2>
+        <button
+          onClick={onRequestClose}
+          className="bg-red-600 hover:bg-red-400 text-white p-2 rounded-full"
+        >
+          <GrClose />
+        </button>
+      </div>
+
+      {flashMessage && (
+        <FlashMessage message={flashMessage.message} type={flashMessage.type} />
+      )}
+
+      <div className="flex gap-4">
+        <div className="w-1/3">
+          {post.imageUrl && (
+            <Image
+              src={post.imageUrl}
+              alt="Imagem do post"
+              className="w-full h-auto rounded"
+              width={250}
+              height={250}
+            />
           )}
         </div>
-        {currentUserId && (
-          <div className="mb-4 flex flex-col gap-6">
-            <textarea
-              className="w-full h-32 p-2 border border-zinc-300 rounded text-sm font-medium placeholder:text-zinc-500 focus:ring-0 focus:outline-none"
-              value={content}
-              onChange={(e) => setContent(e.target.value)}
-              placeholder="Adicione um comentário"
-            />
 
-            <div className="flex justify-end">
-              <Button
-                type="button"
-                text="Comentar"
-                onClick={handleAddComment}
-              />
-            </div>
+        <div className="w-2/3 flex flex-col">
+          <div className="flex flex-col gap-2 mb-4 h-64 overflow-y-auto border border-zinc-200 rounded p-2">
+            {post.comments && post.comments.length > 0 ? (
+              post.comments.map((comment) => (
+                <div key={comment.id} className="flex items-start gap-3">
+                  {comment.user.image && (
+                    <Image
+                      src={comment.user.image}
+                      alt={`${comment.user.name}'s profile`}
+                      className="w-10 h-10 object-cover rounded-full"
+                      width={40}
+                      height={40}
+                    />
+                  )}
+                  <div className="text-sm">
+                    <p className="font-bold">{comment.user.name}</p>
+                    <p>{comment.content}</p>
+                    <p className="text-xs text-gray-500">
+                      {formatDistanceToNow(new Date(comment.createdAt), {
+                        addSuffix: true,
+                        locale: ptBR,
+                      })}
+                    </p>
+                  </div>
+                </div>
+              ))
+            ) : (
+              <p className="text-sm text-gray-500">
+                Nenhum comentário ainda. Seja o primeiro a comentar!
+              </p>
+            )}
           </div>
-        )}
+
+          {/* Campo de Comentário */}
+          {currentUserId && (
+            <div className="flex flex-col gap-4">
+              <textarea
+                className="w-full h-24 p-2 border border-zinc-300 rounded text-sm placeholder:text-zinc-500 focus:ring-0 focus:outline-none"
+                value={content}
+                onChange={(e) => setContent(e.target.value)}
+                placeholder="Adicione um comentário"
+              />
+              <div className="flex justify-end">
+                <Button type="button" text="Comentar" onClick={handleAddComment} />
+              </div>
+            </div>
+          )}
+        </div>
       </div>
     </Modal>
   );
