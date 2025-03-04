@@ -6,7 +6,6 @@ import Button from "./Button";
 import ButtonLink from "./ButtonLink";
 import getSession from "@/utils/getSession";
 
-
 async function Navbar() {
   const session = await getSession();
   const user = await getUserByEmail(session?.user.email);
