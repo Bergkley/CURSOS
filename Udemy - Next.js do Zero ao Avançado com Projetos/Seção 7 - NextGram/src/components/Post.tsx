@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useState } from "react";
 import { Post as PostType } from "../../types/Post";
 import LikeButton from "./Post/LikeButton";
