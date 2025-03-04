@@ -1,5 +1,4 @@
 "use client";
-
 import React from "react";
 import { useFormState } from "react-dom";
 import { createPost } from "@/actions";
