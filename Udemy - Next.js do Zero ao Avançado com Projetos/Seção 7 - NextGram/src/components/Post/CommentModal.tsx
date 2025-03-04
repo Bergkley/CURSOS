@@ -130,7 +130,11 @@ const CommentModal: React.FC<CommentModalProps> = ({
                 placeholder="Adicione um comentário"
               />
               <div className="flex justify-end">
-                <Button type="button" text="Comentar" onClick={handleAddComment} />
+                <Button
+                  type="button"
+                  text="Comentar"
+                  onClick={handleAddComment}
+                />
               </div>
             </div>
           )}
