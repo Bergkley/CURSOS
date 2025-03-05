@@ -1,13 +1,15 @@
 import { Controller, Get } from '@nestjs/common';
+import { TasksService } from './tasks.service';
 
 @Controller('tasks')
 export class TasksController {
+  constructor(private readonly tasksService: TasksService) {}
   @Get()
   getTasks() {
-    return 'Listando todas as tasks';
+    return this.tasksService.listAllTask();
   }
-  @Get('/test')
+  @Get('/1')
   getTask() {
-    return 'Listando apenas 1 task';
+    return this.tasksService.findOneTask();
   }
 }
