@@ -9,4 +9,7 @@ export class TasksService {
     findOne(id:string) {
         return "teste tarefas : " + id
     }
+    create(body:any) {
+        return body
+    }
 }
