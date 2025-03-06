@@ -48,4 +48,16 @@ export class TasksService {
 
     return this.tasks[taskIndex];
   }
+  delete(id: string) {
+    const taskIndex = this.tasks.findIndex((task) => task.id === Number(id));
+    if (taskIndex < 0)
+      throw new HttpException(
+        'Essa tarefa nao foi encontrada',
+        HttpStatus.NOT_FOUND,
+      );
+    this.tasks.splice(taskIndex, 1);
+    return {
+      message: 'Tarefa excluida com sucesso',
+    }
+  }
 }
