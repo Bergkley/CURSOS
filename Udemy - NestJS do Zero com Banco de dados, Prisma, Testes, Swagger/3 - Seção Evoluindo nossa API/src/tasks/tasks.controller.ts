@@ -20,7 +20,7 @@ export class TasksController {
 
   @Patch(":id")
   updateTask(@Param('id') id: string, @Body() body: any) {
-    return "update"
+    return this.tasksService.update(id, body);
   }
 
   @Delete(":id")
