@@ -35,7 +35,6 @@ export class TasksService {
   }
   update(id: string, updateTaskDto: UpdateTaskDto) {
     const taskIndex = this.tasks.findIndex((task) => task.id === Number(id));
-    console.log('taskIndex', taskIndex);
     if (taskIndex < 0)
       throw new HttpException(
         'Essa tarefa nao foi encontrada',
