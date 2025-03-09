@@ -8,14 +8,6 @@ import { PaginationDto } from 'src/common/dto/pagination.dto';
 @Injectable()
 export class TasksService {
   constructor(private prisma: PrismaService) {}
-  private tasks: Task[] = [
-    {
-      id: 1,
-      name: 'task 1',
-      description: 'description 1',
-      completed: false,
-    },
-  ];
   async findAll(paginationDto?: PaginationDto) {
     const { limit = 10, offset = 0 } = paginationDto || {};
     const allTasks = await this.prisma.task.findMany({
