@@ -31,32 +31,36 @@ export class TasksService {
 
     throw new HttpException('Essa tarefa não encontrado', HttpStatus.NOT_FOUND);
   }
-  create(createTaskDto: CreateTaskDto) {
-    const newId = this.tasks.length + 1;
-    const newTask = {
-      id: newId,
-      ...createTaskDto,
-      completed: false,
-    };
-    this.tasks.push(newTask);
-    return newTask;
+  async create(createTaskDto: CreateTaskDto) {
+    const nestTask = await this.prisma.task.create({
+      data: {
+        name: createTaskDto.name,
+        description: createTaskDto.description,
+        completed: false
+      }
+    })
+
+    return nestTask;
   }
-  update(id: number, updateTaskDto: UpdateTaskDto) {
-    const taskIndex = this.tasks.findIndex((task) => task.id === id);
-    if (taskIndex < 0)
-      throw new HttpException(
-        'Essa tarefa nao foi encontrada',
-        HttpStatus.NOT_FOUND,
-      );
+  async update(id: number, updateTaskDto: UpdateTaskDto) {
+    const findTask = await this.prisma.task.findFirst({
+      where: {
+        id: id
+      }
+    })
 
-    const taskItem = this.tasks[taskIndex];
+    if(!findTask) {
+      throw new HttpException('Essa tarefa nao foi encontrada', HttpStatus.NOT_FOUND);
+    }
 
-    this.tasks[taskIndex] = {
-      ...taskItem,
-      ...updateTaskDto,
-    };
+    const task = this.prisma.task.update({
+      where: {
+        id: findTask.id,
+      },
+      data: updateTaskDto
+    })
 
-    return this.tasks[taskIndex];
+    return task;
   }
   delete(id: number) {
     const taskIndex = this.tasks.findIndex((task) => task.id === id);
