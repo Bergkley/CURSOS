@@ -69,7 +69,15 @@ export class TasksService {
         where: {
           id: findTask.id,
         },
-        data: updateTaskDto,
+        data: {
+          name: updateTaskDto.name ? updateTaskDto.name : findTask.name,
+          description: updateTaskDto.description
+            ? updateTaskDto.description
+            : findTask.description,
+          completed: updateTaskDto.completed
+            ? updateTaskDto.completed
+            : findTask.completed,
+        },
       });
 
       return task;
