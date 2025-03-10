@@ -15,7 +15,7 @@ export class TasksService {
       skip: offset,
       orderBy: {
         createdAt: 'desc',
-      }
+      },
     });
     return allTasks;
   }
@@ -31,15 +31,24 @@ export class TasksService {
     throw new HttpException('Essa tarefa não encontrado', HttpStatus.NOT_FOUND);
   }
   async create(createTaskDto: CreateTaskDto) {
-    const nestTask = await this.prisma.task.create({
-      data: {
-        name: createTaskDto.name,
-        description: createTaskDto.description,
-        completed: false,
-      },
-    });
+    try {
+      const nestTask = await this.prisma.task.create({
+        data: {
+          name: createTaskDto.name,
+          description: createTaskDto.description,
+          completed: false,
+          userId: createTaskDto.userId,
+        },
+      });
 
-    return nestTask;
+      return nestTask;
+    } catch (err) {
+      console.log(err);
+      throw new HttpException(
+        'Falha ao criar essa tarefa',
+        HttpStatus.BAD_REQUEST,
+      );
+    }
   }
   async update(id: number, updateTaskDto: UpdateTaskDto) {
     try {
@@ -48,23 +57,22 @@ export class TasksService {
           id: id,
         },
       });
-  
+
       if (!findTask) {
         throw new HttpException(
           'Essa tarefa nao foi encontrada',
           HttpStatus.NOT_FOUND,
         );
       }
-  
+
       const task = this.prisma.task.update({
         where: {
           id: findTask.id,
         },
         data: updateTaskDto,
       });
-  
+
       return task;
-      
     } catch (error) {
       throw new HttpException(
         'Falha ao atualizar essa tarefa',

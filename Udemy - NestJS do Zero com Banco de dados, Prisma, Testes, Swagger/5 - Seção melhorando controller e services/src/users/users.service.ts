@@ -13,6 +13,7 @@ export class UsersService {
         id: true,
         name: true,
         email: true,
+        tasks: true,
       },
     });
 
