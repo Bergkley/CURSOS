@@ -8,6 +8,7 @@ import {
   Patch,
   Post,
   Query,
+  UseGuards,
   UseInterceptors,
 } from '@nestjs/common';
 import { TasksService } from './tasks.service';
@@ -17,8 +18,10 @@ import { PaginationDto } from 'src/common/dto/pagination.dto';
 import { LoggerInterceptor } from 'src/common/interceptors/logger.interceptor';
 import { BodyCreateInterceptor } from 'src/common/interceptors/body-create-task.interceptor';
 import { AddHeaderInteceptor } from 'src/common/interceptors/add-header.interceptor';
+import { AuthAdminGuard } from 'src/common/guards/admin.guard';
 
 @Controller('tasks')
+@UseGuards(AuthAdminGuard)
 export class TasksController {
   constructor(private readonly tasksService: TasksService) {}
   @Get()
