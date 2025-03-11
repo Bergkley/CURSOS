@@ -8,6 +8,7 @@ export class UsersController {
   constructor(private readonly userService: UsersService) {}
   @Get(':id')
   findOneUser(@Param('id',ParseIntPipe) id: number) {
+    console.log('aa', process.env.TOKEN_KEY)
     return this.userService.findOne(id) 
   }
 

@@ -25,8 +25,6 @@ import { AuthAdminGuard } from 'src/common/guards/admin.guard';
 @UseGuards(AuthAdminGuard)
 export class TasksController {
   constructor(private readonly tasksService: TasksService,
-    @Inject('KEY_TOKEN')
-    private readonly keyToken: string
   ) {}
   @Get()
   @UseInterceptors(LoggerInterceptor)
