@@ -8,7 +8,12 @@ import { TaskUtils } from './tasks.utils';
 
 @Module({
   controllers: [TasksController],
-  providers: [TasksService,TaskUtils, {provide: APP_FILTER, useClass: ApiExceptionFilter}],
-  imports:[PrismaModule]
+  providers: [
+    TasksService,
+    TaskUtils,
+    { provide: APP_FILTER, useClass: ApiExceptionFilter },
+    { provide: 'KEY_TOKEN', useValue: '123456' },
+  ],
+  imports: [PrismaModule],
 })
 export class TasksModule {}
