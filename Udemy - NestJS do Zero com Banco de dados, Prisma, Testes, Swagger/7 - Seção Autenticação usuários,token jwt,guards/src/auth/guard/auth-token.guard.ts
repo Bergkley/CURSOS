@@ -17,6 +17,7 @@ import { Observable } from 'rxjs';
 export class AuthTokenGuard implements CanActivate {
   constructor(
     private readonly jwtService: JwtService,
+    private readonly prisma: PrismaService,
     @Inject(jwtConfig.KEY)
     private readonly jwtConfiguration: ConfigType<typeof jwtConfig>,
   ) {}
@@ -32,6 +33,17 @@ export class AuthTokenGuard implements CanActivate {
     try {
       const payload = await this.jwtService.verifyAsync(token,this.jwtConfiguration)
       request[REQUEST_TOKEN_PAYLOAD] = payload
+
+      const user = await this.prisma.user.findFirst({
+        where:{
+          id:payload?.sub
+        }
+      })
+
+      if(!user?.active) {
+        throw new UnauthorizedException("Acesso não autorizado")
+      }
+
     } catch (err) {
       console.error(err);
       throw new UnauthorizedException('Token não encontrado');
