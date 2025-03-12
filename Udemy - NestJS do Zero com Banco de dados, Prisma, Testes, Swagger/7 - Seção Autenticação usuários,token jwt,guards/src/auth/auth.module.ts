@@ -12,7 +12,7 @@ import { JwtModule } from '@nestjs/jwt';
 @Module({
     imports: [PrismaModule,ConfigModule.forFeature(jwtConfig),JwtModule.registerAsync(jwtConfig.asProvider())],
     providers: [{provide:HashingServiceProtocol, useClass: BcryptService}, AuthService],
-    exports: [HashingServiceProtocol],
+    exports: [HashingServiceProtocol, JwtModule, ConfigModule],
     controllers: [AuthController]
 })
 export class AuthModule {}
