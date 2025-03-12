@@ -5,6 +5,8 @@ import { UpdateUserDto } from './dto/update-user.dto';
 import { AuthTokenGuard } from 'src/auth/guard/auth-token.guard';
 import { Request } from 'express';
 import { REQUEST_TOKEN_PAYLOAD } from 'src/auth/common/auth.constants';
+import { TokenPayloadParam } from 'src/auth/param/token-payload.param';
+import { PayloadTokenDto } from 'src/auth/dto/payload-token.dto';
 
 @Controller('users')
 export class UsersController {
@@ -21,8 +23,8 @@ export class UsersController {
   }
   @UseGuards(AuthTokenGuard)
   @Patch(':id')
-  update(@Param('id',ParseIntPipe) id: number, @Body() updateUserDto:UpdateUserDto,@Req() req: Request) {
-    console.log(req[REQUEST_TOKEN_PAYLOAD])
+  update(@Param('id',ParseIntPipe) id: number, @Body() updateUserDto:UpdateUserDto,@TokenPayloadParam() tokenPayload:PayloadTokenDto) {
+    console.log('esotu', tokenPayload)
     return this.userService.update(id,updateUserDto)
   }
 
