@@ -24,12 +24,11 @@ export class UsersController {
   @UseGuards(AuthTokenGuard)
   @Patch(':id')
   update(@Param('id',ParseIntPipe) id: number, @Body() updateUserDto:UpdateUserDto,@TokenPayloadParam() tokenPayload:PayloadTokenDto) {
-    console.log('esotu', tokenPayload)
-    return this.userService.update(id,updateUserDto)
+    return this.userService.update(id,updateUserDto,tokenPayload)
   }
-
+  @UseGuards(AuthTokenGuard)
   @Delete(':id')
-  delete(@Param('id',ParseIntPipe) id: number) {
-    return this.userService.delete(id)
+  delete(@Param('id',ParseIntPipe) id: number, @TokenPayloadParam() tokenPayload:PayloadTokenDto) {
+    return this.userService.delete(id,tokenPayload)
   }
 }
