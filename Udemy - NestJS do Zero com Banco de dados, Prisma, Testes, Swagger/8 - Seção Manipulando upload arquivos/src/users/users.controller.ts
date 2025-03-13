@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post, Req, UploadedFile, UseGuards, UseInterceptors } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post, Req, UploadedFile, UploadedFiles, UseGuards, UseInterceptors } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
@@ -7,7 +7,7 @@ import { Request } from 'express';
 import { REQUEST_TOKEN_PAYLOAD } from 'src/auth/common/auth.constants';
 import { TokenPayloadParam } from 'src/auth/param/token-payload.param';
 import { PayloadTokenDto } from 'src/auth/dto/payload-token.dto';
-import { FileInterceptor } from '@nestjs/platform-express';
+import { FileInterceptor, FilesInterceptor } from '@nestjs/platform-express';
 import * as path from 'node:path'
 import * as fs from 'node:fs/promises';
 import { randomUUID } from 'node:crypto';
@@ -39,12 +39,40 @@ export class UsersController {
   @UseInterceptors(FileInterceptor('file'))
   @Post('upload')
   async uploadAvatar(@TokenPayloadParam() tokenPayload:PayloadTokenDto,@UploadedFile() file:Express.Multer.File) {
-    const mimeType = file.mimetype;
-    const fileExtension = path.extname(file.originalname).toLowerCase().substring(1)
-    const fileName = `${tokenPayload.sub}.${fileExtension}`
-    const fileLocale = path.resolve(process.cwd(),'files',fileName)
-    await fs.writeFile(fileLocale,file.buffer)
+    // const mimeType = file.mimetype;
+    // const fileExtension = path.extname(file.originalname).toLowerCase().substring(1)
+    // const fileName = `${tokenPayload.sub}.${fileExtension}`
+    // const fileLocale = path.resolve(process.cwd(),'files',fileName)
+    // await fs.writeFile(fileLocale,file.buffer)
+
+
+    
     return 'true'
 
   }
+
+
+
+
+  // Upload de varias imagens
+
+  
+  // @UseGuards(AuthTokenGuard)
+  // @UseInterceptors(FilesInterceptor('file'))
+  // @Post('uploads')
+  // async uploadMultipleAvatar(@TokenPayloadParam() tokenPayload:PayloadTokenDto,@UploadedFiles() files:Array<Express.Multer.File>) {
+   
+  //   files.forEach(async file => {
+  //     const fileExtension = path.extname(file.originalname).toLowerCase().substring(1)
+  //     const fileName = `$${randomUUID()}.${fileExtension}`
+
+  //     const fileLocale = path.resolve(process.cwd(),'files',fileName)
+
+  //     await fs.writeFile(fileLocale,file.buffer)
+  //   })
+
+    
+  //   return 'true'
+
+  // }
 }
