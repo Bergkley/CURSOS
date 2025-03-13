@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post, Req, UploadedFile, UploadedFiles, UseGuards, UseInterceptors } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpStatus, Param, ParseFilePipeBuilder, ParseIntPipe, Patch, Post, Req, UploadedFile, UploadedFiles, UseGuards, UseInterceptors } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
@@ -38,12 +38,23 @@ export class UsersController {
   @UseGuards(AuthTokenGuard)
   @UseInterceptors(FileInterceptor('file'))
   @Post('upload')
-  async uploadAvatar(@TokenPayloadParam() tokenPayload:PayloadTokenDto,@UploadedFile() file:Express.Multer.File) {
-    // const mimeType = file.mimetype;
-    // const fileExtension = path.extname(file.originalname).toLowerCase().substring(1)
-    // const fileName = `${tokenPayload.sub}.${fileExtension}`
-    // const fileLocale = path.resolve(process.cwd(),'files',fileName)
-    // await fs.writeFile(fileLocale,file.buffer)
+  async uploadAvatar(@TokenPayloadParam() tokenPayload:PayloadTokenDto,@UploadedFile(
+    new ParseFilePipeBuilder()
+                .addFileTypeValidator({
+                    fileType: /jpeg|jpg|png/g,
+                })
+                .addMaxSizeValidator({
+                    maxSize: 3 * (1024 * 1024) 
+                })
+                .build({
+                    errorHttpStatusCode: HttpStatus.UNPROCESSABLE_ENTITY
+                }),
+  ) file:Express.Multer.File) {
+    const mimeType = file.mimetype;
+    const fileExtension = path.extname(file.originalname).toLowerCase().substring(1)
+    const fileName = `${tokenPayload.sub}.${fileExtension}`
+    const fileLocale = path.resolve(process.cwd(),'files',fileName)
+    await fs.writeFile(fileLocale,file.buffer)
 
 
     
@@ -56,7 +67,7 @@ export class UsersController {
 
   // Upload de varias imagens
 
-  
+
   // @UseGuards(AuthTokenGuard)
   // @UseInterceptors(FilesInterceptor('file'))
   // @Post('uploads')
