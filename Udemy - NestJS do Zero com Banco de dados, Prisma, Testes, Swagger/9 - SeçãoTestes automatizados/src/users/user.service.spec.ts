@@ -29,6 +29,7 @@ describe('UsersService', () => {
               }),
               findFirst: jest.fn(),
               update: jest.fn(),
+              delete: jest.fn(),
             },
           },
         },
@@ -279,5 +280,58 @@ describe('UsersService', () => {
 
       expect(result).toEqual(updateUser);
     });
+  });
+
+  describe('Delete User', () => {
+    it('should throw error when user is not found', async () => {
+      const tokenPayload: PayloadTokenDto = {
+        sub: 1,
+        aud: '',
+        email: 'matheus@teste.com',
+        exp: 123,
+        iat: 123,
+        iss: '',
+      };
+
+      jest.spyOn(prismaService.user, 'findFirst').mockResolvedValue(null);
+
+      await expect(userService.delete(1, tokenPayload)).rejects.toThrow(
+        new HttpException('Erro ao criar usuário', HttpStatus.BAD_REQUEST),
+      );
+    });
+
+    it('should throw UNAUTHORIZED whem user is not authorized', async () => {
+      const tokenPayload: PayloadTokenDto = {
+        sub: 5,
+        aud: '',
+        email: 'berg@teste.com',
+        exp: 123,
+        iat: 123,
+        iss: '',
+      };
+
+      const mockUser = {
+        id: 1,
+        name: 'Berg2',
+        email: 'berg@teste.com',
+        avatar: null,
+        passwordHash: 'hash_exemplo',
+        active: true,
+        createdAt: new Date(),
+      };
+
+      jest.spyOn(prismaService.user, 'findFirst').mockResolvedValue(mockUser);
+
+      await expect(userService.delete(1, tokenPayload)).rejects.toThrow(
+        new HttpException('Erro ao criar usuário', HttpStatus.BAD_REQUEST),
+      );
+
+      expect(prismaService.user.delete).not.toHaveBeenCalled()
+
+    });
+
+    it('should delete user', async () => {
+      
+    })
   });
 });
