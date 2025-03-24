@@ -14,7 +14,7 @@ export class UsersService {
     private readonly hashingService: HashingServiceProtocol,
   ) {}
   async findOne(id: number) {
-    const user = await this.prisma.user.findUnique({
+    const user = await this.prisma.user.findFirst({
       where: { id: id },
       select: {
         id: true,
