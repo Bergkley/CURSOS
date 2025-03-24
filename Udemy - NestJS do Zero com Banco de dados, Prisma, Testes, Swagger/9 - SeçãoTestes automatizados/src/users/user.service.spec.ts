@@ -197,8 +197,8 @@ describe('UsersService', () => {
         email: 'matheus@teste.com',
         exp: 123,
         iat: 123,
-        iss: ''
-      }
+        iss: '',
+      };
 
       const mockUser = {
         id: 1,
@@ -209,7 +209,7 @@ describe('UsersService', () => {
         passwordHash: 'hash_exemplo',
         active: true,
         createdAt: new Date(),
-      }
+      };
 
       jest.spyOn(prismaService.user, 'findFirst').mockResolvedValue(mockUser);
 
@@ -217,7 +217,67 @@ describe('UsersService', () => {
         userService.update(1, updateUserDto, tokenPayload),
       ).rejects.toThrow(
         new HttpException('Erro ao atualizar usuário', HttpStatus.BAD_REQUEST),
-      )
-    })
+      );
+    });
+
+    it('should update user', async () => {
+      const updateUserDto: UpdateUserDto = {
+        name: 'Novo nome',
+        password: 'nova senha',
+      };
+      const tokenPayload: PayloadTokenDto = {
+        sub: 1,
+        aud: '',
+        email: 'matheus@teste.com',
+        exp: 123,
+        iat: 123,
+        iss: '',
+      };
+
+      const mockUser = {
+        id: 1,
+        name: 'Matheus',
+        email: 'matheus@teste.com',
+        avatar: null,
+        passwordHash: 'hash_exemplo',
+        active: true,
+        createdAt: new Date(),
+      };
+
+      const updateUser = {
+        id: 1,
+        name: 'Novo nome',
+        email: 'matheus@teste.com',
+        avatar: null,
+        passwordHash: 'novo_hash_exemplo',
+        active: true,
+        createdAt: new Date(),
+      };
+
+      jest.spyOn(prismaService.user, 'findFirst').mockResolvedValue(mockUser);
+      jest.spyOn(hashingService, 'hash').mockResolvedValue('novo_hash_exemplo');
+      jest.spyOn(prismaService.user, 'update').mockResolvedValue(updateUser);
+
+      const result = await userService.update(1, updateUserDto, tokenPayload);
+
+      expect(hashingService.hash).toHaveBeenCalledWith(updateUserDto.password);
+
+      expect(prismaService.user.update).toHaveBeenCalledWith({
+        where: {
+          id: 1,
+        },
+        data: {
+          name: updateUserDto.name,
+          passwordHash: 'novo_hash_exemplo',
+        },
+        select: {
+          id: true,
+          name: true,
+          email: true,
+        },
+      });
+
+      expect(result).toEqual(updateUser);
+    });
   });
 });
