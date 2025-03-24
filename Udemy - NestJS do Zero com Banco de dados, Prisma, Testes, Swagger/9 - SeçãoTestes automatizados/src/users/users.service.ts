@@ -51,7 +51,6 @@ export class UsersService {
 
       return user;
     } catch (err) {
-      console.log(err);
       throw new HttpException('Erro ao criar usuário', HttpStatus.BAD_REQUEST);
     }
   }
@@ -102,7 +101,6 @@ export class UsersService {
 
       return updateUser;
     } catch (err) {
-      console.log(err);
       throw new HttpException(
         'Erro ao atualizar usuário',
         HttpStatus.BAD_REQUEST,
@@ -173,7 +171,6 @@ export class UsersService {
       });
       return updatedUser;
     } catch (err) {
-      console.log(err);
       throw new HttpException(
         'Falha ao atualizar o avatar do usuário',
         HttpStatus.BAD_REQUEST,
