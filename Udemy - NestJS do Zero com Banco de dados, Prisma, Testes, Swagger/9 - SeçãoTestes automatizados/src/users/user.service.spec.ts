@@ -87,7 +87,39 @@ describe('UsersService', () => {
     });
   });
 
-  it('should return a user when found',  async () => {
+  it('should throw error if prisma create fails', async () => {
+    const createUserDto: CreateUserDto = {
+      name: 'Berg',
+      email: 'berg@gmail.com',
+      password: '123456',
+    };
+
+    jest.spyOn(hashingService, 'hash').mockResolvedValue('HASH_MOCK_EXEMPLO');
+    jest
+      .spyOn(prismaService.user, 'create')
+      .mockRejectedValue(new Error('Data error'));
+
+    await expect(userService.create(createUserDto)).rejects.toThrow(
+      new HttpException('Erro ao criar usuário', HttpStatus.BAD_REQUEST),
+    );
+
+    expect(hashingService.hash).toHaveBeenCalledWith(createUserDto.password);
+
+    expect(prismaService.user.create).toHaveBeenCalledWith({
+      data: {
+        name: createUserDto.name,
+        email: createUserDto.email,
+        passwordHash: 'HASH_MOCK_EXEMPLO',
+      },
+      select: {
+        id: true,
+        name: true,
+        email: true,
+      },
+    });
+  });
+
+  it('should return a user when found', async () => {
     const mockUser = {
       id: 1,
       name: 'Matheus',
@@ -115,14 +147,13 @@ describe('UsersService', () => {
     });
 
     expect(result).toEqual(mockUser);
-    
-  })
+  });
 
   it('should return thorw error exception when user not found', async () => {
     jest.spyOn(prismaService.user, 'findFirst').mockResolvedValue(null);
 
     await expect(userService.findOne(1)).rejects.toThrow(
-      new HttpException('Usuário não encontrado', HttpStatus.BAD_REQUEST)
+      new HttpException('Usuário não encontrado', HttpStatus.BAD_REQUEST),
     );
 
     expect(prismaService.user.findFirst).toHaveBeenCalledWith({
@@ -135,5 +166,5 @@ describe('UsersService', () => {
         tasks: true,
       },
     });
-  })
+  });
 });
