@@ -229,7 +229,7 @@ describe('UsersService', () => {
       const tokenPayload: PayloadTokenDto = {
         sub: 1,
         aud: '',
-        email: 'matheus@teste.com',
+        email: 'berg@teste.com',
         exp: 123,
         iat: 123,
         iss: '',
@@ -237,8 +237,8 @@ describe('UsersService', () => {
 
       const mockUser = {
         id: 1,
-        name: 'Matheus',
-        email: 'matheus@teste.com',
+        name: 'Berg',
+        email: 'Berg@teste.com',
         avatar: null,
         passwordHash: 'hash_exemplo',
         active: true,
@@ -248,7 +248,7 @@ describe('UsersService', () => {
       const updateUser = {
         id: 1,
         name: 'Novo nome',
-        email: 'matheus@teste.com',
+        email: 'berg@teste.com',
         avatar: null,
         passwordHash: 'novo_hash_exemplo',
         active: true,
@@ -364,4 +364,30 @@ describe('UsersService', () => {
       expect(result).toEqual({message: 'Usuário deletado com sucesso'})
     })
   });
+
+  describe('Upload Avatar Image', () => {
+    it('should throw NOT_FOUND when user is not found', async () => {
+      const tokenPayload: PayloadTokenDto = {
+        sub: 1,
+        aud: '',
+        email: 'berg@teste.com',
+        exp: 123,
+        iat: 123,
+        iss: '',
+      };
+
+      const file = {
+        originalname: 'avatar.png',
+        mimetype: 'image/png',
+        buffer: Buffer.from(''),
+      } as Express.Multer.File;
+
+      jest.spyOn(prismaService.user, 'findFirst').mockResolvedValue(null);
+
+      await expect(userService.uploadAvatarImage(tokenPayload, file)).rejects.toThrow(
+        new HttpException('Falha ao atualizar o avatar do usuário', HttpStatus.BAD_REQUEST),
+        
+      );
+    })
+  })  
 });
