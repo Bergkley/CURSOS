@@ -79,4 +79,40 @@ describe('Users Controllers', () => {
 
         expect(result).toEqual(updatedUser);
     } )
+
+    it('should delete user ', async () => {
+        const userId = 1;
+        const tokenPayload: PayloadTokenDto = {
+            sub: userId,
+            aud: '',
+            email: '',
+            exp: 1,
+            iat: 1,
+            iss: ''
+        }
+
+        await controller.delete(userId, tokenPayload);
+        expect(usersServiceMock.delete).toHaveBeenCalledWith(userId,tokenPayload)
+    })
+
+    it('should upload avatar image', async () => {
+        const tokenPayload: PayloadTokenDto = {
+            sub: 1,
+            aud: '',
+            email: '',
+            exp: 1,
+            iat: 1,
+            iss: ''
+        }
+
+        const mockFile = {
+            originalname: 'avatar.png',
+            mimetype: 'image/png',
+            buffer: Buffer.from("mock")
+          } as Express.Multer.File;
+
+        await controller.uploadAvatar(tokenPayload, mockFile);
+
+        expect(usersServiceMock.uploadAvatarImage).toHaveBeenCalledWith(tokenPayload, mockFile);
+    })
 })
