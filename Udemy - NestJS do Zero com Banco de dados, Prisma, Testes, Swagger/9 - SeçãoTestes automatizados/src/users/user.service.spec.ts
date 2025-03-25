@@ -448,6 +448,37 @@ describe('UsersService', () => {
       expect(result).toEqual(updatedUser)
     })
 
-    
+    it('should throw error if file write fails', async () => {
+      const tokenPayload: PayloadTokenDto = {
+        sub: 1,
+        aud: '',
+        email: 'berg@teste.com',
+        exp: 123,
+        iat: 123,
+        iss: '',
+      };
+
+      const file = {
+        originalname: 'avatar.png',
+        mimetype: 'image/png',
+        buffer: Buffer.from(''),
+      } as Express.Multer.File;
+
+      const mockUser: any = {
+        id: 1,
+        name: 'Berg2',
+        email: 'berg@teste.com',
+        avatar: null,
+      };
+
+      jest.spyOn(prismaService.user, 'findFirst').mockResolvedValue(mockUser);
+      jest.spyOn(fs, 'writeFile').mockRejectedValue(new Error('File write error'));
+
+      await expect(userService.uploadAvatarImage(tokenPayload,file)).rejects.toThrow(
+        new HttpException('Falha ao atualizar o avatar do usuário', HttpStatus.BAD_REQUEST),
+      );
+
+    })
+
   })  
 });
