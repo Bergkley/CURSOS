@@ -11,6 +11,8 @@ import { PayloadTokenDto } from 'src/auth/dto/payload-token.dto';
 import * as path from 'node:path';
 import * as fs from 'node:fs/promises'
 
+jest.mock('node:fs/promises')
+
 describe('UsersService', () => {
   let userService: UsersService;
   let prismaService: PrismaService;
@@ -47,6 +49,10 @@ describe('UsersService', () => {
     userService = module.get(UsersService);
     prismaService = module.get(PrismaService);
     hashingService = module.get(HashingServiceProtocol);
+  });
+
+  afterEach(() => {
+    jest.clearAllMocks();
   });
 
   it('should be define users service', () => {
