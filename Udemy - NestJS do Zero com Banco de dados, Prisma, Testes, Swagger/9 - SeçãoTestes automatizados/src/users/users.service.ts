@@ -110,7 +110,7 @@ export class UsersService {
 
   async delete(id: number, tokenPayload: PayloadTokenDto) {
     try {
-      const user = await this.prisma.user.findUnique({
+      const user = await this.prisma.user.findFirst({
         where: { id: id },
       });
 
