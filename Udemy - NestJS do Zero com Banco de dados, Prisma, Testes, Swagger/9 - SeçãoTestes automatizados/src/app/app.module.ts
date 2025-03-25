@@ -11,7 +11,7 @@ import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'node:path';
 
 @Module({
-  imports: [TasksModule, UsersModule,ConfigModule.forRoot(), AuthModule,
+  imports: [TasksModule, UsersModule,ConfigModule.forRoot({ envFilePath: process.env.NODE_ENV ? `.env.${process.env.NODE_ENV}` : '.env',}), AuthModule,
     ServeStaticModule.forRoot({
       rootPath: join(__dirname,'..','..', 'files'),
       serveRoot: "/files"
