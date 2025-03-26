@@ -81,5 +81,19 @@ describe('Users (e2e)', () => {
       });
       expect(201);
     });
+
+    it('/users (POST) - weak password',async () => {
+      const createUserDto = {
+        name: 'Berg',
+        email: 'berg1@gmail.com',
+        password: '123',
+      };
+
+      const response = await request(app.getHttpServer())
+        .post('/users')
+        .send(createUserDto);
+        expect(400);
+        expect(response.body.error.message[0]).toEqual('password must be longer than or equal to 6 characters')
+    })
   });
 });
