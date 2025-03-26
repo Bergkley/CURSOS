@@ -21,39 +21,65 @@ describe('Users (e2e)', () => {
   beforeAll(() => {
     dotenv.config();
     execSync('npx prisma migrate deploy');
-  })
+  });
 
   beforeEach(async () => {
-    execSync('cross-env NODE_ENV=test DATABASE_URL=file:./dev-test.db npx prisma migrate deploy');
+    execSync(
+      'cross-env NODE_ENV=test DATABASE_URL=file:./dev-test.db npx prisma migrate deploy',
+    );
 
     const module: TestingModule = await Test.createTestingModule({
-        imports: [
-            ConfigModule.forRoot({
-             envFilePath: '.env.test'
-            }),
-            TasksModule,
-            PrismaModule,
-            UsersModule,
-            AuthModule,
-            ServeStaticModule.forRoot({
-              rootPath: join(__dirname, '..', 'files'),
-              serveRoot: "/files"
-            })
-          ],
+      imports: [
+        ConfigModule.forRoot({
+          envFilePath: '.env.test',
+        }),
+        TasksModule,
+        PrismaModule,
+        UsersModule,
+        AuthModule,
+        ServeStaticModule.forRoot({
+          rootPath: join(__dirname, '..', 'files'),
+          serveRoot: '/files',
+        }),
+      ],
     }).compile();
 
     app = module.createNestApplication();
     app.useGlobalPipes(
-        new ValidationPipe({
-          whitelist: true,
-        }),
-      );
+      new ValidationPipe({
+        whitelist: true,
+      }),
+    );
     prismaService = module.get<PrismaService>(PrismaService);
-    
+
     await app.init();
   });
 
-  it('/ (GET)', () => {
-   
+  afterEach(async () => {
+    await prismaService.user.deleteMany();
+  });
+
+  afterEach(async () => {
+    await app.close();
+  });
+
+  describe('/users', () => {
+    it('/users (POST)', async () => {
+      const createUserDto = {
+        name: 'Berg',
+        email: 'berg@gmail.com',
+        password: '123456',
+      };
+
+      const response = await request(app.getHttpServer())
+        .post('/users')
+        .send(createUserDto);
+      expect(response.body).toEqual({
+        id: response.body.id,
+        name: 'Berg',
+        email: 'berg@gmail.com',
+      });
+      expect(201);
+    });
   });
 });
