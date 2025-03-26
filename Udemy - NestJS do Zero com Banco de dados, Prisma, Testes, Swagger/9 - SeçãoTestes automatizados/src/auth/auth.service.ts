@@ -8,13 +8,15 @@ import { JwtService } from '@nestjs/jwt';
 
 @Injectable()
 export class AuthService {
-    constructor(private prisma: PrismaService, private readonly hashingService: HashingServiceProtocol,
 
-    @Inject(jwtConfig.KEY)
-    private readonly jwtConfiguration: ConfigType<typeof jwtConfig>,
-    private readonly jwtService: JwtService
+    constructor(
+        private readonly prisma: PrismaService,
+        private readonly hashingService: HashingServiceProtocol,
+
+        @Inject(jwtConfig.KEY)
+        private readonly jwtConfiguration: ConfigType<typeof jwtConfig>,
+        private readonly jtwService: JwtService
     ) {}
-    
 
     async authenticate(signInDto: SignInDto) {
         const user = await this.prisma.user.findFirst({
@@ -24,32 +26,36 @@ export class AuthService {
             }
         })
 
-        if(!user) {
-            throw new HttpException("Falha ao fazer login", HttpStatus.UNAUTHORIZED)
+        if (!user) {
+            throw new HttpException('Falha ao autenticar usuario', HttpStatus.UNAUTHORIZED)
         }
 
-        const passowrdIsValid = await this.hashingService.compare(signInDto.password, user.passwordHash)
+        const passwordIsValid = await this.hashingService.compare(signInDto.password, user.passwordHash)
 
-        if(passowrdIsValid) {
-            throw new HttpException("Senha/Usuário incorretos", HttpStatus.UNAUTHORIZED)
+        if (!passwordIsValid) {
+            throw new HttpException('Senha ou Usuario incorretos', HttpStatus.UNAUTHORIZED)
         }
 
-        const token = await this.jwtService.signAsync({
-            sub:user.id,
-            email:user.email
-        },{
-            secret: this.jwtConfiguration.secret,
-            expiresIn: this.jwtConfiguration.jwtTtl,
-            audience: this.jwtConfiguration.audience,
-            issuer: this.jwtConfiguration.issuer
-        })
+        const token = await this.jtwService.signAsync(
+            {
+                sub: user.id,
+                email: user.email
+            },{
+                secret: this.jwtConfiguration.secret,
+                expiresIn: this.jwtConfiguration.jwtTtl,
+                audience: this.jwtConfiguration.audience,
+                issuer: this.jwtConfiguration.issuer
+            }
+        )
 
         return {
-            id: user.id,
-            email: user.email,
-            name: user.name,
-            avatar: user.avatar,
-            token: token,
+            user: {
+                id: user.id,
+                name: user.name,
+                email: user.email,
+                avatar: user.avatar,
+                token: token
+            }
         }
     }
 }

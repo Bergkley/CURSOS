@@ -95,5 +95,45 @@ describe('Users (e2e)', () => {
         expect(400);
         expect(response.body.error.message[0]).toEqual('password must be longer than or equal to 6 characters')
     })
-  });
+
+    it('/users (PATCH) - update', async () => {
+      const createUserDto = {
+        name: 'berg teste',
+        email: 'bergtest@teste.com',
+        password: '123456'
+      }
+
+      const updateUserDto = {
+        name: 'berg teste2',
+      }
+
+      const user = await request(app.getHttpServer())
+        .post('/users')
+        .send(createUserDto)
+        .expect(201)
+
+
+      const auth = await request(app.getHttpServer())
+        .post('/auth')
+        .send({
+          email: createUserDto.email,
+          password: createUserDto.password
+        })
+
+
+      expect(auth.body.user.token).toEqual(auth.body.user.token)
+
+      const response = await request(app.getHttpServer())
+        .patch(`/users/${auth.body.user.id}`)
+        .set("Authorization", `Bearer ${auth.body.user.token}`)
+        .send(updateUserDto)
+
+      expect(response.body).toEqual({
+        id: auth.body.user.id,
+        name: updateUserDto.name,
+        email: createUserDto.email
+      })
+        })
+
+    })
 });
