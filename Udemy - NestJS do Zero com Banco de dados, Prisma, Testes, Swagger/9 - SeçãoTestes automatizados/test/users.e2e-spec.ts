@@ -133,7 +133,32 @@ describe('Users (e2e)', () => {
         name: updateUserDto.name,
         email: createUserDto.email
       })
+    })
+
+    it('/users (DELETE) - delete', async () => {
+      const createUserDto = {
+        name: 'berg teste',
+        email: 'bergtest@teste.com',
+        password: '123456'
+      }
+
+      const user = await request(app.getHttpServer())
+        .post('/users')
+        .send(createUserDto)
+        .expect(201)
+
+      const auth = await request(app.getHttpServer())
+        .post('/auth')
+        .send({
+          email: createUserDto.email,
+          password: createUserDto.password
         })
+
+      const response = await request(app.getHttpServer())
+        .delete(`/users/${auth.body.user.id}`)
+        .set("Authorization", `Bearer ${auth.body.user.token}`)
+        expect(response.body.message).toEqual("Usuário deletado com sucesso")
+    })
 
     })
 });
