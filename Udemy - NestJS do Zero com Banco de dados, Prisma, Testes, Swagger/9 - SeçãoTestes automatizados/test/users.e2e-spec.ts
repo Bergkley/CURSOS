@@ -64,7 +64,7 @@ describe('Users (e2e)', () => {
   });
 
   describe('/users', () => {
-    it('/users (POST)', async () => {
+    it('/users (POST) - create', async () => {
       const createUserDto = {
         name: 'Berg',
         email: 'berg@gmail.com',
