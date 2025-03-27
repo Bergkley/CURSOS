@@ -9,9 +9,9 @@ import { HttpException, HttpStatus } from '@nestjs/common';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { PayloadTokenDto } from 'src/auth/dto/payload-token.dto';
 import * as path from 'node:path';
-import * as fs from 'node:fs/promises'
+import * as fs from 'node:fs/promises';
 
-jest.mock('node:fs/promises')
+jest.mock('node:fs/promises');
 
 describe('UsersService', () => {
   let userService: UsersService;
@@ -334,8 +334,7 @@ describe('UsersService', () => {
         new HttpException('Erro ao criar usuário', HttpStatus.BAD_REQUEST),
       );
 
-      expect(prismaService.user.delete).not.toHaveBeenCalled()
-
+      expect(prismaService.user.delete).not.toHaveBeenCalled();
     });
 
     it('should delete user', async () => {
@@ -345,8 +344,8 @@ describe('UsersService', () => {
         email: 'berg@teste.com',
         exp: 123,
         iat: 123,
-        iss: ''
-      }
+        iss: '',
+      };
 
       const mockUser = {
         id: 1,
@@ -356,21 +355,21 @@ describe('UsersService', () => {
         passwordHash: 'hash_exemplo',
         active: true,
         createdAt: new Date(),
-      }
+      };
 
       jest.spyOn(prismaService.user, 'findFirst').mockResolvedValue(mockUser);
       jest.spyOn(prismaService.user, 'delete').mockResolvedValue(mockUser);
 
-      const result = await userService.delete(1,tokenPayload)
+      const result = await userService.delete(1, tokenPayload);
 
       expect(prismaService.user.delete).toHaveBeenCalledWith({
         where: {
-          id: 1
-        }
-      })
+          id: 1,
+        },
+      });
 
-      expect(result).toEqual({message: 'Usuário deletado com sucesso'})
-    })
+      expect(result).toEqual({ message: 'Usuário deletado com sucesso' });
+    });
   });
 
   describe('Upload Avatar Image', () => {
@@ -392,11 +391,15 @@ describe('UsersService', () => {
 
       jest.spyOn(prismaService.user, 'findFirst').mockResolvedValue(null);
 
-      await expect(userService.uploadAvatarImage(tokenPayload, file)).rejects.toThrow(
-        new HttpException('Falha ao atualizar o avatar do usuário', HttpStatus.BAD_REQUEST),
-        
+      await expect(
+        userService.uploadAvatarImage(tokenPayload, file),
+      ).rejects.toThrow(
+        new HttpException(
+          'Falha ao atualizar o avatar do usuário',
+          HttpStatus.BAD_REQUEST,
+        ),
       );
-    })
+    });
 
     it('should upload avatar and update user successfully', async () => {
       const tokenPayload: PayloadTokenDto = {
@@ -432,8 +435,8 @@ describe('UsersService', () => {
       jest.spyOn(prismaService.user, 'update').mockResolvedValue(updatedUser);
       jest.spyOn(fs, 'writeFile').mockResolvedValue();
 
-      const result = await userService.uploadAvatarImage(tokenPayload,file)
-      const fileLocale = path.resolve(process.cwd(),'files','1.png');
+      const result = await userService.uploadAvatarImage(tokenPayload, file);
+      const fileLocale = path.resolve(process.cwd(), 'files', '1.png');
 
       expect(fs.writeFile).toHaveBeenCalledWith(fileLocale, file.buffer);
       expect(prismaService.user.update).toHaveBeenCalledWith({
@@ -449,10 +452,10 @@ describe('UsersService', () => {
           email: true,
           avatar: true,
         },
-      })
+      });
 
-      expect(result).toEqual(updatedUser)
-    })
+      expect(result).toEqual(updatedUser);
+    });
 
     it('should throw error if file write fails', async () => {
       const tokenPayload: PayloadTokenDto = {
@@ -478,13 +481,18 @@ describe('UsersService', () => {
       };
 
       jest.spyOn(prismaService.user, 'findFirst').mockResolvedValue(mockUser);
-      jest.spyOn(fs, 'writeFile').mockRejectedValue(new Error('File write error'));
+      jest
+        .spyOn(fs, 'writeFile')
+        .mockRejectedValue(new Error('File write error'));
 
-      await expect(userService.uploadAvatarImage(tokenPayload,file)).rejects.toThrow(
-        new HttpException('Falha ao atualizar o avatar do usuário', HttpStatus.BAD_REQUEST),
+      await expect(
+        userService.uploadAvatarImage(tokenPayload, file),
+      ).rejects.toThrow(
+        new HttpException(
+          'Falha ao atualizar o avatar do usuário',
+          HttpStatus.BAD_REQUEST,
+        ),
       );
-
-    })
-
-  })  
+    });
+  });
 });
