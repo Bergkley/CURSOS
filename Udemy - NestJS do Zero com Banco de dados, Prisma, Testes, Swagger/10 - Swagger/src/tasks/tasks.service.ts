@@ -22,7 +22,7 @@ export class TasksService {
     return allTasks;
   }
 
-  async findOne(id: number) {
+  async findOne(id: number): Promise<ResponseTaskDto> {
     const task = await this.prisma.task.findFirst({
       where: {
         id: id,
@@ -32,7 +32,7 @@ export class TasksService {
 
     throw new HttpException('Essa tarefa não encontrado', HttpStatus.NOT_FOUND);
   }
-  async create(createTaskDto: CreateTaskDto, tokenPayload: PayloadTokenDto) {
+  async create(createTaskDto: CreateTaskDto, tokenPayload: PayloadTokenDto): Promise<ResponseTaskDto> {
     try {
       const nestTask = await this.prisma.task.create({
         data: {
@@ -56,7 +56,7 @@ export class TasksService {
     id: number,
     updateTaskDto: UpdateTaskDto,
     tokenPayload: PayloadTokenDto,
-  ) {
+  ): Promise<ResponseTaskDto> {
     try {
       const findTask = await this.prisma.task.findFirst({
         where: {
