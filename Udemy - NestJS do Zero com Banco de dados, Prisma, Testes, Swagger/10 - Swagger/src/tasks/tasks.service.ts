@@ -32,7 +32,10 @@ export class TasksService {
 
     throw new HttpException('Essa tarefa não encontrado', HttpStatus.NOT_FOUND);
   }
-  async create(createTaskDto: CreateTaskDto, tokenPayload: PayloadTokenDto): Promise<ResponseTaskDto> {
+  async create(
+    createTaskDto: CreateTaskDto,
+    tokenPayload: PayloadTokenDto,
+  ): Promise<ResponseTaskDto> {
     try {
       const nestTask = await this.prisma.task.create({
         data: {
