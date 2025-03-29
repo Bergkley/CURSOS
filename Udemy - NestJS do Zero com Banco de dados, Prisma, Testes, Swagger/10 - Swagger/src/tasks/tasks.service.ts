@@ -102,7 +102,7 @@ export class TasksService {
     }
   }
   async delete(id: number, tokenPayload: PayloadTokenDto) {
-    
+
     try {
       const findTask = await this.prisma.task.findFirst({
         where: {
@@ -131,6 +131,7 @@ export class TasksService {
       });
 
       return { message: 'Tarefa deletada com sucesso' };
+      
     } catch (err) {
       throw new HttpException(
         'Falha ao deletar essa tarefa',
