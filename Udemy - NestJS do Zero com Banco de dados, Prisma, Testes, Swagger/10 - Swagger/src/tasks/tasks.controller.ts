@@ -23,27 +23,33 @@ import { AuthTokenGuard } from 'src/auth/guard/auth-token.guard';
 import { TokenPayloadParam } from 'src/auth/param/token-payload.param';
 import { PayloadTokenDto } from 'src/auth/dto/payload-token.dto';
 import { ResponseTaskDto } from './dto/response-task.dto';
+import { ApiBearerAuth, ApiOperation } from '@nestjs/swagger';
 
 @Controller('tasks')
 export class TasksController {
   constructor(private readonly tasksService: TasksService,
   ) {}
   @Get()
-
+  @ApiOperation({ summary: 'Buscar todas as tarefas' })
   // @UseGuards(AuthAdminGuard)
   findAllTasks(@Query() paginationDto: PaginationDto) {
     return this.tasksService.findAll(paginationDto);
   }
   @Get(':id')
+  @ApiOperation({ summary: 'Buscar por uma unica tarefa' })
   findOneTask(@Param('id', ParseIntPipe) id: number) {
     return this.tasksService.findOne(id);
   }
   @UseGuards(AuthTokenGuard)
+  @ApiBearerAuth()
+  @ApiOperation({ summary: 'Criar uma nova tarefa' })
   @Post()
   createTask(@Body() createTaskDto: CreateTaskDto, @TokenPayloadParam() tokenPayload:PayloadTokenDto ) {
     return this.tasksService.create(createTaskDto,tokenPayload);
   }
   @UseGuards(AuthTokenGuard)
+  @ApiBearerAuth()
+  @ApiOperation({ summary: 'Atualizar uma tarefa' })
   @Patch(':id')
   updateTask(
     @Param('id', ParseIntPipe) id: number,
@@ -53,6 +59,8 @@ export class TasksController {
     return this.tasksService.update(id, updateTaskDto,tokenPayload);
   }
   @UseGuards(AuthTokenGuard)
+  @ApiBearerAuth()
+  @ApiOperation({ summary: 'Deletar uma tarefa' })
   @Delete(':id')
   deleteTask(@Param('id', ParseIntPipe) id: number,@TokenPayloadParam() tokenPayload:PayloadTokenDto
 ) {
