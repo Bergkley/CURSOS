@@ -6,7 +6,11 @@ import { HashingServiceProtocol } from 'src/auth/hash/hashing.service';
 import { PayloadTokenDto } from 'src/auth/dto/payload-token.dto';
 import * as path from 'node:path';
 import * as fs from 'node:fs/promises';
-import { ResponseCreateUserDto, ResponseFindOneUserDto, ResponseUpdateAvatarUserDto } from './dto/response-user.dto';
+import {
+  ResponseCreateUserDto,
+  ResponseFindOneUserDto,
+  ResponseUpdateAvatarUserDto,
+} from './dto/response-user.dto';
 
 @Injectable()
 export class UsersService {
