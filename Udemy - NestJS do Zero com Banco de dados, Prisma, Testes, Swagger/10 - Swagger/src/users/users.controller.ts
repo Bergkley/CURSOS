@@ -27,6 +27,7 @@ import { FileInterceptor, FilesInterceptor } from '@nestjs/platform-express';
 import * as path from 'node:path';
 import * as fs from 'node:fs/promises';
 import { randomUUID } from 'node:crypto';
+import { ApiBearerAuth, ApiBody, ApiConsumes } from '@nestjs/swagger';
 
 @Controller('users')
 export class UsersController {
@@ -58,6 +59,19 @@ export class UsersController {
     return this.userService.delete(id, tokenPayload);
   }
   @UseGuards(AuthTokenGuard)
+  @ApiBearerAuth()
+  @ApiConsumes('multipart/form-data')
+  @ApiBody({
+      schema: {
+          type: 'object',
+          properties: {
+              file: {
+                  type: 'string',
+                  format: 'binary'
+              }
+          }
+      }
+  })
   @UseInterceptors(FileInterceptor('file'))
   @Post('upload')
   async uploadAvatar(
