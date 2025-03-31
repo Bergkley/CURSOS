@@ -27,21 +27,25 @@ import { FileInterceptor, FilesInterceptor } from '@nestjs/platform-express';
 import * as path from 'node:path';
 import * as fs from 'node:fs/promises';
 import { randomUUID } from 'node:crypto';
-import { ApiBearerAuth, ApiBody, ApiConsumes } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiBody, ApiConsumes, ApiOperation } from '@nestjs/swagger';
 
 @Controller('users')
 export class UsersController {
   constructor(private readonly userService: UsersService) {}
   @Get(':id')
+  @ApiOperation({ summary: 'Listar detalhes de um usuario' })
   findOneUser(@Param('id', ParseIntPipe) id: number) {
     return this.userService.findOne(id);
   }
 
   @Post()
+  @ApiOperation({ summary: 'Criar um usuario' })
   create(@Body() createUserDto: CreateUserDto) {
     return this.userService.create(createUserDto);
   }
   @UseGuards(AuthTokenGuard)
+  @ApiBearerAuth()
+  @ApiOperation({ summary: 'Atualizar um usuario' })
   @Patch(':id')
   update(
     @Param('id', ParseIntPipe) id: number,
@@ -51,6 +55,8 @@ export class UsersController {
     return this.userService.update(id, updateUserDto, tokenPayload);
   }
   @UseGuards(AuthTokenGuard)
+  @ApiBearerAuth()
+  @ApiOperation({ summary: 'Deletar um usuario' })
   @Delete(':id')
   delete(
     @Param('id', ParseIntPipe) id: number,
@@ -61,6 +67,7 @@ export class UsersController {
   @UseGuards(AuthTokenGuard)
   @ApiBearerAuth()
   @ApiConsumes('multipart/form-data')
+  @ApiOperation({ summary: 'Upload de uma imagem' })
   @ApiBody({
       schema: {
           type: 'object',

@@ -6,6 +6,7 @@ import { HashingServiceProtocol } from 'src/auth/hash/hashing.service';
 import { PayloadTokenDto } from 'src/auth/dto/payload-token.dto';
 import * as path from 'node:path';
 import * as fs from 'node:fs/promises';
+import { ResponseCreateUserDto, ResponseFindOneUserDto, ResponseUpdateAvatarUserDto } from './dto/response-user.dto';
 
 @Injectable()
 export class UsersService {
@@ -13,7 +14,7 @@ export class UsersService {
     private prisma: PrismaService,
     private readonly hashingService: HashingServiceProtocol,
   ) {}
-  async findOne(id: number) {
+  async findOne(id: number): Promise<ResponseFindOneUserDto> {
     const user = await this.prisma.user.findFirst({
       where: { id: id },
       select: {
@@ -30,7 +31,7 @@ export class UsersService {
     throw new HttpException('Usuário não encontrado', HttpStatus.NOT_FOUND);
   }
 
-  async create(createUserDto: CreateUserDto) {
+  async create(createUserDto: CreateUserDto): Promise<ResponseCreateUserDto> {
     try {
       const passwordHash = await this.hashingService.hash(
         createUserDto.password,
@@ -59,7 +60,7 @@ export class UsersService {
     id: number,
     updateUserDto: UpdateUserDto,
     tokenPayload: PayloadTokenDto,
-  ) {
+  ): Promise<ResponseCreateUserDto> {
     try {
       const user = await this.prisma.user.findFirst({
         where: { id: id },
@@ -135,7 +136,7 @@ export class UsersService {
   async uploadAvatarImage(
     tokenPayload: PayloadTokenDto,
     file: Express.Multer.File,
-  ) {
+  ): Promise<ResponseUpdateAvatarUserDto> {
     try {
       const mimeType = file.mimetype;
       const fileExtension = path
